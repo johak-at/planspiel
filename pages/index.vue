@@ -1,5 +1,10 @@
 <script setup>
+import { useStore } from "~/store/store";
+import { storeToRefs } from "pinia";
+
 const client = useSupabaseClient();
+const store = useStore();
+const name = storeToRefs(store).name;
 
 onMounted(async () => {
   let { data: bilanzen, error } = await client.from("bilanzen").select("*");
@@ -16,4 +21,5 @@ onMounted(async () => {
   <button class="btn btn-active btn-accent">Accent</button>
   <button class="btn btn-active btn-ghost">Ghost</button>
   <button class="btn btn-active btn-link">Link</button>
+  <div class="text-white">{{ name }}</div>
 </template>
