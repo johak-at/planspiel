@@ -9,7 +9,7 @@ export const useStore = defineStore(
         const supabase = useSupabaseClient();
         const name = ref('Bob')
         const bilanzen = ref(null)
-        const daisyTheme = ref('cyberpunk')
+        const daisyTheme = ref('synthwave')
         async function loadBilanzen() {
             const res = await supabase.from("bilanzen").select("*");
             bilanzen.value = res.data;
