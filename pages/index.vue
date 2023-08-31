@@ -57,9 +57,6 @@ onMounted(async () => {
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  height: 100vh;
-  width: 100vw;
-
 }
 
 /* .div{
