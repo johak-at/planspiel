@@ -3,6 +3,7 @@
 <script setup>
 import { useStore } from "~/store/store";
 import { storeToRefs } from "pinia";
+import LogoComponent from "~/pages/components/logo.vue";
 import NavComponent from "~/pages/components/navigation.vue";
 import ContentComponent from "~/pages/components/content.vue";
 import FooterComponent from "~/pages/components/footer.vue";
@@ -28,7 +29,8 @@ onMounted(async () => {
   <button class="btn btn-active btn-link">Link</button>
   <div>{{ name }}</div>
   <div v-if="bilanzen">{{ bilanzen }}</div> -->
-  <div id="app">
+  <div id="app" class="gap-y-10">
+    <LogoComponent />
     <NavComponent />
     <ContentComponent />
     <FooterComponent />

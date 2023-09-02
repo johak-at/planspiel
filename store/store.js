@@ -17,7 +17,7 @@ export const useStore = defineStore(
         }
         async function loadGuVs() {
             const res = await supabase.from("GuVs").select("*");
-            bilanzen.value = res.data;
+            GuVs.value = res.data;
         }
         return { name, bilanzen, GuVs, daisyTheme, loadBilanzen, loadGuVs }
     },
