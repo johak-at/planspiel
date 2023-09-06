@@ -25,9 +25,9 @@
 <template>
     <div class="flex flex-row gap-x-10">
         <table>
-        <thead>
-            <tr>
-                <th>Bilanz</th>
+        <thead class="">
+            <tr class="font-bold text-center">
+                Bilanz
             </tr>
             <tr>
                 <th>Bezeichnung</th>
@@ -37,14 +37,14 @@
         <tbody>
             <tr v-for="(value, key) in bilanzValue">
                 <td>{{ key }}</td>
-                <td>{{ value }}</td>
+                <td>€ {{ value.toLocaleString("de-DE", {minimumFractionDigits: 2})}}</td>
             </tr>
         </tbody>
     </table>
 
     <table>
         <thead>
-            <tr>
+            <tr class="font-bold text-center">
                 GuV
             </tr>
             <tr>
@@ -55,7 +55,7 @@
         <tbody>
             <tr v-for="(value, key) in guvValue">
                 <td>{{ key }}</td>
-                <td>{{ value }}</td>
+                <td class="text-between"> € {{ value.toLocaleString("de-DE", {minimumFractionDigits: 2}) }}</td>
             </tr>
         </tbody>
     </table>
@@ -67,8 +67,8 @@
 
 <style>
 *{
-  outline-width: 1px;
+  /* outline-width: 1px;
   outline-style: solid;
-  outline-color: red;
+  outline-color: red; */
 }
 </style>

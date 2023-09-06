@@ -7,6 +7,7 @@ import LogoComponent from "~/pages/components/logo.vue";
 import NavComponent from "~/pages/components/navigation.vue";
 import ContentComponent from "~/pages/components/content.vue";
 import FooterComponent from "~/pages/components/footer.vue";
+import NavComponent2 from "~/pages/components/navigation2.vue";
 
 
 const store = useStore();
@@ -30,10 +31,11 @@ onMounted(async () => {
   <div>{{ name }}</div>
   <div v-if="bilanzen">{{ bilanzen }}</div> -->
   <div id="app" class="gap-y-10">
-    <LogoComponent />
-    <NavComponent />
-    <ContentComponent />
-    <FooterComponent />
+    <LogoComponent class="logo" />
+    <NavComponent class="nav1"/>
+    <NavComponent2 class="nav2"/>
+    <ContentComponent class="content"/>
+    <FooterComponent class="footer"/>
   </div>
 </template>
 
@@ -46,24 +48,47 @@ onMounted(async () => {
   
 
 
-  outline-width: 1px;
+  /* outline-width: 1px;
   outline-style: solid;
-  outline-color: red;
+  outline-color: red; */
 
   /* border: 1px solid red; */
 }
 
-#app{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
+#app {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* first column takes one fourth of the space, second column takes three fourths */
+  grid-template-rows: auto auto auto; /* three rows with auto height */
+  gap: 10px; /* gap between grid items */
 }
 
-/* .div{
-  align-items: center;
-  align-content: center;
-} */
+/* assign order values to each component */
+.logo {
+  grid-area: logo;
+}
+
+.nav1 {
+  grid-area: nav1;
+}
+
+.nav2 {
+  grid-area: nav2;
+}
+
+.content {
+  grid-area: content;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+#app {
+  grid-template-areas:
+  ". logo . "
+    ". nav1 ."
+    "nav2 content ."
+    ". footer .";
+}
 </style>
 
