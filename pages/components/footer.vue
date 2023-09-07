@@ -8,9 +8,10 @@
 
 <style>
 
-*{
+/* *{
   outline-width: 1px;
   outline-style: solid;
   outline-color: red;
 }
+*/
 </style>

@@ -16,13 +16,6 @@ import logo from "~/pages/assets/Platzhalter.jpeg";
 </template>
 
 <style>
-
-*{
-  /* outline-width: 1px;
-  outline-style: solid;
-  outline-color: red; */
-}
-
 #logo{
     width: 100px;
     height: 100px;

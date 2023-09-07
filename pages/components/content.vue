@@ -23,39 +23,42 @@
 </script>
 
 <template>
-    <div class="flex flex-row gap-x-10">
-        <table>
-        <thead class="">
-            <tr class="font-bold text-center">
+<div class="flex flex-row gap-x-10">
+    <table class="border border-slate-500">
+        <thead>
+            <tr class="border-slate-500 font-bold text-center">
                 Bilanz
             </tr>
             <tr>
-                <th>Bezeichnung</th>
-                <th>Betrag</th>
+                <th class="border border-slate-500">Bezeichnung</th>
+                <th class="border border-slate-500">Betrag</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="(value, key) in bilanzValue">
-                <td>{{ key }}</td>
-                <td>€ {{ value.toLocaleString("de-DE", {minimumFractionDigits: 2})}}</td>
+                <td class="border border-slate-500">{{ key }}</td>
+                <td class="border border-slate-500">
+                    <p>€</p>
+                    <p class="text-end">{{ value.toLocaleString("de-DE", {minimumFractionDigits: 2})}}</p>
+                </td>
             </tr>
         </tbody>
     </table>
 
-    <table>
-        <thead>
-            <tr class="font-bold text-center">
+    <table class="border border-slate-500">
+        <thead class="border border-slate-500">
+            <tr class="border border-slate-500 font-bold text-center">
                 GuV
             </tr>
             <tr>
-                <th>Bezeichnung</th>
-                <th>Betrag</th>
+                <th class="border border-slate-500">Bezeichnung</th>
+                <th class="border border-slate-500">Betrag</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="(value, key) in guvValue">
-                <td>{{ key }}</td>
-                <td class="text-between"> € {{ value.toLocaleString("de-DE", {minimumFractionDigits: 2}) }}</td>
+                <td class="border border-slate-500">{{ key }}</td>
+                <td class="text-right border border-slate-500"> € {{ value.toLocaleString("de-DE", {minimumFractionDigits: 2}) }}</td>
             </tr>
         </tbody>
     </table>
@@ -67,8 +70,9 @@
 
 <style>
 *{
-  /* outline-width: 1px;
-  outline-style: solid;
-  outline-color: red; */
+  
+}
+p{
+    display: inline-block;
 }
 </style>
