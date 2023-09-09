@@ -22,66 +22,75 @@ props.forEach((prop) => {
 </script>
 
 <template>
-  <div class="flex flex-row gap-x-10">
-    <table class="border border-slate-500">
-      <thead>
-        <tr class="border-slate-500 font-bold text-center">
-          Bilanz
-        </tr>
-        <tr>
-          <th class="border border-slate-500">Bezeichnung</th>
-          <th class="border border-slate-500">Betrag</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(value, key) in bilanzValue">
-          <td class="border border-slate-500">{{ key }}</td>
-          <td class="border border-slate-500">
-            <div class="flex justify-between">
-              <div>€</div>
-              <div>
-                {{
-                  value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
-                }}
+  <div class="auto-row-auto gap-x-10">
+    <div class="inline-block align-top mr-4">
+      <table class="border border-slate-500 rounded-lg p-4 flex-1">
+        <thead>
+          <tr class="font-bold text-center">
+            <th colspan="2" class="bg-slate-500 text-white py-2">
+              Bilanz
+            </th>
+          </tr>
+          <tr>
+            <th class="border border-slate-500 p-2">Bezeichnung</th>
+            <th class="border border-slate-500 p-2">Betrag</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(value, key) in bilanzValue" :key="key">
+            <td class="border border-slate-500 p-2">{{ key }}</td>
+            <td class="border border-slate-500 p-2">
+              <div class="flex justify-between">
+                <div>€</div>
+                <div>
+                  {{
+                    value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
+                  }}
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <table class="border border-slate-500">
-      <thead class="border border-slate-500">
-        <tr class="border border-slate-500 font-bold text-center">
-          GuV
-        </tr>
-        <tr>
-          <th class="border border-slate-500">Bezeichnung</th>
-          <th class="border border-slate-500">Betrag</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(value, key) in guvValue">
-          <td class="border border-slate-500">{{ key }}</td>
-          <td class="border border-slate-500">
-            <div class="flex justify-between">
-              <div>€</div>
-              <div>
-                {{
-                  value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
-                }}
+    <div class="inline-block align-top">
+      <table class="border border-slate-500 rounded-lg p-4 flex-1">
+        <thead>
+          <tr class="font-bold text-center">
+            <th colspan="2" class="bg-slate-500 text-white py-2">
+              GuV
+            </th>
+          </tr>
+          <tr>
+            <th class="border border-slate-500 p-2">Bezeichnung</th>
+            <th class="border border-slate-500 p-2">Betrag</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(value, key) in guvValue" :key="key">
+            <td class="border border-slate-500 p-2">{{ key }}</td>
+            <td class="border border-slate-500 p-2">
+              <div class="flex justify-between">
+                <div>€</div>
+                <div>
+                  {{
+                    value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
+                  }}
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
+
+
 <style>
-* {
-}
+
 p {
   display: inline-block;
 }

@@ -15,11 +15,7 @@
 
 <style>
 
-*{
-  /* outline-width: 1px;
-  outline-style: solid;
-  outline-color: red; */
-}
+
 .btn1 {
   display: block; /* make them block-level elements */
   margin-bottom: 100px; /* add some margin around them */

@@ -33,7 +33,7 @@ onMounted(async () => {
   <div id="app" class="gap-y-10">
     <LogoComponent class="logo" />
     <NavComponent class="nav1"/>
-    <NavComponent2 class="nav2"/>
+    <!-- <NavComponent2 class="nav2"/> -->
     <ContentComponent class="content"/>
     <FooterComponent class="footer"/>
   </div>
@@ -64,7 +64,7 @@ onMounted(async () => {
   ". logo . "
     ". nav1 ."
     "nav2 content ."
-    ". footer .";
+    "footer footer footer";
   background-color: white;
   color: black;
 }
