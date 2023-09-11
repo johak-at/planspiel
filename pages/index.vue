@@ -1,5 +1,3 @@
-
-
 <script setup>
 import { useStore } from "~/store/store";
 import { storeToRefs } from "pinia";
@@ -9,7 +7,6 @@ import ContentComponent from "~/pages/components/content.vue";
 import FooterComponent from "~/pages/components/footer.vue";
 import NavComponent2 from "~/pages/components/navigation2.vue";
 
-
 const store = useStore();
 const name = storeToRefs(store).name;
 const bilanzen = storeToRefs(store).bilanzen;
@@ -17,7 +14,6 @@ const bilanzen = storeToRefs(store).bilanzen;
 onMounted(async () => {
   await store.loadBilanzen();
 });
-
 </script>
 
 <template>
@@ -32,21 +28,18 @@ onMounted(async () => {
   <div v-if="bilanzen">{{ bilanzen }}</div> -->
   <div id="app" class="gap-y-10">
     <LogoComponent class="logo" />
-    <NavComponent class="nav1"/>
+    <NavComponent class="nav1" />
     <!-- <NavComponent2 class="nav2"/> -->
-    <ContentComponent class="content"/>
-    <FooterComponent class="footer"/>
+    <ContentComponent class="content" />
+    <FooterComponent class="footer" />
   </div>
 </template>
 
 <style scoped>
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
-
 
   /* outline-width: 1px;
   outline-style: solid;
@@ -61,7 +54,7 @@ onMounted(async () => {
   grid-template-rows: auto auto auto; /* three rows with auto height */
   gap: 10px; /* gap between grid items */
   grid-template-areas:
-  ". logo . "
+    ". logo . "
     ". nav1 ."
     "nav2 content ."
     "footer footer footer";
@@ -89,6 +82,4 @@ onMounted(async () => {
 .footer {
   grid-area: footer;
 }
-
 </style>
-
