@@ -50,9 +50,12 @@ onMounted(async () => {
 
 #app {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr; /* first column takes one fourth of the space, second column takes three fourths */
-  grid-template-rows: auto auto auto; /* three rows with auto height */
-  gap: 10px; /* gap between grid items */
+  grid-template-columns: 1fr 1.8fr 1.2fr;
+  /* first column takes one fourth of the space, second column takes three fourths */
+  grid-template-rows: auto auto auto;
+  /* three rows with auto height */
+  gap: 10px;
+  /* gap between grid items */
   grid-template-areas:
     ". logo . "
     ". nav1 ."
