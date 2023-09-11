@@ -1,11 +1,10 @@
 <template>
-  <div class="">
-    <a class="hover:text-slate-500">Home</a>
-    <a class="hover:text-slate-500" href="http://localhost:3000/newgame">New Game
-    </a>
-    <a class="hover:text-slate-500">Settings</a>
-    <a class="hover:text-slate-500">Help</a>
-    <a class="hover:text-slate-500">About Us</a>
-    <a class="hover:text-slate-500">Account</a>
+  <div class="w-44% bg-slate-500 hover:bg-slate-400 flex justify-evenly">
+    <a class="group hover:text-slate-600 hover:bg-slate-300 bg-slate-500 font-bold py-2 px-9 text-white flex-grow " href="http://localhost:3000/">Home</a>
+    <a class="group hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 py-2 px-9 text-white flex-grow" href="http://localhost:3000/newgame">New Game</a>
+    <a class="group hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 py-2 px-9 text-white flex-grow" href="http://localhost:3000/settings">Settings</a>
+    <a class="group hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 py-2 px-9 text-white flex-grow" href="http://localhost:3000/help">Help</a>
+    <a class="group hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 py-2 px-9 text-white flex-grow" href="http://localhost:3000/aboutus">About Us</a>
+    <a class="group hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 py-2 px-9 text-white flex-grow" href="http://localhost:3000/account">Account</a>
   </div>
 </template>

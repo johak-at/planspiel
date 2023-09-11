@@ -14,12 +14,28 @@ await store.loadGuVs();
 let guvValue = guv._rawValue[0];
 console.log(guvValue);
 
-let props = ["id", "created_at"];
+// Replace underscores with spaces in the keys
+bilanzValue = replaceUnderscoresWithSpaces(bilanzValue);
+guvValue = replaceUnderscoresWithSpaces(guvValue);
+
+let props = ["id", "created at"];
 props.forEach((prop) => {
   delete bilanzValue[prop];
   delete guvValue[prop];
 });
+
+function replaceUnderscoresWithSpaces(obj) {
+  const newObj = {};
+  for (const key in obj) {
+    if (Object.hasOwnProperty.call(obj, key)) {
+      const newKey = key.replace(/_/g, ' ');
+      newObj[newKey] = obj[key];
+    }
+  }
+  return newObj;
+}
 </script>
+
 
 <template>
   <div class="auto-row-auto gap-x-10">

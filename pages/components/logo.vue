@@ -1,5 +1,5 @@
 <script setup>
-import logo from "~/pages/assets/Platzhalter.jpeg";
+import logo from "~/pages/assets/Platzhalter.png";
 </script>
 
 <template>
