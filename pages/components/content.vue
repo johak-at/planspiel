@@ -38,9 +38,9 @@ function replaceUnderscoresWithSpaces(obj) {
 
 
 <template>
-  <div class="auto-row-auto gap-x-10">
-    <div class="inline-block align-top mr-4">
-      <table class="border border-slate-500 rounded-lg p-4 flex-1">
+  <div class="flex gap-x-10">
+    <div class="flex-grow inline-block align-top mr-4">
+      <table class="border border-slate-500 rounded-lg p-4 min-w-0">
         <thead>
           <tr class="font-bold text-center">
             <th colspan="2" class="bg-slate-500 text-white py-2">
@@ -70,8 +70,8 @@ function replaceUnderscoresWithSpaces(obj) {
       </table>
     </div>
 
-    <div class="inline-block align-top">
-      <table class="border border-slate-500 rounded-lg p-4 flex-1">
+    <div class="flex-grow inline-block align-top">
+      <table class="border border-slate-500 rounded-lg p-4 min-w-0">
         <thead>
           <tr class="font-bold text-center">
             <th colspan="2" class="bg-slate-500 text-white py-2">
@@ -106,7 +106,6 @@ function replaceUnderscoresWithSpaces(obj) {
 
 
 <style>
-
 p {
   display: inline-block;
 }
