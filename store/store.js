@@ -11,7 +11,7 @@ export const useStore = defineStore(
     const GuVs = ref(null);
     const daisyTheme = ref("synthwave");
     async function loadBilanzen() {
-      const res = await supabase.from("bilanzen").select("*");
+      const res = await supabase.from("Aktiva").select("*");
       bilanzen.value = res.data;
     }
 
