@@ -50,7 +50,7 @@ onMounted(async () => {
 
 #app {
   display: grid;
-  grid-template-columns: 26% 44.34% 2.66%;
+  grid-template-columns: 1.2fr 2.5fr 0.5fr;
   /* first column takes one fourth of the space, second column takes three fourths */
   grid-template-rows: auto auto auto;
   /* three rows with auto height */
@@ -61,7 +61,7 @@ onMounted(async () => {
     ". nav1 ."
     "nav2 content ."
     "footer footer footer";
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   color: black;
 }
 

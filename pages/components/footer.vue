@@ -1,6 +1,4 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <footer class="bg-slate-500 text-white py-8">
@@ -31,16 +29,14 @@
 /* Add your custom styling for the footer here */
 </style>
 
-
 <style scoped>
 /* Add your custom styling for the footer here */
 </style>
 
-
 <style>
-* {
+/* * {
   outline-width: 1px;
   outline-style: solid;
   outline-color: red;
-}
+} */
 </style>
