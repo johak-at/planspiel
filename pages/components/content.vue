@@ -49,7 +49,7 @@ function replaceUnderscoresWithSpaces(obj) {
       <table class="border border-slate-500 rounded-lg p-4 min-w-0">
         <thead>
           <tr class="font-bold text-center">
-            <th colspan="2" class="bg-slate-500 text-white py-2">Bilanz</th>
+            <th colspan="2" class="bg-slate-500 text-white py-2">Aktiva</th>
           </tr>
           <tr>
             <th class="border border-slate-500 p-2">Bezeichnung</th>
@@ -78,7 +78,7 @@ function replaceUnderscoresWithSpaces(obj) {
       <table class="border border-slate-500 rounded-lg p-4 min-w-0">
         <thead>
           <tr class="font-bold text-center">
-            <th colspan="2" class="bg-slate-500 text-white py-2">Bilanz</th>
+            <th colspan="2" class="bg-slate-500 text-white py-2">Passiva</th>
           </tr>
           <tr>
             <th class="border border-slate-500 p-2">Bezeichnung</th>

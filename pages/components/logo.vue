@@ -4,7 +4,8 @@ import logo from "~/pages/assets/Platzhalter.png";
 
 <template>
     <div class="flex flex-row items-center gap-x-5">
-        <img id="logo" :src="logo" alt="Logo"/>
+        <a href="http://localhost:3000/bilanzen"><img id="logo" :src="logo" alt="Logo" /></a>
+        
         <div class="flex flex-col">
             <h1 class="text-5xl">Unternehmensplanspiel</h1>
             <p>Deine Wirtschaftssimulation!</p>

@@ -17,23 +17,25 @@ onMounted(async () => {
 </script>
 
 <template>
-  
+  <!-- <button class="btn btn-active text-red-900">Default</button>
+  <button class="btn btn-active btn-neutral">Neutral</button>
+  <button class="btn btn-active btn-primary">Primary</button>
+  <button class="btn btn-active btn-secondary">Secondary</button>
+  <button class="btn btn-active btn-accent">Accent</button>
+  <button class="btn btn-active btn-ghost">Ghost</button>
+  <button class="btn btn-active btn-link">Link</button>
+  <div>{{ name }}</div>
+  <div v-if="bilanzen">{{ bilanzen }}</div> -->
   <div id="app" class="gap-y-10">
     <LogoComponent class="logo" />
     <NavComponent class="nav1" />
-    <div class=" content h-screen text-black flex items-center justify-center">
-    <a
-      class="group hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 py-5 px-10 text-white text-center rounded-full"
-      href="http://localhost:3000/gamescreen"
-    >
-      Start Game
-    </a>
-  </div>
+    <!-- <NavComponent2 class="nav2"/> -->
+    <ContentComponent class="content" />
     <FooterComponent class="footer" />
   </div>
 </template>
 
-<style>
+<style scoped>
 * {
   margin: 0;
   padding: 0;
@@ -45,9 +47,10 @@ onMounted(async () => {
 
   /* border: 1px solid red; */
 }
+
 #app {
   display: grid;
-  grid-template-columns: 1fr 2.5fr 1fr;
+  grid-template-columns: 1fr 2.5fr 0.7fr;
   /* first column takes one fourth of the space, second column takes three fourths */
   grid-template-rows: auto auto auto;
   /* three rows with auto height */
@@ -62,6 +65,7 @@ onMounted(async () => {
   color: black;
 }
 
+/* assign order values to each component */
 .logo {
   grid-area: logo;
 }
@@ -80,6 +84,5 @@ onMounted(async () => {
 
 .footer {
   grid-area: footer;
-  
 }
 </style>
