@@ -28,8 +28,8 @@
     >
     <a
       class="group hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 py-2 px-9 text-white text-center flex-grow"
-      href="http://localhost:3000/account"
-      >Account</a
+      href="http://localhost:3000/profile"
+      >Profile</a
     >
   </div>
 </template>
