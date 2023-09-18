@@ -3,21 +3,25 @@ import { useStore } from "~/store/store";
 import { storeToRefs } from "pinia";
 
 const store = useStore();
+let year = 0;
 
 let bilanz = storeToRefs(store).bilanzen;
 await store.loadBilanzen();
-let bilanzValue = bilanz._rawValue[0];
+let bilanzValue = bilanz._rawValue[year];
 console.log(bilanzValue);
 
 let passiv = storeToRefs(store).passiva;
 await store.loadPassiva();
-let passivaValue = passiv._rawValue[0];
+let passivaValue = passiv._rawValue[year];
 console.log(passivaValue);
 
 let guv = storeToRefs(store).GuVs;
 await store.loadGuVs();
-let guvValue = guv._rawValue[0];
+let guvValue = guv._rawValue[year];
 console.log(guvValue);
+function test() {
+  console.log("test");
+}
 
 // Replace underscores with spaces in the keys
 bilanzValue = replaceUnderscoresWithSpaces(bilanzValue);
@@ -46,6 +50,24 @@ function replaceUnderscoresWithSpaces(obj) {
 <template>
   <div class="flex gap-x-5">
     <div class="flex-grow inline-block align-top mr-4">
+      <button
+        @click="console.log('test')"
+        class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
+      >
+        2019
+      </button>
+      <button
+        @click="location.reload()"
+        class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
+      >
+        2020
+      </button>
+      <button
+        @click="year = 2"
+        class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
+      >
+        2021
+      </button>
       <table class="border border-slate-500 rounded-lg p-4 min-w-0">
         <thead>
           <tr class="font-bold text-center">
