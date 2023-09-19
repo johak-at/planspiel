@@ -36,6 +36,8 @@ export const useStore = defineStore(
     };
   },
   {
-    persist: true,
+    persist: {
+      storage: persistedState.localStorage,
+    },
   }
 );
