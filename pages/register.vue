@@ -3,10 +3,7 @@ import { useStore } from "~/store/store";
 import { storeToRefs } from "pinia";
 const supabase = useSupabaseClient();
 const client = useSupabaseAuthClient();
-<<<<<<< HEAD
 const user = ref(null);
-=======
->>>>>>> 5a063e632f142300770cbad3b1242873dae4b36e
 const email = ref("");
 const password = ref(null);
 const errorMsg = ref(null);
@@ -23,7 +20,6 @@ async function signUp() {
   } catch (error) {
     errorMsg.value = error.message;
   }
-<<<<<<< HEAD
 }
 
 async function loadUser() {
@@ -61,19 +57,11 @@ async function uploadData() {
     console.error("Error uploading data:", error.message);
   }
 }
-function test() {
-  console.log(supabase.auth.user().id);
-=======
->>>>>>> 5a063e632f142300770cbad3b1242873dae4b36e
-}
 </script>
 
 <template>
   <div class="h-screen flex">
-<<<<<<< HEAD
     <button class="btn" @click="test">test</button>
-=======
->>>>>>> 5a063e632f142300770cbad3b1242873dae4b36e
     <div class="flex-1 flex items-center justify-center bg-[#f1f1f1]">
       <form
         @submit.prevent="signUp"
@@ -132,13 +120,16 @@ function test() {
         <div class="flex items-center justify-center mt-4 text-black">
           <p class="text-sm text-black font-semibold">
             Already have an account?
-<<<<<<< HEAD
             <a
               href="http://localhost:3000/login"
               class="text-black font-bold hover:text-blue-600"
-=======
-            <a href="/login" class="text-black font-bold hover:text-blue-600"
->>>>>>> 5a063e632f142300770cbad3b1242873dae4b36e
+            ></a>
+            <a
+              href="/login"
+              class="text-black font-bold hover:text-blue-600"
+            ></a>
+            >
+            <a href="/login" class="text-black font-bold hover:text-blue-600">
               >Login</a
             >
           </p>
