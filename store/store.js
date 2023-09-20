@@ -9,6 +9,7 @@ export const useStore = defineStore(
     const bilanzen = ref(null);
     const passiva = ref(null);
     const GuVs = ref(null);
+    const user = ref(null);
     const daisyTheme = ref("synthwave");
     async function loadBilanzen() {
       const res = await supabase.from("Aktiva").select("*");
@@ -18,6 +19,11 @@ export const useStore = defineStore(
     async function loadPassiva() {
       const res = await supabase.from("Passiva").select("*");
       passiva.value = res.data;
+    }
+
+    async function loadUser() {
+      const res = await supabase.from("User").select("*");
+      user.value = res.data;
     }
 
     async function loadGuVs() {
@@ -30,12 +36,16 @@ export const useStore = defineStore(
       GuVs,
       passiva,
       daisyTheme,
+      user,
       loadBilanzen,
       loadGuVs,
       loadPassiva,
+      loadUser,
     };
   },
   {
-    persist: true,
+    persist: {
+      storage: persistedState.localStorage,
+    },
   }
 );
