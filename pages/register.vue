@@ -22,11 +22,11 @@ async function signUp() {
   }
 }
 
-async function loadUser() {
-  const res = await supabase.from("User").select("*");
-  user.value = res.data;
-  console.log(user.value[0]);
-}
+// async function loadUser() {
+//   const res = await supabase.from("User").select("*");
+//   user.value = res.data;
+//   console.log(user.value[0]);
+// }
 
 //create a function that uploads data to the database and then calls the loadUser function
 
