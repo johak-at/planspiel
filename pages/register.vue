@@ -30,38 +30,37 @@ async function loadUser() {
 
 //create a function that uploads data to the database and then calls the loadUser function
 
-async function uploadData() {
-  try {
-    // Check if a user is authenticated
-    const currentUser = supabase.auth.user();
-    if (!currentUser) {
-      errorMsg.value = "User not authenticated.";
-      return;
-    }
+// async function uploadData() {
+//   try {
+//     // Check if a user is authenticated
+//     const currentUser = supabase.auth.user();
+//     if (!currentUser) {
+//       errorMsg.value = "User not authenticated.";
+//       return;
+//     }
 
-    // Data to insert, including the UID
-    const dataToInsert = {
-      id: currentUser.id, // Use the UID of the currently authenticated user
-      // Other data fields you want to insert
-    };
+//     // Data to insert, including the UID
+//     const dataToInsert = {
+//       id: currentUser.id, // Use the UID of the currently authenticated user
+//       // Other data fields you want to insert
+//     };
 
-    // Insert data into the 'User' table
-    const { data, error } = await supabase.from("User").insert([dataToInsert]);
-    if (error) throw error;
+//     // Insert data into the 'User' table
+//     const { data, error } = await supabase.from("User").insert([dataToInsert]);
+//     if (error) throw error;
 
-    // After successfully uploading data, reload user data
-    await loadUser();
+//     // After successfully uploading data, reload user data
+//     await loadUser();
 
-    console.log("Data uploaded successfully.");
-  } catch (error) {
-    console.error("Error uploading data:", error.message);
-  }
-}
+//     console.log("Data uploaded successfully.");
+//   } catch (error) {
+//     console.error("Error uploading data:", error.message);
+//   }
+// }
 </script>
 
 <template>
   <div class="h-screen flex">
-    <button class="btn" @click="test">test</button>
     <div class="flex-1 flex items-center justify-center bg-[#f1f1f1]">
       <form
         @submit.prevent="signUp"
@@ -120,16 +119,7 @@ async function uploadData() {
         <div class="flex items-center justify-center mt-4 text-black">
           <p class="text-sm text-black font-semibold">
             Already have an account?
-            <a
-              href="http://localhost:3000/login"
-              class="text-black font-bold hover:text-blue-600"
-            ></a>
-            <a
-              href="/login"
-              class="text-black font-bold hover:text-blue-600"
-            ></a>
-            >
-            <a href="/login" class="text-black font-bold hover:text-blue-600">
+            <a href="/login" class="text-black font-bold hover:text-blue-600"
               >Login</a
             >
           </p>
