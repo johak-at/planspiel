@@ -3,37 +3,45 @@ import { useStore } from "~/store/store";
 import { storeToRefs } from "pinia";
 
 const store = useStore();
-let year = 0;
+let activate2019 = ref("");
+let activate2020 = ref("");
+let activate2021 = ref("active");
 
 let bilanz = storeToRefs(store).bilanzen;
-await store.loadBilanzen();
-let bilanzValue = bilanz._rawValue[year];
-console.log(bilanzValue);
-
 let passiv = storeToRefs(store).passiva;
-await store.loadPassiva();
-let passivaValue = passiv._rawValue[year];
-console.log(passivaValue);
-
 let guv = storeToRefs(store).GuVs;
+await store.loadBilanzen();
+await store.loadPassiva();
 await store.loadGuVs();
-let guvValue = guv._rawValue[year];
+let bilanzValue = ref(bilanz._rawValue[0]);
+let passivaValue = ref(passiv._rawValue[0]);
+let guvValue = ref(guv._rawValue[0]);
+console.log(bilanzValue);
+console.log(passivaValue);
 console.log(guvValue);
-function test() {
-  console.log("test");
+
+function changeYear(year) {
+  bilanzValue.value = bilanz._rawValue[year];
+  passivaValue.value = passiv._rawValue[year];
+  guvValue.value = guv._rawValue[year];
+  replace();
 }
 
 // Replace underscores with spaces in the keys
-bilanzValue = replaceUnderscoresWithSpaces(bilanzValue);
-guvValue = replaceUnderscoresWithSpaces(guvValue);
-passivaValue = replaceUnderscoresWithSpaces(passivaValue);
+function replace(){
+  bilanzValue.value = replaceUnderscoresWithSpaces(bilanzValue.value);
+  guvValue.value = replaceUnderscoresWithSpaces(guvValue.value);
+  passivaValue.value = replaceUnderscoresWithSpaces(passivaValue.value);
 
-let props = ["id", "created at"];
-props.forEach((prop) => {
-  delete bilanzValue[prop];
-  delete guvValue[prop];
-  delete passivaValue[prop];
-});
+  let props = ["id", "created at"];
+  props.forEach((prop) => {
+    delete bilanzValue.value[prop];
+    delete guvValue.value[prop];
+    delete passivaValue.value[prop];
+  });
+}
+replace();
+
 
 function replaceUnderscoresWithSpaces(obj) {
   const newObj = {};
@@ -51,19 +59,22 @@ function replaceUnderscoresWithSpaces(obj) {
   <div class="flex gap-x-5">
     <div class="flex-grow inline-block align-top mr-4">
       <button
-        @click="console.log('test')"
+        :class="activate2019"
+        @click="changeYear(2); activate2019 = 'active'; activate2020 = ''; activate2021 = ''"
         class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
       >
         2019
       </button>
       <button
-        @click="location.reload()"
+        :class="activate2020"
+        @click="changeYear(1); activate2020 = 'active'; activate2019 = ''; activate2021 = ''"
         class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
       >
         2020
       </button>
       <button
-        @click="year = 2"
+        :class="activate2021"
+        @click="changeYear(0); activate2021 = 'active'; activate2020 = ''; activate2019 = ''"
         class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
       >
         2021
@@ -86,7 +97,7 @@ function replaceUnderscoresWithSpaces(obj) {
                 <div>€</div>
                 <div>
                   {{
-                    value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
+                    value
                   }}
                 </div>
               </div>
@@ -115,7 +126,7 @@ function replaceUnderscoresWithSpaces(obj) {
                 <div>€</div>
                 <div>
                   {{
-                    value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
+                    value
                   }}
                 </div>
               </div>
@@ -144,7 +155,7 @@ function replaceUnderscoresWithSpaces(obj) {
                 <div>€</div>
                 <div>
                   {{
-                    value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
+                    value
                   }}
                 </div>
               </div>
@@ -159,5 +170,9 @@ function replaceUnderscoresWithSpaces(obj) {
 <style>
 p {
   display: inline-block;
+}
+
+.active {
+  color: red;
 }
 </style>
