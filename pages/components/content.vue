@@ -28,7 +28,7 @@ function changeYear(year) {
 }
 
 // Replace underscores with spaces in the keys
-function replace(){
+function replace() {
   bilanzValue.value = replaceUnderscoresWithSpaces(bilanzValue.value);
   guvValue.value = replaceUnderscoresWithSpaces(guvValue.value);
   passivaValue.value = replaceUnderscoresWithSpaces(passivaValue.value);
@@ -41,7 +41,6 @@ function replace(){
   });
 }
 replace();
-
 
 function replaceUnderscoresWithSpaces(obj) {
   const newObj = {};
@@ -60,21 +59,36 @@ function replaceUnderscoresWithSpaces(obj) {
     <div class="flex-grow inline-block align-top mr-4">
       <button
         :class="activate2019"
-        @click="changeYear(2); activate2019 = 'active'; activate2020 = ''; activate2021 = ''"
+        @click="
+          changeYear(2);
+          activate2019 = 'active';
+          activate2020 = '';
+          activate2021 = '';
+        "
         class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
       >
         2019
       </button>
       <button
         :class="activate2020"
-        @click="changeYear(1); activate2020 = 'active'; activate2019 = ''; activate2021 = ''"
+        @click="
+          changeYear(1);
+          activate2020 = 'active';
+          activate2019 = '';
+          activate2021 = '';
+        "
         class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
       >
         2020
       </button>
       <button
         :class="activate2021"
-        @click="changeYear(0); activate2021 = 'active'; activate2020 = ''; activate2019 = ''"
+        @click="
+          changeYear(0);
+          activate2021 = 'active';
+          activate2020 = '';
+          activate2019 = '';
+        "
         class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
       >
         2021
@@ -95,9 +109,9 @@ function replaceUnderscoresWithSpaces(obj) {
             <td class="border border-slate-500 p-2">
               <div class="flex justify-between">
                 <div>€</div>
-                <div>
+                <div class="text-end">
                   {{
-                    value
+                    value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
                   }}
                 </div>
               </div>
@@ -126,7 +140,7 @@ function replaceUnderscoresWithSpaces(obj) {
                 <div>€</div>
                 <div>
                   {{
-                    value
+                    value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
                   }}
                 </div>
               </div>
@@ -155,7 +169,7 @@ function replaceUnderscoresWithSpaces(obj) {
                 <div>€</div>
                 <div>
                   {{
-                    value
+                    value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
                   }}
                 </div>
               </div>
