@@ -34,7 +34,7 @@
         <div class="bg-slate-500">
           <h3 class="text-xl font-semibold bg-slate-500 text-white">Social</h3>
           <div class="bg-slate-500">
-            <p><a class="bg-slate-500 text-white" href="#">OnlyFans</a></p>
+            <p><a class="bg-slate-500 text-white" href="#">OnlyFans ❤️</a></p>
           </div>
           <div class="bg-slate-500">
             <p><a class="bg-slate-500 text-white" href="#">Instagram</a></p>
