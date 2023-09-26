@@ -5,15 +5,15 @@ import { storeToRefs } from "pinia";
 const store = useStore();
 
 let eigenkapitalQuote = ref(0);
-let noten = ref(0);
+let noten = storeToRefs(store).noten;
 let fiktiveVerschuldungsDauer = ref(0);
 let EbitQuote = ref(0);
 let CashFlowQuote = ref(0);
 let Erfolg = ref(0);
 let Fremdkapital = ref(0);
 let LiquideMittel = ref(0);
-let noten2 = ref(0);
-let durchSchnittsnoten = ref(0);
+let noten2 = storeToRefs(store).noten2;
+let durchSchnittsnoten = storeToRefs(store).durchschnitt;
 
 
 
@@ -129,9 +129,11 @@ else{
   
   <div class="flex gap-x-5">
     <button class="btn" @click="betriebsErfolg(), eigenKapital(), durchSchnitt()">click Me</button>
+    <!--
     <div class="h-20">{{ eigenkapitalQuote }} Note: {{ noten }}</div>
     <div class="h-20">{{EbitQuote}} Note: {{ noten2 }}</div>
     <div class="h-20">Durchschnittsnote: {{ (noten + noten2)/2 }}</div>
+    -->
     <div class="flex-grow inline-block align-top mr-4">
       <button
         :class="activate2019"

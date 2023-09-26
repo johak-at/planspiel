@@ -11,6 +11,9 @@ export const useStore = defineStore(
     const GuVs = ref(null);
     const user = ref(null);
     const daisyTheme = ref("synthwave");
+    const durchschnitt = ref(0);
+    const noten = ref(0);
+    const noten2 = ref(0);
     async function loadBilanzen() {
       const res = await supabase.from("Aktiva").select("*");
       bilanzen.value = res.data;
@@ -37,6 +40,9 @@ export const useStore = defineStore(
       passiva,
       daisyTheme,
       user,
+      durchschnitt,
+      noten,
+      noten2,
       loadBilanzen,
       loadGuVs,
       loadPassiva,

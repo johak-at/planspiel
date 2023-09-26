@@ -6,6 +6,7 @@ import NavComponent from "~/pages/components/navigation.vue";
 import ContentComponent from "~/pages/components/content.vue";
 import FooterComponent from "~/pages/components/footer.vue";
 import NavComponent2 from "~/pages/components/navigation2.vue";
+import AmpelComponent from "~/pages/components/ampel.vue";
 
 const store = useStore();
 const name = storeToRefs(store).name;
@@ -31,6 +32,7 @@ onMounted(async () => {
     <NavComponent class="nav1" />
     <!-- <NavComponent2 class="nav2"/> -->
     <ContentComponent class="content" />
+    <AmpelComponent class="ampel" />
     <FooterComponent class="footer" />
   </div>
 </template>
@@ -59,7 +61,7 @@ onMounted(async () => {
   grid-template-areas:
     ". logo . "
     ". nav1 ."
-    "nav2 content ."
+    "nav2 content ampel"
     "footer footer footer";
   background-color: #f4f4f4;
   color: black;
@@ -80,6 +82,10 @@ onMounted(async () => {
 
 .content {
   grid-area: content;
+}
+
+.ampel {
+  grid-area: ampel;
 }
 
 .footer {
