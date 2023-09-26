@@ -15,12 +15,12 @@ export const useStore = defineStore(
     const noten = ref(0);
     const noten2 = ref(0);
     async function loadBilanzen() {
-      const res = await supabase.from("Aktiva").select("*");
+      const res = await supabase.from("Aktiva2").select("*");
       bilanzen.value = res.data;
     }
 
     async function loadPassiva() {
-      const res = await supabase.from("Passiva").select("*");
+      const res = await supabase.from("Passiva2").select("*");
       passiva.value = res.data;
     }
 
@@ -30,7 +30,7 @@ export const useStore = defineStore(
     }
 
     async function loadGuVs() {
-      const res = await supabase.from("GuVs").select("*");
+      const res = await supabase.from("GuVs2").select("*");
       GuVs.value = res.data;
     }
     return {
