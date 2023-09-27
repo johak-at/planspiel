@@ -7,9 +7,9 @@ const client = useSupabaseAuthClient();
 const router = useRouter();
 
 console.log(user.value);
-async function logout(){
-    try{
-        const {error} = await client.auth.signOut();
+async function logout() {
+    try {
+        const { error } = await client.auth.signOut();
         if (error) throw error;
         router.push('/login');
     } catch (error) {

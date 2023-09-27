@@ -68,65 +68,64 @@ function replaceUnderscoresWithSpaces(obj) {
 }
 
 
-function eigenKapital(){
-  eigenkapitalQuote.value = (passivaValue.value["A. Eigenkapital"] * 100 / (bilanzValue.value["A. Anlagevermögen"] + bilanzValue.value["B. Umlaufvermögen"]) ).toFixed(2);
+function eigenKapital() {
+  eigenkapitalQuote.value = (passivaValue.value["A. Eigenkapital"] * 100 / (bilanzValue.value["A. Anlagevermögen"] + bilanzValue.value["B. Umlaufvermögen"])).toFixed(2);
 
-  if(eigenkapitalQuote.value > 40){
+  if (eigenkapitalQuote.value > 40) {
     noten.value = 1;
   }
-  else if(eigenkapitalQuote.value > 30){
+  else if (eigenkapitalQuote.value > 30) {
     noten.value = 2;
   }
-  else if(eigenkapitalQuote.value > 20){
+  else if (eigenkapitalQuote.value > 20) {
     noten.value = 3;
   }
-  else if(eigenkapitalQuote.value >= 8){
+  else if (eigenkapitalQuote.value >= 8) {
     noten.value = 4;
   }
-  else{
+  else {
     noten.value = 5;
   }
 }
 
-function durchSchnitt(){
-  durchSchnittsnoten.value = (noten + noten2)/2;
+function durchSchnitt() {
+  durchSchnittsnoten.value = (noten + noten2) / 2;
 }
 
-function VerschuldungsDauer(){
+function VerschuldungsDauer() {
 
 
-  
-Fremdkapital.value = passivaValue.value["1. Verbindlichkeiten gegenüber Kreditinstituten"] + passivaValue.value["2. erhaltene Anzahlungen auf Bestellungen"] +  passivaValue.value["3. Verbindlichkeiten aus Lieferungen und Leistungen"] +  passivaValue.value["4. Verbindlichkeiten gegenüber Unternehmen"] +  passivaValue.value["5. Verbindlichkeiten gegenüber Unternehmen aus Cashpooling"] +  passivaValue.value["6. sonstige Verbindlichkeiten"];
-LiquideMittel.value = bilanzValue.value["IV. Kassabestand, Guthaben bei Kreditinstituten"]
+
+  Fremdkapital.value = passivaValue.value["1. Verbindlichkeiten gegenüber Kreditinstituten"] + passivaValue.value["2. erhaltene Anzahlungen auf Bestellungen"] + passivaValue.value["3. Verbindlichkeiten aus Lieferungen und Leistungen"] + passivaValue.value["4. Verbindlichkeiten gegenüber Unternehmen"] + passivaValue.value["5. Verbindlichkeiten gegenüber Unternehmen aus Cashpooling"] + passivaValue.value["6. sonstige Verbindlichkeiten"];
+  LiquideMittel.value = bilanzValue.value["IV. Kassabestand, Guthaben bei Kreditinstituten"]
 }
 
-function betriebsErfolg(){
-Erfolg.value = guvValue.value["1. Umsatzerlöse"] + guvValue.value["a. Materialaufwand"] + guvValue.value["b. Aufwendungen für bezogene Leistungen"] + guvValue.value["6. Personalaufwand"] + guvValue.value["8. sonstige betriebliche Aufwendungen"]
+function betriebsErfolg() {
+  Erfolg.value = guvValue.value["1. Umsatzerlöse"] + guvValue.value["a. Materialaufwand"] + guvValue.value["b. Aufwendungen für bezogene Leistungen"] + guvValue.value["6. Personalaufwand"] + guvValue.value["8. sonstige betriebliche Aufwendungen"]
 
-EbitQuote.value = (Erfolg.value * 100 / guvValue.value["1. Umsatzerlöse"]).toFixed(2);
+  EbitQuote.value = (Erfolg.value * 100 / guvValue.value["1. Umsatzerlöse"]).toFixed(2);
 
 
-if(EbitQuote.value > 8){
-  noten2.value = 1;
-}
-else if(EbitQuote.value > 6){
-  noten2.value =2;
-}
-else if(EbitQuote.value > 4){
-  noten2.value = 3;
-}
-else if(EbitQuote.value > 2){
-  noten2.value = 4;
-}
-else{
-  noten2.value = 5;
-}
+  if (EbitQuote.value > 8) {
+    noten2.value = 1;
+  }
+  else if (EbitQuote.value > 6) {
+    noten2.value = 2;
+  }
+  else if (EbitQuote.value > 4) {
+    noten2.value = 3;
+  }
+  else if (EbitQuote.value > 2) {
+    noten2.value = 4;
+  }
+  else {
+    noten2.value = 5;
+  }
 }
 
 </script>
 
 <template>
-  
   <div class="flex gap-x-5">
     <button class="btn" @click="betriebsErfolg(), eigenKapital(), durchSchnitt()">click Me</button>
     <!--
@@ -135,40 +134,28 @@ else{
     <div class="h-20">Durchschnittsnote: {{ (noten + noten2)/2 }}</div>
     -->
     <div class="flex-grow inline-block align-top mr-4">
-      <button
-        :class="activate2019"
-        @click="
-          changeYear(2);
-          activate2019 = 'active';
-          activate2020 = '';
-          activate2021 = '';
-        "
-        class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
-      >
+      <button :class="activate2019" @click="
+        changeYear(2);
+      activate2019 = 'active';
+      activate2020 = '';
+      activate2021 = '';
+      " class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold">
         2019
       </button>
-      <button
-        :class="activate2020"
-        @click="
-          changeYear(1);
-          activate2020 = 'active';
-          activate2019 = '';
-          activate2021 = '';
-        "
-        class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
-      >
+      <button :class="activate2020" @click="
+        changeYear(1);
+      activate2020 = 'active';
+      activate2019 = '';
+      activate2021 = '';
+      " class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold">
         2020
       </button>
-      <button
-        :class="activate2021"
-        @click="
-          changeYear(0);
-          activate2021 = 'active';
-          activate2020 = '';
-          activate2019 = '';
-        "
-        class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold"
-      >
+      <button :class="activate2021" @click="
+        changeYear(0);
+      activate2021 = 'active';
+      activate2020 = '';
+      activate2019 = '';
+      " class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold">
         2021
       </button>
       <table class="border border-slate-500 rounded-lg p-4 min-w-0">
