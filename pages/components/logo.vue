@@ -3,12 +3,20 @@ import logo from "~/pages/assets/Platzhalter.png";
 </script>
 
 <template>
-  <div class="flex flex-row items-center gap-x-5">
-    <a href="/bilanzen"><img id="logo" :src="logo" alt="Logo" /></a>
+  <div class="flex">"
+    <div class="w-1/4">
 
-    <div class="flex flex-col">
-      <h1 class="text-5xl">Unternehmensplanspiel</h1>
-      <p>Deine Wirtschaftssimulation!</p>
+    </div>
+    <div class="w-2/4 flex flex-row items-center gap-x-5">
+      <a href="/bilanzen"><img id="logo" :src="logo" alt="Logo" /></a>
+
+      <div class="flex flex-col">
+        <h1 class="text-5xl">Unternehmensplanspiel</h1>
+        <p>Deine Wirtschaftssimulation!</p>
+      </div>
+    </div>
+    <div class="w-1/4">
+
     </div>
   </div>
 </template>

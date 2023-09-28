@@ -53,8 +53,8 @@ onMounted(async () => {
   gap: 10px;
   /* gap between grid items */
   grid-template-areas:
-    ". logo . "
-    ". nav1 ."
+    "logo logo logo"
+    "nav1 nav1 nav1"
     "nav2 content ."
     "footer footer footer";
   background-color: #f4f4f4;

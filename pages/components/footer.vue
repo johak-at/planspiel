@@ -17,9 +17,6 @@
         </div>
         <div class="bg-slate-500">
           <h3 class="text-xl font-semibold bg-slate-500 text-white">
-            Contact Us
-          </h3>
-          <h3 class="text-xl font-semibold bg-slate-500 text-white">
             Payment Info
           </h3>
           <div class="bg-slate-500">
@@ -55,9 +52,9 @@
 </style>
 
 <style>
-* {
+/* * {
   outline-width: 1px;
   outline-style: solid;
   outline-color: red;
-}
+} */
 </style>
