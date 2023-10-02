@@ -12,14 +12,14 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/supabase": "^0.3.8",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
-    "@types/node": "^18",
-    "daisyui": "^3.1.9",
-    "nuxt": "^3.6.2"
+    "@pinia-plugin-persistedstate/nuxt": "^1.1.2",
+    "@types/node": "^18.18.1",
+    "daisyui": "^3.8.3",
+    "nuxt": "^3.7.4"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
-    "pinia": "^2.1.4",
+    "pinia": "^2.1.6",
     "vue-router": "^4.2.5"
   }
 }
