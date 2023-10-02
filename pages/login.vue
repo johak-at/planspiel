@@ -25,7 +25,7 @@ async function signIn() {
       <form @submit.prevent="signIn"
         class="flex flex-col px-16 py-8 rounded-md shadow-lg max-w-screen-sm w-full bg-white">
         <div class="flex items-center justify-center mb-4">
-          <img class="w-20" src="../pages/assets/Platzhalter.png" alt="Logo" />
+          <img class="w-20" src="../assets/Platzhalter.png" alt="Logo" />
         </div>
         <h2 class="text-2xl font-semibold mb-4 text-slate-700">Login</h2>
 
