@@ -17,7 +17,6 @@ onMounted(async () => {
 <template>
   <div id="app">
     <AusgangslageComponent class="ausgangslage" />
-    <!-- <NavComponent2 class="nav2"/> -->
     <ContentComponent class="content" />
     <AmpelComponent class="ampel" />
   </div>
