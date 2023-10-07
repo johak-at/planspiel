@@ -6,13 +6,16 @@ const store = useStore();
 
 let eigenkapitalQuote = ref(0);
 let noten = storeToRefs(store).noten;
+let noten2 = storeToRefs(store).noten2;
+let noten3 = storeToRefs(store).noten3;
+let noten4 = storeToRefs(store).noten4;
+let NoteText = storeToRefs(store).NoteText;
 let fiktiveVerschuldungsDauer = ref(0);
 let EbitQuote = ref(0);
 let CashFlowQuote = ref(0);
 let Erfolg = ref(0);
 let Fremdkapital = ref(0);
 let LiquideMittel = ref(0);
-let noten2 = storeToRefs(store).noten2;
 let durchSchnittsnoten = storeToRefs(store).durchschnitt;
 
 let activate2019 = ref("");
@@ -32,9 +35,11 @@ await store.loadGuVs();
 let bilanzValue = ref(bilanz._rawValue[0]);
 let passivaValue = ref(passiv._rawValue[0]);
 let guvValue = ref(guv._rawValue[0]);
-console.log(bilanzValue);
-console.log(passivaValue);
-console.log(guvValue);
+let workingCapital = ref(0);
+let cashFlow = ref(0);
+// console.log(bilanzValue);
+// console.log(passivaValue);
+// console.log(guvValue);
 
 function changeYear(year) {
   bilanzValue.value = bilanz._rawValue[year];
@@ -69,6 +74,30 @@ function replaceUnderscoresWithSpaces(obj) {
   return newObj;
 }
 
+function CashFlowQuoteBerechnen(){
+
+  
+  CashFlowQuote.value = (cashFlow.value * 100 / guvValue.value["1. Umsatzerlöse"]).toFixed(2);
+
+
+  if (CashFlowQuote.value > 10) {
+    noten4.value = 1;
+  }
+  else if (CashFlowQuote.value > 8) {
+    noten4.value = 2;
+  }
+  else if (CashFlowQuote.value > 5) {
+    noten4.value = 3;
+  }
+  else if (CashFlowQuote.value >= 2) {
+    noten4.value = 4;
+  }
+  else {
+    noten4.value = 5;
+  }
+
+
+}
 
 function eigenKapital() {
   eigenkapitalQuote.value = (passivaValue.value["A. Eigenkapital"] * 100 / (bilanzValue.value["A. Anlagevermögen"] + bilanzValue.value["B. Umlaufvermögen"])).toFixed(2);
@@ -91,19 +120,78 @@ function eigenKapital() {
 }
 
 function durchSchnitt() {
-  durchSchnittsnoten.value = (noten + noten2) / 2;
+ 
+  durchSchnittsnoten.value = (noten.value + noten2.value + noten3.value + noten4.value) / 4;
+  console.log(noten.value, noten2.value, noten3.value, noten4.value, durchSchnittsnoten.value);
+  if(durchSchnittsnoten.value >= 4.5) {
+    NoteText.value = "Note: Nicht Genügend!";
+  }
+  else if(durchSchnittsnoten.value >=3.5) {
+    NoteText.value = "Note: Genügend!";
+  }
+  else if(durchSchnittsnoten.value >=2.5) {
+    NoteText.value = "Note: Befriedigend!";
+  }
+  else if(durchSchnittsnoten.value >= 1.5) {
+    NoteText.value = "Note: Gut!";
+  }
+  else {
+    NoteText.value = "Note: Sehr Gut!";
+  }
 }
 
-function VerschuldungsDauer() {
+// function VerschuldungsDauer() {
 
 
 
-  Fremdkapital.value = passivaValue.value["1. Verbindlichkeiten gegenüber Kreditinstituten"] + passivaValue.value["2. erhaltene Anzahlungen auf Bestellungen"] + passivaValue.value["3. Verbindlichkeiten aus Lieferungen und Leistungen"] + passivaValue.value["4. Verbindlichkeiten gegenüber Unternehmen"] + passivaValue.value["5. Verbindlichkeiten gegenüber Unternehmen aus Cashpooling"] + passivaValue.value["6. sonstige Verbindlichkeiten"];
-  LiquideMittel.value = bilanzValue.value["IV. Kassabestand, Guthaben bei Kreditinstituten"]
+//   Fremdkapital.value = passivaValue.value["1. Verbindlichkeiten gegenüber Kreditinstituten"] + passivaValue.value["2. erhaltene Anzahlungen auf Bestellungen"] + passivaValue.value["3. Verbindlichkeiten aus Lieferungen und Leistungen"] + passivaValue.value["4. Verbindlichkeiten gegenüber Unternehmen"] + passivaValue.value["5. Verbindlichkeiten gegenüber Unternehmen aus Cashpooling"] + passivaValue.value["6. sonstige Verbindlichkeiten"];
+//   LiquideMittel.value = bilanzValue.value["IV. Kassabestand, Guthaben bei Kreditinstituten"]
+// }
+
+function Verschuldungsdauer() {
+  // Extrahiere die relevanten Werte aus den Objekten
+  let fremdkapital = ref(passivaValue.value["D. Verbindlichkeiten"]);
+  let liquideMittel = ref(bilanzValue.value["IV. Kassabestand, Guthaben bei Kreditinstituten"]);
+  let jahresueberschuss = ref(guvValue.value["18. Jahresüberschuss"]);
+  let abschreibungen = ref(guvValue.value["7. Abschreibungen auf immaterielle Gegenstände"]);
+  let umlaufvermoegen = ref(bilanzValue.value["B. Umlaufvermögen"]);
+  let kurzfristigeVerbindlichkeiten = ref(passivaValue.value["D. Verbindlichkeiten"]);  // Gesamte Verbindlichkeiten als Annahme
+  
+// console.log(fremdkapital, liquideMittel, jahresueberschuss, abschreibungen, umlaufvermoegen, kurzfristigeVerbindlichkeiten);
+
+  // Berechnung des Working Capital
+  workingCapital.value = umlaufvermoegen.value - kurzfristigeVerbindlichkeiten.value;
+  
+  // Berechnung des Cash Flow
+  cashFlow.value = jahresueberschuss.value + abschreibungen.value + workingCapital.value;
+  
+  // Berechnung der fiktiven Verschuldungsdauer
+  fiktiveVerschuldungsDauer.value = ((fremdkapital.value - liquideMittel.value) / cashFlow.value);
+
+  // console.log(`Die fiktive Verschuldungsdauer beträgt ${fiktiveVerschuldungsDauer.value} Jahre.`);
+
+  if (fiktiveVerschuldungsDauer.value <3) {
+    noten3.value = 1;
+  }
+  else if (fiktiveVerschuldungsDauer.value < 5) {
+    noten3.value = 2;
+  }
+  else if (fiktiveVerschuldungsDauer.value <= 10) {
+    noten3.value = 3;
+  }
+  else if (fiktiveVerschuldungsDauer.value <= 15) {
+    noten3.value = 4;
+  }
+  else {
+    noten3.value = 5;
+  }
+
 }
+
+
 
 function betriebsErfolg() {
-  Erfolg.value = guvValue.value["1. Umsatzerlöse"] + guvValue.value["a. Materialaufwand"] + guvValue.value["b. Aufwendungen für bezogene Leistungen"] + guvValue.value["6. Personalaufwand"] + guvValue.value["8. sonstige betriebliche Aufwendungen"]
+  Erfolg.value = guvValue.value["1. Umsatzerlöse"] + guvValue.value["5. Aufwendungen für Material"] + guvValue.value["6. Personalaufwand"] + guvValue.value["8. sonstige betriebliche Aufwendungen"]
 
   EbitQuote.value = (Erfolg.value * 100 / guvValue.value["1. Umsatzerlöse"]).toFixed(2);
 
@@ -129,6 +217,8 @@ function berechnen() {
   betriebsErfolg();
   eigenKapital();
   durchSchnitt();
+  Verschuldungsdauer();
+  CashFlowQuoteBerechnen();
 }
 
 </script>

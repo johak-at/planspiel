@@ -14,6 +14,9 @@ export const useStore = defineStore(
     const durchschnitt = ref(0);
     const noten = ref(0);
     const noten2 = ref(0);
+    const noten3 = ref(0);
+    const noten4 = ref(0);
+    const NoteText = ref("");
     async function loadBilanzen() {
       const res = await supabase.from("Aktiva").select("*");
       bilanzen.value = res.data;
@@ -43,6 +46,9 @@ export const useStore = defineStore(
       durchschnitt,
       noten,
       noten2,
+      noten3,
+      noten4,
+      NoteText,
       loadBilanzen,
       loadGuVs,
       loadPassiva,
