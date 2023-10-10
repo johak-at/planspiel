@@ -9,22 +9,11 @@ const theme = storeToRefs(store).daisyTheme;
 
 
 import SidebarComponent from './components/sidebar.vue';
-
-const isSidebarOpen = ref(false);
-
-const toggleSidebar = () => {
-  isSidebarOpen.value = !isSidebarOpen.value;
-};
 </script>
 
 <template>
   <div id="mainStyling" :data-theme="theme" class="min-h-screen">
     <HeaderCompontent class="header" />
-
-    <button @click="toggleSidebar">Toggle Sidebar</button>
-
-    <Sidebar :isOpen="isSidebarOpen"></Sidebar>
-
     <NuxtPage class="page-content" />
     <FooterComponent class="footer" />
   </div>
