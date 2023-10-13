@@ -1,16 +1,16 @@
 <template>
     <div class="flex h-screen relative">
-        <button @click="toggleSidebar" class="toggle-btn px-2 py-1 bg-blue-500 text-white absolute top-4 left-0" :style="{
-            transform: showSidebar
-                ? `translateX(${sidebarWidth}px)`
-                : 'translateX(0)',
+        <div class="sidebar-container absolute top-0 left-0 h-full" :style="{
+            transform: showSidebar ? `translateX(${sidebarWidth.value}px)` : 'translateX(0px)',
         }">
-            Toggle
-        </button>
-        <div v-if="showSidebar" class="sidebar absolute top-0 left-0 h-full bg-gray-200 overflow-x-hidden"
-            :style="{ width: sidebarWidth + 'px' }">
-            <div class="sidebar-content">
-                <BilanzenComponent />
+            <button @click="toggleSidebar" class="toggle-btn px-2 py-1 bg-blue-500 text-white absolute top-4"
+                :style="{ zIndex: 10 }">
+                Toggle
+            </button>
+            <div v-show="showSidebar" class="sidebar h-full bg-gray-200 overflow-x-hidden">
+                <div class="sidebar-content">
+                    <BilanzenComponent />
+                </div>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@ import BilanzenComponent from "~/components/bilanzen.vue";
 
 const showSidebar = ref(false);
 
-const sidebarWidth = ref(800); // Initial width in pixels
+const sidebarWidth = ref(800);
 
 const toggleSidebar = () => {
     showSidebar.value = !showSidebar.value;
@@ -30,34 +30,47 @@ const toggleSidebar = () => {
 </script>
 
 <style scoped>
-/* Custom style for the sidebar */
 .sidebar {
     border-top: 2px solid #ccc;
-    /* Top border */
     border-right: 2px solid #ccc;
-    /* Right border */
     border-bottom: 2px solid #ccc;
-    /* Bottom border */
     border-left: none;
-    /* No left border */
     border-top-right-radius: 10px;
-    /* Round top-right corner */
     border-bottom-right-radius: 10px;
-    /* Round bottom-right corner */
     direction: rtl;
-    /* Scrollbar to the left */
     overflow-y: scroll;
-    /* Enable vertical scroll */
-    transition: width 0.3s ease;
-    /* Transition effect */
+    animation: slideIn 0.3s ease-in-out forwards;
+    z-index: 5;
 }
 
-/* Reset the text direction for the sidebar content */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.sidebar.hidden {
+    animation: slideOut 0.3s ease-in-out forwards;
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
 .sidebar-content {
     direction: ltr;
 }
 
-/* Transition effect for the button */
 .toggle-btn {
     transition: transform 0.3s ease;
 }

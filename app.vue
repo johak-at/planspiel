@@ -7,13 +7,11 @@ import FooterComponent from "~/components/footer.vue";
 const store = useStore();
 const theme = storeToRefs(store).daisyTheme;
 
-
-import SidebarComponent from './components/sidebar.vue';
 </script>
 
 <template>
   <div id="mainStyling" :data-theme="theme" class="min-h-screen">
-    <HeaderCompontent class="header" />
+    <HeaderCompontent class="header sticky top-0 z-1" />
     <NuxtPage class="page-content" />
     <FooterComponent class="footer" />
   </div>
@@ -29,6 +27,7 @@ import SidebarComponent from './components/sidebar.vue';
 .header {
   align-items: center;
   margin-bottom: 20px;
+  z-index: 10;
 }
 
 .page-content {
