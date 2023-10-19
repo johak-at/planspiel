@@ -14,14 +14,14 @@ const navItems = [
         <!-- Logo section -->
         <div class="logo flex items-center gap-5">
             <img id="logoPicture" :src="logo" alt="Logo" class="bg-white" />
-            <div class="flex flex-col">
+            <div class="flex flex-col bg-white">
                 <h1 class="text-5xl bg-white">Unternehmensplanspiel</h1>
-                <p class="bg-white">Deine Wirtschaftssimulation!</p>
+                <p class="bg-transparent">Deine Wirtschaftssimulation!</p>
             </div>
         </div>
         <!-- Navigation -->
         <div class="navigation">
-            <div class="flex space-x-6">
+            <div class="flex space-x-6 bg-white">
                 <a v-for="item in navItems" :key="item.name" :href="item.link"
                     class="group hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 py-2 px-9 text-white text-center transition duration-300 ease-in-out">{{
                         item.name }}</a>
@@ -42,5 +42,6 @@ const navItems = [
 
 .header {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 </style>

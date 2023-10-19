@@ -57,16 +57,6 @@ const toggleSidebar = () => {
     animation: slideOut 0.3s ease-in-out forwards;
 }
 
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-100%);
-    }
-}
-
 .sidebar-content {
     direction: ltr;
 }

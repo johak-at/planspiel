@@ -74,9 +74,9 @@ function replaceUnderscoresWithSpaces(obj) {
   return newObj;
 }
 
-function CashFlowQuoteBerechnen(){
+function CashFlowQuoteBerechnen() {
 
-  
+
   CashFlowQuote.value = (cashFlow.value * 100 / guvValue.value["1. Umsatzerlöse"]).toFixed(2);
 
 
@@ -120,19 +120,19 @@ function eigenKapital() {
 }
 
 function durchSchnitt() {
- 
+
   durchSchnittsnoten.value = (noten.value + noten2.value + noten3.value + noten4.value) / 4;
   console.log(noten.value, noten2.value, noten3.value, noten4.value, durchSchnittsnoten.value);
-  if(durchSchnittsnoten.value >= 4.5) {
+  if (durchSchnittsnoten.value >= 4.5) {
     NoteText.value = "Note: Nicht Genügend!";
   }
-  else if(durchSchnittsnoten.value >=3.5) {
+  else if (durchSchnittsnoten.value >= 3.5) {
     NoteText.value = "Note: Genügend!";
   }
-  else if(durchSchnittsnoten.value >=2.5) {
+  else if (durchSchnittsnoten.value >= 2.5) {
     NoteText.value = "Note: Befriedigend!";
   }
-  else if(durchSchnittsnoten.value >= 1.5) {
+  else if (durchSchnittsnoten.value >= 1.5) {
     NoteText.value = "Note: Gut!";
   }
   else {
@@ -156,21 +156,21 @@ function Verschuldungsdauer() {
   let abschreibungen = ref(guvValue.value["7. Abschreibungen auf immaterielle Gegenstände"]);
   let umlaufvermoegen = ref(bilanzValue.value["B. Umlaufvermögen"]);
   let kurzfristigeVerbindlichkeiten = ref(passivaValue.value["D. Verbindlichkeiten"]);  // Gesamte Verbindlichkeiten als Annahme
-  
-// console.log(fremdkapital, liquideMittel, jahresueberschuss, abschreibungen, umlaufvermoegen, kurzfristigeVerbindlichkeiten);
+
+  // console.log(fremdkapital, liquideMittel, jahresueberschuss, abschreibungen, umlaufvermoegen, kurzfristigeVerbindlichkeiten);
 
   // Berechnung des Working Capital
   workingCapital.value = umlaufvermoegen.value - kurzfristigeVerbindlichkeiten.value;
-  
+
   // Berechnung des Cash Flow
   cashFlow.value = jahresueberschuss.value + abschreibungen.value + workingCapital.value;
-  
+
   // Berechnung der fiktiven Verschuldungsdauer
   fiktiveVerschuldungsDauer.value = ((fremdkapital.value - liquideMittel.value) / cashFlow.value);
 
   // console.log(`Die fiktive Verschuldungsdauer beträgt ${fiktiveVerschuldungsDauer.value} Jahre.`);
 
-  if (fiktiveVerschuldungsDauer.value <3) {
+  if (fiktiveVerschuldungsDauer.value < 3) {
     noten3.value = 1;
   }
   else if (fiktiveVerschuldungsDauer.value < 5) {
