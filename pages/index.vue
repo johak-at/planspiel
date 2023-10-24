@@ -22,7 +22,7 @@ onMounted(async () => {
   </div>
 </template>
 
-<style>
+<style scoped>
 * {
   margin: 0;
   padding: 0;
@@ -38,11 +38,8 @@ onMounted(async () => {
 #app {
   display: grid;
   grid-template-columns: 1fr 2.5fr 1fr;
-  /* first column takes one fourth of the space, second column takes three fourths */
   grid-template-rows: auto auto auto;
-  /* three rows with auto height */
   gap: 10px;
-  /* gap between grid items */
   grid-template-areas:
     ". content .";
   background-color: #f4f4f4;

@@ -343,7 +343,7 @@ function berechnen() {
   </div>
 </template>
 
-<style>
+<style scoped>
 p {
   display: inline-block;
 }

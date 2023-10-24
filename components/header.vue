@@ -30,7 +30,7 @@ const navItems = [
     </div>
 </template>
 
-<style>
+<style scoped>
 #logoPicture {
     width: 100px;
     height: 100px;
