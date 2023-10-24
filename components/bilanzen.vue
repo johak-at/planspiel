@@ -216,9 +216,9 @@ function betriebsErfolg() {
 function berechnen() {
   betriebsErfolg();
   eigenKapital();
-  durchSchnitt();
   Verschuldungsdauer();
   CashFlowQuoteBerechnen();
+  durchSchnitt();
 }
 
 </script>
