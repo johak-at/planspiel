@@ -1,8 +1,7 @@
 <script setup>
 import { useStore } from "~/store/store";
 import { storeToRefs } from "pinia";
-import ContentComponent from "~/components/content.vue";
-import AmpelComponent from "~/components/ampel.vue";
+import { onMounted } from 'vue';
 
 const store = useStore();
 const name = storeToRefs(store).name;
@@ -14,29 +13,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div id="app">
-    <Sidebar></Sidebar>
-    <ContentComponent />
-    <AmpelComponent />
+  <div id="app" class="grid grid-cols-[0.5fr,2fr,0.5fr] gap-2 bg-gray-200 text-black">
+    <Sidebar class="col-start-1 col-end-2" />
+    <Content class="col-start-2 col-end-3" />
+    <Ampel class="col-start-3 col-end-4" />
   </div>
 </template>
 
-<style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#app {
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 0.5fr;
-  gap: 10px;
-  background-color: #f4f4f4;
-  color: black;
-}
-
-.content {
-  grid-area: content;
-}
-</style>

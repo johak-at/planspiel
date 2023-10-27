@@ -124,19 +124,19 @@ function durchSchnitt() {
   durchSchnittsnoten.value = (noten.value + noten2.value + noten3.value + noten4.value) / 4;
   console.log(noten.value, noten2.value, noten3.value, noten4.value, durchSchnittsnoten.value);
   if (durchSchnittsnoten.value >= 4.5) {
-    NoteText.value = "Note: Nicht Genügend!";
+    NoteText.value = "Nicht Genügend!";
   }
   else if (durchSchnittsnoten.value >= 3.5) {
-    NoteText.value = "Note: Genügend!";
+    NoteText.value = "Genügend!";
   }
   else if (durchSchnittsnoten.value >= 2.5) {
-    NoteText.value = "Note: Befriedigend!";
+    NoteText.value = "Befriedigend!";
   }
   else if (durchSchnittsnoten.value >= 1.5) {
-    NoteText.value = "Note: Gut!";
+    NoteText.value = "Gut!";
   }
   else {
-    NoteText.value = "Note: Sehr Gut!";
+    NoteText.value = "Sehr Gut!";
   }
 }
 
