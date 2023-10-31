@@ -1,4 +1,3 @@
-<!-- Sidebar.vue -->
 <script setup>
 import { ref } from "vue";
 
@@ -15,7 +14,7 @@ const toggleSidebar = () => {
             Toggle
         </button>
         <div :class="{ 'translate-x-0': showSidebar, '-translate-x-full': !showSidebar }"
-            class="transition-transform duration-300 ease-in-out fixed top-13 w-[50%] h-[80vh] z-10">
+            class="transition-transform duration-300 ease-in-out fixed top-13 w-[50%] h-[85vh] z-10">
             <div v-show="showSidebar"
                 class="w-full h-full bg-gray-200 overflow-x-hidden rounded-tr-md rounded-br-md border-t border-r border-b border-gray-300 overflow-y-auto"
                 style="direction: rtl;">

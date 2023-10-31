@@ -224,13 +224,13 @@ function berechnen() {
 </script>
 
 <template>
-  <div class="flex gap-x-5">
+  <div class="flex flex-col gap-x-5 items-center">
     <!--
     <div class="h-20">{{ eigenkapitalQuote }} Note: {{ noten }}</div>
     <div class="h-20">{{EbitQuote}} Note: {{ noten2 }}</div>
     <div class="h-20">Durchschnittsnote: {{ (noten + noten2)/2 }}</div>
     -->
-    <div class="flex-grow inline-block align-top mr-4">
+    <div class="flex flex-row">
       <button :class="activate2019" @click="
         changeYear(2), berechnen();
       activate2019 = 'active';
@@ -255,90 +255,94 @@ function berechnen() {
       " class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold">
         2021
       </button>
-      <table class="border border-slate-500 rounded-lg p-4 min-w-0">
-        <thead>
-          <tr class="font-bold text-center">
-            <th colspan="2" class="bg-slate-500 text-white py-2">Aktiva</th>
-          </tr>
-          <tr>
-            <th class="border border-slate-500 p-2">Bezeichnung</th>
-            <th class="border border-slate-500 p-2">Betrag</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(value, key) in bilanzValue" :key="key">
-            <td class="border border-slate-500 p-2">{{ key }}</td>
-            <td class="border border-slate-500 p-2">
-              <div class="flex justify-between">
-                <div>€</div>
-                <div class="text-end">
-                  {{
-                    value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
-                  }}
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
-
-    <div class="flex-grow inline-block align-top mr-4">
-      <table class="border border-slate-500 rounded-lg p-4 min-w-0">
-        <thead>
-          <tr class="font-bold text-center">
-            <th colspan="2" class="bg-slate-500 text-white py-2">Passiva</th>
-          </tr>
-          <tr>
-            <th class="border border-slate-500 p-2">Bezeichnung</th>
-            <th class="border border-slate-500 p-2">Betrag</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(value, key) in passivaValue" :key="key">
-            <td class="border border-slate-500 p-2">{{ key }}</td>
-            <td class="border border-slate-500 p-2">
-              <div class="flex justify-between">
-                <div>€</div>
-                <div>
-                  {{
-                    value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
-                  }}
+    <div class="flex flex-row">
+      <div class="flex-grow inline-block align-top mr-4">
+        <table class="border border-slate-500 rounded-lg p-4 min-w-0">
+          <thead>
+            <tr class="font-bold text-center">
+              <th colspan="2" class="bg-slate-500 text-white py-2">Aktiva</th>
+            </tr>
+            <tr>
+              <th class="border border-slate-500 p-2">Bezeichnung</th>
+              <th class="border border-slate-500 p-2">Betrag</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(value, key) in bilanzValue" :key="key">
+              <td class="border border-slate-500 p-2">{{ key }}</td>
+              <td class="border border-slate-500 p-2">
+                <div class="flex justify-between">
+                  <div>€</div>
+                  <div class="text-end">
+                    {{
+                      value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
+                    }}
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <div class="flex-grow inline-block align-top">
-      <table class="border border-slate-500 rounded-lg p-4 min-w-0">
-        <thead>
-          <tr class="font-bold text-center">
-            <th colspan="2" class="bg-slate-500 text-white py-2">GuV</th>
-          </tr>
-          <tr>
-            <th class="border border-slate-500 p-2">Bezeichnung</th>
-            <th class="border border-slate-500 p-2">Betrag</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(value, key) in guvValue" :key="key">
-            <td class="border border-slate-500 p-2">{{ key }}</td>
-            <td class="border border-slate-500 p-2">
-              <div class="flex justify-between">
-                <div>€</div>
-                <div>
-                  {{
-                    value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
-                  }}
+      <div class="flex-grow inline-block align-top mr-4">
+        <table class="border border-slate-500 rounded-lg p-4 min-w-0">
+          <thead>
+            <tr class="font-bold text-center">
+              <th colspan="2" class="bg-slate-500 text-white py-2">Passiva</th>
+            </tr>
+            <tr>
+              <th class="border border-slate-500 p-2">Bezeichnung</th>
+              <th class="border border-slate-500 p-2">Betrag</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(value, key) in passivaValue" :key="key">
+              <td class="border border-slate-500 p-2">{{ key }}</td>
+              <td class="border border-slate-500 p-2">
+                <div class="flex justify-between">
+                  <div>€</div>
+                  <div>
+                    {{
+                      value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
+                    }}
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex-grow inline-block align-top">
+        <table class="border border-slate-500 rounded-lg p-4 min-w-0">
+          <thead>
+            <tr class="font-bold text-center">
+              <th colspan="2" class="bg-slate-500 text-white py-2">GuV</th>
+            </tr>
+            <tr>
+              <th class="border border-slate-500 p-2">Bezeichnung</th>
+              <th class="border border-slate-500 p-2">Betrag</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(value, key) in guvValue" :key="key">
+              <td class="border border-slate-500 p-2">{{ key }}</td>
+              <td class="border border-slate-500 p-2">
+                <div class="flex justify-between">
+                  <div>€</div>
+                  <div>
+                    {{
+                      value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
+                    }}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>

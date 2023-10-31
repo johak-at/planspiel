@@ -13,10 +13,21 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div id="app" class="grid grid-cols-[0.5fr,2fr,0.5fr] gap-2 bg-gray-200 text-black">
-    <Sidebar class="col-start-1 col-end-2" />
-    <Content class="col-start-2 col-end-3" />
-    <Ampel class="col-start-3 col-end-4" />
+  <div class="drawer">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content flex flex-row">
+      <label for="my-drawer" class="btn btn-primary drawer-button">Open drawer</label>
+      <Content class="w-[80%]" />
+      <Ampel />
+    </div>
+    <div class="drawer-side z-50">
+      <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+      <ul class="menu p-4 w-[50%] min-h-full bg-slate-100">
+        <!-- Sidebar content here -->
+        <Bilanzen class="text-black" />
+
+      </ul>
+    </div>
   </div>
 </template>
 
