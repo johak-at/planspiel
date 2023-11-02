@@ -5,7 +5,7 @@ import { storeToRefs } from "pinia";
 const store = useStore();
 let NoteText = storeToRefs(store).NoteText;
 
-const activeColor = computed(() => {
+let activeColor = computed(() => {
     switch (NoteText.value) {
         case "Nicht Genügend!":
             return 'red';

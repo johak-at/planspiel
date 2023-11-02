@@ -10,7 +10,7 @@ const navItems = [
 </script>
 
 <template>
-    <div class="header flex items-center justify-between bg-white py-1 px-10 shadow-md">
+    <div class="header flex justify-between bg-white py-1 px-10 shadow-md">
         <!-- Logo section -->
         <div class="flex items-center gap-5">
             <img id="logoPicture" :src="logo" alt="Logo" class="w-24 h-24 bg-white" />

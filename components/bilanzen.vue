@@ -18,10 +18,6 @@ let Fremdkapital = ref(0);
 let LiquideMittel = ref(0);
 let durchSchnittsnoten = storeToRefs(store).durchschnitt;
 
-let activate2019 = ref("");
-let activate2020 = ref("");
-let activate2021 = ref("active");
-
 onMounted(async () => {
   berechnen();
 });
@@ -37,15 +33,15 @@ let passivaValue = ref(passiv._rawValue[0]);
 let guvValue = ref(guv._rawValue[0]);
 let workingCapital = ref(0);
 let cashFlow = ref(0);
-// console.log(bilanzValue);
-// console.log(passivaValue);
-// console.log(guvValue);
+
+let currentYear = ref(0);
 
 function changeYear(year) {
   bilanzValue.value = bilanz._rawValue[year];
   passivaValue.value = passiv._rawValue[year];
   guvValue.value = guv._rawValue[year];
   replace();
+  currentYear.value = year;
 }
 
 // Replace underscores with spaces in the keys
@@ -221,43 +217,41 @@ function berechnen() {
   durchSchnitt();
 }
 
+let activeTable = ref("bilanz");
+
 </script>
 
 <template>
-  <div class="flex flex-col gap-x-5 items-center">
+  <div class="flex flex-col gap-x-5 items-center space-y-3">
     <!--
     <div class="h-20">{{ eigenkapitalQuote }} Note: {{ noten }}</div>
     <div class="h-20">{{EbitQuote}} Note: {{ noten2 }}</div>
     <div class="h-20">Durchschnittsnote: {{ (noten + noten2)/2 }}</div>
     -->
-    <div class="flex flex-row">
-      <button :class="activate2019" @click="
-        changeYear(2), berechnen();
-      activate2019 = 'active';
-      activate2020 = '';
-      activate2021 = '';
-      " class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold">
+    <div>
+      <button class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white w-40"
+        @click="activeTable = 'bilanz'" v-if="activeTable == 'guv'">Show Bilanz</button>
+      <button class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white w-40"
+        @click="activeTable = 'guv'" v-if="activeTable == 'bilanz'">Show GuV</button>
+    </div>
+    <div class="flex flex-row space-x-4">
+      <button @click="
+        changeYear(2), berechnen()"
+        :class="{ 'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true, 'bg-slate-600 hover:bg-slate-400': currentYear === 2 }">
         2019
       </button>
-      <button :class="activate2020" @click="
-        changeYear(1), berechnen();
-      activate2020 = 'active';
-      activate2019 = '';
-      activate2021 = '';
-      " class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold">
+      <button @click="changeYear(1), berechnen()"
+        :class="{ 'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true, 'bg-slate-600 hover:bg-slate-400': currentYear === 1 }">
         2020
       </button>
-      <button :class="activate2021" @click="
-        changeYear(0), berechnen();
-      activate2021 = 'active';
-      activate2020 = '';
-      activate2019 = '';
-      " class="bg-slate-500 py-3 my-5 mx-3 rounded-lg px-7 text-white font-bold">
+      <button @click="
+        changeYear(0), berechnen()"
+        :class="{ 'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true, 'bg-slate-600 hover:bg-slate-400': currentYear === 0 }">
         2021
       </button>
     </div>
-    <div class="flex flex-row">
-      <div class="flex-grow inline-block align-top mr-4">
+    <div class="flex flex-row space-x-2" v-if="activeTable == 'bilanz'">
+      <div class="flex-grow inline-block align-top">
         <table class="border border-slate-500 rounded-lg p-4 min-w-0">
           <thead>
             <tr class="font-bold text-center">
@@ -286,7 +280,7 @@ function berechnen() {
         </table>
       </div>
 
-      <div class="flex-grow inline-block align-top mr-4">
+      <div class="flex-grow inline-block align-top">
         <table class="border border-slate-500 rounded-lg p-4 min-w-0">
           <thead>
             <tr class="font-bold text-center">
@@ -314,7 +308,8 @@ function berechnen() {
           </tbody>
         </table>
       </div>
-
+    </div>
+    <div v-if="activeTable == 'guv'">
       <div class="flex-grow inline-block align-top">
         <table class="border border-slate-500 rounded-lg p-4 min-w-0">
           <thead>
@@ -350,9 +345,5 @@ function berechnen() {
 <style scoped>
 p {
   display: inline-block;
-}
-
-.active {
-  color: red;
 }
 </style>
