@@ -3,17 +3,17 @@ import { useStore } from "~/store/store";
 import { storeToRefs } from "pinia";
 
 const store = useStore();
-let NoteText = storeToRefs(store).NoteText;
+let Note = storeToRefs(store).NoteBerechnen;
 
 let activeColor = computed(() => {
-    switch (NoteText.value) {
+    switch (Note) {
         case "Nicht Genügend!":
             return 'red';
         case "Genügend!":
         case "Befriedigend!":
             return 'yellow';
         case "Gut!":
-        case "Sehr Gut":
+        case "Sehr Gut!":
             return 'green';
         default:
             return 'off';
@@ -23,7 +23,7 @@ let activeColor = computed(() => {
 
 <template>
     <div>
-        <div class="text-black">{{ NoteText }}</div>
+        <div class="text-black">{{ Note }}</div>
 
         <div class="ampel mt-4 p-4 bg-gray-300 rounded-lg shadow-lg w-28 flex flex-col items-center">
             <div
