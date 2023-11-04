@@ -5,20 +5,6 @@ import { storeToRefs } from "pinia";
 const store = useStore();
 let NoteText = storeToRefs(store).NoteBerechnen;
 
-let activeColor = computed(() => {
-    switch (NoteText) {
-        case "Nicht Genügend!":
-            return 'red';
-        case "Genügend!":
-        case "Befriedigend!":
-            return 'yellow';
-        case "Gut!":
-        case "Sehr Gut!":
-            return 'green';
-        default:
-            return 'off';
-    }
-});
 </script>
 
 <template>
@@ -27,13 +13,13 @@ let activeColor = computed(() => {
 
         <div class="ampel mt-4 p-4 bg-gray-300 rounded-lg shadow-lg w-28 flex flex-col items-center">
             <div
-                :class="{ 'w-20 h-20 mb-2 rounded-full': true, 'bg-green-600': activeColor === 'green', 'bg-green-950': activeColor !== 'green' }">
+                :class="{ 'w-20 h-20 mb-2 rounded-full bg-green-600': true, 'bg-green-950': NoteText !== 'Gut!' && NoteText !== 'Sehr Gut!' }">
             </div>
             <div
-                :class="{ 'w-20 h-20 mb-2 rounded-full': true, 'bg-yellow-500': activeColor === 'yellow', 'bg-yellow-950': activeColor !== 'yellow' }">
+                :class="{ 'w-20 h-20 mb-2 rounded-full bg-yellow-500': true, 'bg-yellow-950': NoteText !== 'Befriedigend!' }">
             </div>
             <div
-                :class="{ 'w-20 h-20 rounded-full': true, 'bg-red-600': activeColor === 'red', 'bg-red-950': activeColor !== 'red' }">
+                :class="{ 'w-20 h-20 rounded-full bg-red-600': true, 'bg-red-950': NoteText !== 'Genügend!' && NoteText !== 'Nicht Genügend!' }">
             </div>
         </div>
     </div>
