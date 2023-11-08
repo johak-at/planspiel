@@ -13,7 +13,7 @@ await store.loadGuVs();
 let bilanzValue = ref(bilanz._rawValue[0]);
 let passivaValue = ref(passiv._rawValue[0]);
 let guvValue = ref(guv._rawValue[0]);
-let currentYear = storeToRefs(store).currentYear;	
+let currentYear = storeToRefs(store).currentYear;
 
 function changeYear(year) {
   bilanzValue.value = bilanz._rawValue[year];
@@ -47,17 +47,7 @@ function replaceUnderscoresWithSpaces(obj) {
   }
   return newObj;
 }
-
-
-
-
-
-
-
-
-
 let activeTable = ref("bilanz");
-
 </script>
 
 <template>
@@ -68,24 +58,47 @@ let activeTable = ref("bilanz");
     <div class="h-20">Durchschnittsnote: {{ (noten + noten2)/2 }}</div>
     -->
     <div>
-      <button class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white w-40"
-        @click="activeTable = 'bilanz'" v-if="activeTable == 'guv'">Show Bilanz</button>
-      <button class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white w-40"
-        @click="activeTable = 'guv'" v-if="activeTable == 'bilanz'">Show GuV</button>
+      <button
+        class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white w-40"
+        @click="activeTable = 'bilanz'"
+        v-if="activeTable == 'guv'"
+      >
+        Show Bilanz
+      </button>
+      <button
+        class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white w-40"
+        @click="activeTable = 'guv'"
+        v-if="activeTable == 'bilanz'"
+      >
+        Show GuV
+      </button>
     </div>
     <div class="flex flex-row space-x-4">
-      <button @click="
-        changeYear(2)"
-        :class="{ 'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true, 'bg-slate-600 hover:bg-slate-400': currentYear === 2 }">
+      <button
+        @click="changeYear(2)"
+        :class="{
+          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+          'bg-slate-600 hover:bg-slate-400': currentYear === 2,
+        }"
+      >
         2019
       </button>
-      <button @click="changeYear(1)"
-        :class="{ 'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true, 'bg-slate-600 hover:bg-slate-400': currentYear === 1 }">
+      <button
+        @click="changeYear(1)"
+        :class="{
+          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+          'bg-slate-600 hover:bg-slate-400': currentYear === 1,
+        }"
+      >
         2020
       </button>
-      <button @click="
-        changeYear(0)"
-        :class="{ 'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true, 'bg-slate-600 hover:bg-slate-400': currentYear === 0 }">
+      <button
+        @click="changeYear(0)"
+        :class="{
+          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+          'bg-slate-600 hover:bg-slate-400': currentYear === 0,
+        }"
+      >
         2021
       </button>
     </div>
@@ -109,7 +122,9 @@ let activeTable = ref("bilanz");
                   <div>€</div>
                   <div class="text-end">
                     {{
-                      value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
+                      value.toLocaleString("de-DE", {
+                        minimumFractionDigits: 2,
+                      })
                     }}
                   </div>
                 </div>
@@ -138,7 +153,9 @@ let activeTable = ref("bilanz");
                   <div>€</div>
                   <div>
                     {{
-                      value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
+                      value.toLocaleString("de-DE", {
+                        minimumFractionDigits: 2,
+                      })
                     }}
                   </div>
                 </div>
@@ -168,7 +185,9 @@ let activeTable = ref("bilanz");
                   <div>€</div>
                   <div>
                     {{
-                      value.toLocaleString("de-DE", { minimumFractionDigits: 2 })
+                      value.toLocaleString("de-DE", {
+                        minimumFractionDigits: 2,
+                      })
                     }}
                   </div>
                 </div>
