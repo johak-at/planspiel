@@ -55,8 +55,8 @@ async function signIn() {
         <!-- make a text in the middle saying Already have an account? Login -->
         <div class="flex items-center justify-center mt-4 text-black">
           <p class="text-sm text-black font-semibold">
-            Don't have an account?
-            <a href="/register" class="text-black font-bold hover:text-blue-600">Register</a>
+            Sie haben keinen Account?
+            <a href="/register" class="text-black font-bold hover:text-blue-600">Registrieren</a>
           </p>
         </div>
       </form>

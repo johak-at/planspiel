@@ -1,11 +1,11 @@
 <script setup>
 import logo from "~/assets/Platzhalter.png";
 const navItems = [
-    { name: "New Game", link: "/" },
-    { name: "Settings", link: "/settings" },
-    { name: "Help", link: "/help" },
-    { name: "About Us", link: "/aboutus" },
-    { name: "Profile", link: "/profile" },
+    { name: "Spiele", link: "/" },
+    { name: "Einstellungen", link: "/settings" },
+    { name: "Hilfe", link: "/help" },
+    { name: "Über Uns", link: "/aboutus" },
+    { name: "Profil", link: "/profile" },
 ];
 </script>
 

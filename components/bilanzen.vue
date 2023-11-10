@@ -58,47 +58,32 @@ let activeTable = ref("bilanz");
     <div class="h-20">Durchschnittsnote: {{ (noten + noten2)/2 }}</div>
     -->
     <div>
-      <button
-        class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white w-40"
-        @click="activeTable = 'bilanz'"
-        v-if="activeTable == 'guv'"
-      >
-        Show Bilanz
+      <button class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white w-40"
+        @click="activeTable = 'bilanz'" v-if="activeTable == 'guv'">
+        Bilanz anzeigen
       </button>
-      <button
-        class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white w-40"
-        @click="activeTable = 'guv'"
-        v-if="activeTable == 'bilanz'"
-      >
-        Show GuV
+      <button class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white w-40"
+        @click="activeTable = 'guv'" v-if="activeTable == 'bilanz'">
+        GuV anzeigen
       </button>
     </div>
     <div class="flex flex-row space-x-4">
-      <button
-        @click="changeYear(2)"
-        :class="{
-          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-          'bg-slate-600 hover:bg-slate-400': currentYear === 2,
-        }"
-      >
+      <button @click="changeYear(2)" :class="{
+        'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+        'bg-slate-600 hover:bg-slate-400': currentYear === 2,
+      }">
         2019
       </button>
-      <button
-        @click="changeYear(1)"
-        :class="{
-          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-          'bg-slate-600 hover:bg-slate-400': currentYear === 1,
-        }"
-      >
+      <button @click="changeYear(1)" :class="{
+        'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+        'bg-slate-600 hover:bg-slate-400': currentYear === 1,
+      }">
         2020
       </button>
-      <button
-        @click="changeYear(0)"
-        :class="{
-          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-          'bg-slate-600 hover:bg-slate-400': currentYear === 0,
-        }"
-      >
+      <button @click="changeYear(0)" :class="{
+        'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+        'bg-slate-600 hover:bg-slate-400': currentYear === 0,
+      }">
         2021
       </button>
     </div>

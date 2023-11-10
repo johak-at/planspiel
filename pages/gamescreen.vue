@@ -16,11 +16,13 @@ onMounted(async () => {
   <div class="drawer">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-row">
-      <label for="my-drawer"
-        class="btn drawer-button hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 py-2 px-9 text-white">Open
-        drawer</label>
+      <div class="w-[10%]">
+        <label for="my-drawer"
+          class="btn drawer-button hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 py-2 px-9 text-white">Slide
+          öffnen</label>
+      </div>
       <Content class="w-[80%]" />
-      <Ampel />
+      <Ampel class="w-[10%]" />
     </div>
     <div class="drawer-side z-50">
       <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>

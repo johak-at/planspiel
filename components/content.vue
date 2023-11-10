@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="flex flex-col items-center h-[80rem]">
+  <div class="flex flex-col items-center h-screen justify-center">
     <div class="card w-[40rem] shadow-xl bg-slate-200">
       <div class="card-body space-y-3">
         <h2 class="card-title text-black">Für welchen Sessel entscheidest du dich?</h2>

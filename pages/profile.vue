@@ -21,8 +21,8 @@ async function logout() {
 <template>
     <main class="h-screen container py-36 sm:pt-44 sm:pb-60 bg-[#f4f4f4]">
         <div class="flex flex-col border-2 border-custom-lightblue p-10 rounded-lg bg-opal">
-            <h1 class="text-xl mb-2 text-black">Email: {{ user.email }}</h1>
-            <button @click="logout" type="button" class="self-start btn mt-6"> Logout</button>
+            <h1 class="text-xl mb-2 text-black">E-Mail: {{ user.email }}</h1>
+            <button @click="logout" type="button" class="self-start btn mt-6"> Abmelden</button>
         </div>
     </main>
 </template>
