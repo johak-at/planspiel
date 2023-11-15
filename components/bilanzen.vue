@@ -10,10 +10,10 @@ let guv = storeToRefs(store).GuVs;
 await store.loadBilanzen();
 await store.loadPassiva();
 await store.loadGuVs();
-let bilanzValue = ref(bilanz._rawValue[0]);
-let passivaValue = ref(passiv._rawValue[0]);
-let guvValue = ref(guv._rawValue[0]);
 let currentYear = storeToRefs(store).currentYear;
+let bilanzValue = ref(bilanz._rawValue[currentYear.value]);
+let passivaValue = ref(passiv._rawValue[currentYear.value]);
+let guvValue = ref(guv._rawValue[currentYear.value]);
 
 function changeYear(year) {
   bilanzValue.value = bilanz._rawValue[year];
@@ -28,7 +28,7 @@ function replace() {
   guvValue.value = replaceUnderscoresWithSpaces(guvValue.value);
   passivaValue.value = replaceUnderscoresWithSpaces(passivaValue.value);
 
-  let props = ["id", "created at", "Jahr"];
+  let props = ["id", "created at", "Jahr", "aktiva id", "passiva id", "guv id"];
   props.forEach((prop) => {
     delete bilanzValue.value[prop];
     delete guvValue.value[prop];
