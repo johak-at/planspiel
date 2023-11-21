@@ -9,6 +9,7 @@ export const useStore = defineStore(
     const bilanzen = ref(null);
     const passiva = ref(null);
     const GuVs = ref(null);
+    const Leistungsbudget = ref(null);
     const user = ref(null);
     const daisyTheme = ref("synthwave");
     const durchschnitt = ref(0);
@@ -224,6 +225,11 @@ export const useStore = defineStore(
       const res = await supabase.from("GuVs").select("*");
       GuVs.value = res.data;
     }
+
+    async function loadLeistungsbudget() {
+      const res = await supabase.from("Leistungsbudget").select("*");
+      Leistungsbudget.value = res.data;
+    }
     return {
       name,
       bilanzen,
@@ -235,6 +241,7 @@ export const useStore = defineStore(
       NoteBerechnen,
       GuVs,
       passiva,
+      Leistungsbudget,
       daisyTheme,
       user,
       durchschnitt,
@@ -250,6 +257,7 @@ export const useStore = defineStore(
       loadGuVs,
       loadPassiva,
       loadUser,
+      loadLeistungsbudget,
     };
   },
   {

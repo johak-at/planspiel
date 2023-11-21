@@ -19,7 +19,7 @@ const toggleSidebar = () => {
                 class="w-full h-full bg-gray-200 overflow-x-hidden rounded-tr-md rounded-br-md border-t border-r border-b border-gray-300 overflow-y-auto"
                 style="direction: rtl;">
                 <div class="sidebar-content" style="direction: ltr;">
-                    <Bilanzen />
+                    <SidebarContent />
                 </div>
             </div>
         </div>
