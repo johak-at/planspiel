@@ -67,19 +67,19 @@ let activeTable = ref("bilanz");
         'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
         'bg-slate-600 hover:bg-slate-400': activeTable === 'bilanz'
       }" @click="activeTable = 'bilanz'">
-        Bilanz anzeigen
+        Bilanz
       </button>
       <button :class="{
         'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
         'bg-slate-600 hover:bg-slate-400': activeTable === 'guv'
       }" @click="activeTable = 'guv'">
-        GuV anzeigen
+        GuV
       </button>
       <button :class="{
         'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
         'bg-slate-600 hover:bg-slate-400': activeTable === 'leistung'
       }" @click="activeTable = 'leistung'">
-        Leistungsbudget anzeigen
+        Leistungsbudget
       </button>
     </div>
     <div class="flex flex-row space-x-3">

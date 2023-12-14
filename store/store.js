@@ -227,7 +227,7 @@ export const useStore = defineStore(
     }
 
     async function loadLeistungsbudget() {
-      const res = await supabase.from("Leistungsbudget").select("*");
+      const res = await supabase.from("Leistungsbudget2").select("*");
       Leistungsbudget.value = res.data;
     }
     return {
