@@ -18,6 +18,7 @@ async function signIn() {
     errorMsg.value = error.message;
   }
 }
+let showPassword = ref(false);
 </script>
 <template>
   <div class="h-screen flex">
@@ -44,9 +45,14 @@ async function signIn() {
             class="mt-1 p-2 w-full border rounded-md bg-white text-black" />
         </div>
 
-        <div class="mb-4">
-          <input v-model="password" type="password" id="password" name="password" placeholder="Password"
-            class="mt-1 p-2 w-full border rounded-md bg-white text-black" />
+        <div class="relative mb-4">
+          <input v-model="password" :type="showPassword ? 'text' : 'password'" id="password" name="password"
+            placeholder="Password" class="mt-1 p-2 w-full border rounded-md bg-white text-black pr-10" />
+          <button type="button" @click="showPassword = !showPassword"
+            class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
+            <i v-if="showPassword" class="fas fa-eye-slash"></i>
+            <i v-else class="fas fa-eye"></i>
+          </button>
         </div>
 
         <button type="submit" class="bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 w-20">
