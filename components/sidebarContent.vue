@@ -32,7 +32,15 @@ function replace() {
   passivaValue.value = replaceUnderscoresWithSpaces(passivaValue.value);
   leistungValue.value = replaceUnderscoresWithSpaces(leistungValue.value);
 
-  let props = ["id", "created at", "Jahr", "aktiva id", "passiva id", "guv id", "leistungs id"];
+  let props = [
+    "id",
+    "created at",
+    "Jahr",
+    "aktiva id",
+    "passiva id",
+    "guv id",
+    "leistungs id",
+  ];
   props.forEach((prop) => {
     delete bilanzValue.value[prop];
     delete guvValue.value[prop];
@@ -63,45 +71,60 @@ let activeTable = ref("bilanz");
     <div class="h-20">Durchschnittsnote: {{ (noten + noten2)/2 }}</div>
     -->
     <div class="flex flex-row space-x-3">
-      <button :class="{
-        'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-        'bg-slate-600 hover:bg-slate-400': activeTable === 'bilanz'
-      }" @click="activeTable = 'bilanz'">
+      <button
+        :class="{
+          'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+          'bg-slate-600 hover:bg-slate-400': activeTable === 'bilanz',
+        }"
+        @click="activeTable = 'bilanz'"
+      >
         Bilanz anzeigen
       </button>
-      <button :class="{
-        'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-        'bg-slate-600 hover:bg-slate-400': activeTable === 'guv'
-      }" @click="activeTable = 'guv'">
+      <button
+        :class="{
+          'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+          'bg-slate-600 hover:bg-slate-400': activeTable === 'guv',
+        }"
+        @click="activeTable = 'guv'"
+      >
         GuV anzeigen
       </button>
-      <button :class="{
-        'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-        'bg-slate-600 hover:bg-slate-400': activeTable === 'leistung'
-      }" @click="activeTable = 'leistung'">
+      <button
+        :class="{
+          'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+          'bg-slate-600 hover:bg-slate-400': activeTable === 'leistung',
+        }"
+        @click="activeTable = 'leistung'"
+      >
         Leistungsbudget anzeigen
       </button>
     </div>
     <div class="flex flex-row space-x-3">
-      <button @click="changeYear(2)" :class="{
-        'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-        'bg-slate-600 hover:bg-slate-400': currentYear === 2,
-      }
-        ">
+      <button
+        @click="changeYear(2)"
+        :class="{
+          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+          'bg-slate-600 hover:bg-slate-400': currentYear === 2,
+        }"
+      >
         2019
       </button>
-      <button @click="changeYear(1)" :class="{
-        'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-        'bg-slate-600 hover:bg-slate-400': currentYear === 1,
-      }
-        ">
+      <button
+        @click="changeYear(1)"
+        :class="{
+          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+          'bg-slate-600 hover:bg-slate-400': currentYear === 1,
+        }"
+      >
         2020
       </button>
-      <button @click="changeYear(0)" :class="{
-        'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-        'bg-slate-600 hover:bg-slate-400': currentYear === 0,
-      }
-        ">
+      <button
+        @click="changeYear(0)"
+        :class="{
+          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
+          'bg-slate-600 hover:bg-slate-400': currentYear === 0,
+        }"
+      >
         2021
       </button>
     </div>

@@ -28,44 +28,22 @@ export const useStore = defineStore(
     let liquideMittel = ref(0);
     let currentYear = ref(0);
     let Erfolg = ref(0);
-    let games = ref([
-      {
-        id: "0",
-        name: "Test",
-        key: "Test",
-        date: "2021-05-01",
-        day: 1
-      },
-      {
-        id: "1",
-        name: "Spiel 1",
-        key: "game1",
-        date: "2021-05-01",
-        day: 1
-      },
-      {
-        id: "2",
-        name: "Spiel 2",
-        key: "game2",
-        date: "2021-05-02",
-        day: 1
-      },
-      {
-        id: "3",
-        name: "Spiel 3",
-        key: "game3",
-        date: "2021-05-03",
-        day: 1
-      }
-    ]);
+    let games = ref(null);
+
+    async function loadGames() {
+      const res = await supabase.from("games-test").select("*");
+      games.value = res.data;
+      console.log(games.value);
+    }
+
     let currentGame = ref("no game selected");
     let test = ref("test");
 
     const eigenKapital = computed(() => {
       let EK = ref(
         (passiva._rawValue[currentYear.value]["A._Eigenkapital"] * 100) /
-        (bilanzen._rawValue[currentYear.value]["A._Anlagevermögen"] +
-          bilanzen._rawValue[currentYear.value]["B._Umlaufvermögen"])
+          (bilanzen._rawValue[currentYear.value]["A._Anlagevermögen"] +
+            bilanzen._rawValue[currentYear.value]["B._Umlaufvermögen"])
       );
 
       if (EK.value > 40) {
@@ -89,11 +67,11 @@ export const useStore = defineStore(
         GuVs._rawValue[currentYear.value]["5._Aufwendungen_für_Material"] +
         GuVs._rawValue[currentYear.value]["6._Personalaufwand"] +
         GuVs._rawValue[currentYear.value][
-        "8._sonstige_betriebliche_Aufwendungen"
+          "8._sonstige_betriebliche_Aufwendungen"
         ];
       let BE = ref(
         (Erfolg.value * 100) /
-        GuVs._rawValue[currentYear.value]["1._Umsatzerlöse"]
+          GuVs._rawValue[currentYear.value]["1._Umsatzerlöse"]
       );
 
       if (BE.value > 8) {
@@ -116,13 +94,13 @@ export const useStore = defineStore(
         passiva._rawValue[currentYear.value]["D._Verbindlichkeiten"];
       liquideMittel.value =
         bilanzen._rawValue[currentYear.value][
-        "IV._Kassabestand,_Guthaben_bei_Kreditinstituten"
+          "IV._Kassabestand,_Guthaben_bei_Kreditinstituten"
         ];
       jahresueberschuss.value =
         GuVs._rawValue[currentYear.value]["18._Jahresüberschuss"];
       abschreibungen.value =
         GuVs._rawValue[currentYear.value][
-        "7._Abschreibungen_auf_immaterielle_Gegenstände"
+          "7._Abschreibungen_auf_immaterielle_Gegenstände"
         ];
       umlaufvermoegen.value =
         bilanzen._rawValue[currentYear.value]["B._Umlaufvermögen"];
@@ -154,7 +132,7 @@ export const useStore = defineStore(
         GuVs._rawValue[currentYear.value]["18._Jahresüberschuss"];
       abschreibungen.value =
         GuVs._rawValue[currentYear.value][
-        "7._Abschreibungen_auf_immaterielle_Gegenstände"
+          "7._Abschreibungen_auf_immaterielle_Gegenstände"
         ];
       umlaufvermoegen.value =
         bilanzen._rawValue[currentYear.value]["B._Umlaufvermögen"];
@@ -166,7 +144,7 @@ export const useStore = defineStore(
         jahresueberschuss.value + abschreibungen.value + workingCapital;
       let CF = ref(
         (cashFlow.value * 100) /
-        GuVs._rawValue[currentYear.value]["1._Umsatzerlöse"]
+          GuVs._rawValue[currentYear.value]["1._Umsatzerlöse"]
       );
 
       if (CF.value > 10) {
@@ -253,6 +231,7 @@ export const useStore = defineStore(
       games,
       currentGame,
       test,
+      loadGames,
       loadBilanzen,
       loadGuVs,
       loadPassiva,
