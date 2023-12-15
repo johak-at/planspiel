@@ -1,5 +1,4 @@
 <script setup>
-import '@fortawesome/fontawesome-free/css/all.css'
 const client = useSupabaseAuthClient();
 const router = useRouter();
 
