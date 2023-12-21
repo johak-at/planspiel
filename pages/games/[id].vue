@@ -9,6 +9,9 @@
 </template>
 
 <script setup>
+definePageMeta({
+  middleware: ["auth"],
+});
 // In your Vue component
 import supabase from "../../supabaseClient";
 
