@@ -19,10 +19,15 @@ async function logout() {
 </script>
 
 <template>
-    <main class="h-screen container py-36 sm:pt-44 sm:pb-60 bg-[#f4f4f4]">
-        <div class="flex flex-col border-2 border-custom-lightblue p-10 rounded-lg bg-opal">
-            <h1 class="text-xl mb-2 text-black">E-Mail: {{ user.email }}</h1>
-            <button @click="logout" type="button" class="self-start btn mt-6"> Abmelden</button>
+    <main class="h-[80vh] text-black flex items-center justify-center">
+        <div class="card flex flex-col w-[40rem] shadow-xl bg-slate-200">
+            <div class="card-body">
+                <h1 class="card-title">E-Mail:</h1>
+                <h2>{{ user.email }}</h2>
+                <button @click="logout" type="button"
+                    class="self-start btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white mt-6">
+                    Abmelden</button>
+            </div>
         </div>
     </main>
 </template>

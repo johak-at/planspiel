@@ -21,7 +21,7 @@ async function signIn() {
 let showPassword = ref(false);
 </script>
 <template>
-  <div class="h-screen flex">
+  <div class="h-[80vh] flex">
     <div class="flex-1 flex items-center justify-center bg-[#f1f1f1]">
       <form @submit.prevent="signIn"
         class="flex flex-col px-16 py-8 rounded-md shadow-lg max-w-screen-sm w-full bg-white">

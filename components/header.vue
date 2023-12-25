@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 import logo from "~/assets/Platzhalter.png";
 
 const navItems = [
