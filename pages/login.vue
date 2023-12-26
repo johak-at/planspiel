@@ -21,11 +21,15 @@ async function signIn() {
 let showPassword = ref(false);
 </script>
 <template>
-  <div class="h-[80vh] flex">
-    <div class="flex-1 flex items-center justify-center bg-[#f1f1f1]">
+  <div class="h-[80vh] flex relative items-center justify-center">
+    <div class="absolute w-[60rem] z-0 top-[45%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+      <h1 class="text-black font-bold text-center text-4xl custom-font">Simulator zum Unternehmer!</h1>
+      <img src="../assets/businessmen.svg" alt="Background" />
+    </div>
+    <div class="flex-1 flex items-center justify-center z-10">
       <form @submit.prevent="signIn"
-        class="flex flex-col px-16 py-8 rounded-md shadow-lg max-w-screen-sm w-full bg-white">
-        <div class="flex items-center justify-center mb-4">
+        class="flex flex-col px-16 py-4 rounded-md shadow-lg max-w-screen-sm w-full bg-white">
+        <div class="flex items-center justify-center">
           <img class="w-20" src="../assets/Platzhalter.png" alt="Logo" />
         </div>
         <h2 class="text-2xl font-semibold mb-4 text-slate-700">Login</h2>
@@ -47,7 +51,7 @@ let showPassword = ref(false);
 
         <div class="relative mb-4">
           <input v-model="password" :type="showPassword ? 'text' : 'password'" id="password" name="password"
-            placeholder="Password" class="mt-1 p-2 w-full border rounded-md bg-white text-black pr-10" />
+            placeholder="Passwort" class="mt-1 p-2 w-full border rounded-md bg-white text-black pr-10" />
           <button type="button" @click="showPassword = !showPassword"
             class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
             <i v-if="showPassword" class="fas fa-eye-slash"></i>
@@ -55,8 +59,8 @@ let showPassword = ref(false);
           </button>
         </div>
 
-        <button type="submit" class="bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 w-20">
-          Sign in
+        <button type="submit" class="text-white font-semibold py-2 rounded-md bg-black hover:bg-gray-700 w-[6rem]">
+          Anmelden
         </button>
         <!-- make a text in the middle saying Already have an account? Login -->
         <div class="flex items-center justify-center mt-4 text-black">
@@ -69,3 +73,9 @@ let showPassword = ref(false);
     </div>
   </div>
 </template>
+
+<style scoped>
+.custom-font {
+  font-family: 'Baskerville Old Face', serif;
+}
+</style>
