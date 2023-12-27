@@ -39,7 +39,7 @@ const navItems = [
         <div :class="{ 'hidden': !isNavOpen, 'md:flex': true }" class="w-full md:w-auto">
             <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 bg-white">
                 <a v-for="item in navItems" :key="item.name" :href="item.link"
-                    class="hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out font-bold bg-slate-500 py-2 px-9 text-white text-center rounded shadow">
+                    class="hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out font-bold bg-black py-2 px-9 text-white text-center rounded shadow">
                     {{ item.name }}
                 </a>
             </div>

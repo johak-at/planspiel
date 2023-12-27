@@ -66,7 +66,7 @@ let showPassword = ref(false);
         <div class="flex items-center justify-center mt-4 text-black">
           <p class="text-sm text-black font-semibold">
             Sie haben keinen Account?
-            <a href="/register" class="text-black font-bold hover:text-blue-600">Registrieren</a>
+            <a href="/register" class="text-black font-bold hover:text-gray-600">Registrieren</a>
           </p>
         </div>
       </form>

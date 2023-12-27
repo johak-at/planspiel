@@ -71,60 +71,42 @@ let activeTable = ref("bilanz");
     <div class="h-20">Durchschnittsnote: {{ (noten + noten2)/2 }}</div>
     -->
     <div class="flex flex-row space-x-3">
-      <button
-        :class="{
-          'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-          'bg-slate-600 hover:bg-slate-400': activeTable === 'bilanz',
-        }"
-        @click="activeTable = 'bilanz'"
-      >
-        Bilanz anzeigen
+      <button :class="{
+        'btn w-[150px] hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white': true,
+        'bg-gray-900 hover:bg-gray-900': activeTable === 'bilanz',
+      }" @click="activeTable = 'bilanz'">
+        Bilanz
       </button>
-      <button
-        :class="{
-          'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-          'bg-slate-600 hover:bg-slate-400': activeTable === 'guv',
-        }"
-        @click="activeTable = 'guv'"
-      >
-        GuV anzeigen
+      <button :class="{
+        'btn w-[150px] hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white': true,
+        'bg-gray-900 hover:bg-gray-900': activeTable === 'guv',
+      }" @click="activeTable = 'guv'">
+        GuV
       </button>
-      <button
-        :class="{
-          'btn w-[150px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-          'bg-slate-600 hover:bg-slate-400': activeTable === 'leistung',
-        }"
-        @click="activeTable = 'leistung'"
-      >
-        Leistungsbudget anzeigen
+      <button :class="{
+        'btn w-[150px] hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white': true,
+        'bg-gray-900 hover:bg-gray-900': activeTable === 'leistung',
+      }" @click="activeTable = 'leistung'">
+        Leistungsbudget
       </button>
     </div>
     <div class="flex flex-row space-x-3">
-      <button
-        @click="changeYear(2)"
-        :class="{
-          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-          'bg-slate-600 hover:bg-slate-400': currentYear === 2,
-        }"
-      >
+      <button @click="changeYear(2)" :class="{
+        'btn hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white': true,
+        'bg-gray-900 hover:bg-gray-900': currentYear === 2,
+      }">
         2019
       </button>
-      <button
-        @click="changeYear(1)"
-        :class="{
-          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-          'bg-slate-600 hover:bg-slate-400': currentYear === 1,
-        }"
-      >
+      <button @click="changeYear(1)" :class="{
+        'btn hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white': true,
+        'bg-gray-900 hover:bg-gray-900': currentYear === 1,
+      }">
         2020
       </button>
-      <button
-        @click="changeYear(0)"
-        :class="{
-          'btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 px-9 text-white': true,
-          'bg-slate-600 hover:bg-slate-400': currentYear === 0,
-        }"
-      >
+      <button @click="changeYear(0)" :class="{
+        'btn hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white': true,
+        'bg-gray-900 hover:bg-gray-900': currentYear === 0,
+      }">
         2021
       </button>
     </div>

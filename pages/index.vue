@@ -70,7 +70,7 @@ function deleteGame(id) {
 
 <template>
   <div class="content h-[80vh] text-black flex items-center justify-center">
-    <div class="card w-[40rem] shadow-xl bg-slate-200">
+    <div class="card w-[40rem] shadow-xl bg-white">
       <div class="card-body space-y-3">
         <h2 class="card-title">Derzeitige Spiele</h2>
         <ul class="menu" v-for="game in filteredGames" :key="game.id">
@@ -84,30 +84,26 @@ function deleteGame(id) {
             </button>
           </li>
         </ul>
-        <button class="btn w-[190px] hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white"
-          onclick="my_modal_1.showModal()">
+        <button class="btn w-[190px] hover:bg-gray-700 font-bold bg-black text-white" onclick="my_modal_1.showModal()">
           Erstelle neues Spiel
         </button>
       </div>
     </div>
 
     <dialog id="my_modal_1" class="modal">
-      <div class="modal-box bg-slate-200">
+      <div class="modal-box bg-white">
         <div class="flex flex-col space-y-2">
-          <input type="text" class="input input-bordered bg-slate-300 w-fit" placeholder="Spielname"
-            v-model="inputText" />
-          <input type="text" class="input input-bordered bg-slate-300 w-fit" placeholder="Zugangsschlüssel"
-            v-model="code" />
+          <input type="text" class="input input-bordered bg-white w-fit" placeholder="Spielname" v-model="inputText" />
+          <input type="text" class="input input-bordered bg-white w-fit" placeholder="Zugangsschlüssel" v-model="code" />
         </div>
 
         <div class="modal-action flex flex-row justify-between">
-          <button class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white"
-            @click="insertGame">
+          <button class="btn hover:bg-gray-700 font-bold bg-black text-white" @click="insertGame">
             Spiel Erstellen
           </button>
           <form method="dialog">
             <!-- if there is a button in form, it will close the modal -->
-            <button class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white">
+            <button class="btn  hover:bg-gray-700 font-bold bg-black text-white">
               Schließen
             </button>
           </form>

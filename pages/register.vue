@@ -108,7 +108,7 @@ let showPassword = ref(false);
         <div class="flex items-center justify-center mt-4 text-black">
           <p class="text-sm text-black font-semibold">
             Sie haben bereits einen Account?
-            <a href="/login" class="text-black font-bold hover:text-blue-600">Login</a>
+            <a href="/login" class="text-black font-bold hover:text-gray-600">Login</a>
           </p>
         </div>
       </form>
