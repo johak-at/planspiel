@@ -1,5 +1,5 @@
 <script setup>
-import logo from "~/assets/Platzhalter.png";
+import logo from "~/assets/Logo.png";
 
 const navItems = [
     { name: "Spiele", link: "/" },
@@ -12,10 +12,10 @@ const navItems = [
 </script>
 
 <template>
-    <div class="header flex flex-wrap justify-between bg-white py-1 px-2 shadow-md">
+    <div class="header flex flex-wrap justify-between bg-white py-2 px-2 shadow-md">
         <!-- Logo section -->
         <div class="flex items-center gap-3 w-full md:w-auto">
-            <img id="logoPicture" :src="logo" alt="Logo" class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-white" />
+            <img id="logoPicture" :src="logo" alt="Logo" class="rounded-lg w-12 sm:w-16 md:w-20 bg-white" />
             <div class="flex flex-col bg-white">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl text-black">Unternehmensplanspiel</h1>
                 <p class="text-sm sm:text-base md:text-lg text-black">Deine Wirtschaftssimulation!</p>
