@@ -1,5 +1,6 @@
 <script setup>
 import { ref, inject } from 'vue'
+import { Icon } from "@iconify/vue";
 
 const faEye = inject('faEye')
 const faEyeSlash = inject('faEyeSlash')
@@ -58,9 +59,9 @@ let showPassword = ref(false);
           <input v-model="password" :type="showPassword ? 'text' : 'password'" id="password" name="password"
             placeholder="Passwort" class="mt-1 p-2 w-full border rounded-md bg-white text-black pr-10" />
           <button type="button" @click="showPassword = !showPassword"
-            class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
-            <i v-if="showPassword" class="fas fa-eye-slash"></i>
-            <i v-else class="fas fa-eye"></i>
+            class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 transform scale-150">
+            <Icon v-if="showPassword" icon="akar-icons:eye-slashed" />
+            <Icon v-else icon="akar-icons:eye" />
           </button>
         </div>
 
