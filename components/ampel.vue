@@ -8,17 +8,45 @@ import { storeToRefs } from "pinia";
 const store = useStore();
 let NoteText = storeToRefs(store).NoteBerechnen;
 let currentGame = storeToRefs(store).currentGame;
-let games = storeToRefs(store).games;
-let currentGameInfo = ref(games.value.find(game => game.id === currentGame.value));
+let games = ref(null);
+let currentGameInfo = ref(null);
+
+onMounted(async () => {
+  await store.loadGames();
+  games.value = store.games;
+  console.log(currentGame.value);
+  console.log(games.value);
+
+  // Check if games is not null before finding the current game
+  if (games.value !== null && games.value.length > 0) {
+    const foundGame = games.value.find(game => game.id === currentGame.value);
+
+    if (foundGame) {
+      currentGameInfo.value = ref(foundGame);
+      console.log(currentGameInfo.value ? currentGameInfo.value._rawValue : null);
+    } else {
+      console.error('Current game not found in games array.');
+    }
+  } else {
+    console.error('Games array is null or empty.');
+  }
+});
+
+let currentGamesName = computed(() => currentGameInfo.value ? currentGameInfo.value._rawValue.name : null);
+
+let currentGamesDay = computed(() => currentGameInfo.value ? currentGameInfo.value._rawValue.day : null);
+
+
+
 </script>
 
 <template>
     <div>
         <div class="text-black">
             <h1 class="text-xl font-bold">Derzeitiges Spiel:</h1>
-            <p>{{ currentGameInfo.name }}</p>
+            <p>{{ currentGamesName }}</p>
             <h1 class="text-xl font-bold">Derzeitige Runde:</h1>
-            <p>{{ currentGameInfo.day }}</p>
+            <p>{{ currentGamesDay }}</p>
             <h1 class="text-xl font-bold">Note:</h1>
             <p>{{ NoteText }}</p>
         </div>

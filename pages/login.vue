@@ -1,6 +1,6 @@
 <script setup>
 import { ref, inject } from 'vue'
-import { Icon } from "@iconify/vue";
+// import { Icon } from "@iconify/vue";
 
 const faEye = inject('faEye')
 const faEyeSlash = inject('faEyeSlash')
