@@ -1,4 +1,9 @@
 <script setup>
+import { ref, inject } from 'vue'
+
+const faEye = inject('faEye')
+const faEyeSlash = inject('faEyeSlash')
+
 const client = useSupabaseAuthClient();
 const router = useRouter();
 
@@ -21,14 +26,14 @@ async function signIn() {
 let showPassword = ref(false);
 </script>
 <template>
-  <div class="h-[80vh] flex relative items-center justify-center">
-    <div class="absolute w-[60rem] z-0 top-[45%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-      <h1 class="text-black font-bold text-center text-4xl custom-font">Simulator zum Unternehmer!</h1>
-      <img src="../assets/businessmen.svg" alt="Background" />
-    </div>
-    <div class="flex-1 flex items-center justify-center z-10">
+  <div class="h-[80vh] flex relative">
+    <div class="flex-1 flex items-center justify-center">
+      <div class="absolute w-[60rem] z-0">
+        <h1 class="text-black font-bold text-center text-4xl custom-font">Simulator zum Unternehmer!</h1>
+        <img src="../assets/businessmen.svg" alt="Background" />
+      </div>
       <form @submit.prevent="signIn"
-        class="flex flex-col px-16 py-4 rounded-md shadow-lg max-w-screen-sm w-full bg-white">
+        class="flex flex-col px-16 py-4 rounded-md shadow-lg max-w-screen-sm w-full bg-white z-10 mt-12">
         <div class="flex items-center justify-center">
           <img class="w-20 rounded-lg" src="../assets/Logo.png" alt="Logo" />
         </div>
