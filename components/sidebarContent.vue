@@ -1,7 +1,9 @@
 <script setup>
 import { useStore } from "~/store/store";
 import { storeToRefs } from "pinia";
-
+definePageMeta({
+  middleware: ["auth"],
+});
 const store = useStore();
 
 let bilanz = storeToRefs(store).bilanzen;

@@ -10,6 +10,12 @@ const store = useStore();
 const name = storeToRefs(store).name;
 const bilanzen = storeToRefs(store).bilanzen;
 
+onMounted(() => {
+  // Call loadBilanzen when the component is mounted
+  store.loadBilanzen();
+});
+console.log(bilanzen.value);
+
 onMounted(async () => {
   await store.loadBilanzen();
 });

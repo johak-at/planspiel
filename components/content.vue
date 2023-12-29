@@ -5,7 +5,7 @@ import { storeToRefs } from "pinia";
 const store = useStore();
 
 let currentGame = storeToRefs(store).currentGame;
-let games = storeToRefs(store).games;
+let games = await store.loadGames()[0];
 let currentGameInfo = ref(games.value.find(game => game.id === currentGame.value));
 function changeDay() {
   if (currentGameInfo.value.day === 4) {
@@ -16,6 +16,7 @@ function changeDay() {
 }
 let showResults = ref(false);
 let showEndResults = ref(false);
+console.log(currentGameInfo.value);
 </script>
 
 <template>

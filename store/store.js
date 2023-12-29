@@ -18,6 +18,7 @@ export const useStore = defineStore(
     const noten3 = ref(0);
     const noten4 = ref(0);
     const NoteText = ref("");
+    
     let cashFlow = ref(0);
     let workingCapital = ref(0);
     let jahresueberschuss = ref(0);
@@ -31,9 +32,46 @@ export const useStore = defineStore(
     let games = ref(null);
 
     async function loadGames() {
-      const res = await supabase.from("games-test").select("*");
-      games.value = res.data;
-      console.log(games.value);
+      try {
+        const res = await supabase.from("games-test").select("*");
+        games.value = res.data;
+        // console.log(games.value);
+      } catch (error) {
+        console.error("Error loading games:", error);
+      }
+    }
+
+    async function insertGame({ name, code }) {
+      const { data, error } = await supabase.from('games-test').insert([
+        {
+          id: crypto.randomUUID(),
+          date: new Date().toISOString(),
+          name: name,
+          key: code,
+          day: 1,
+        },
+      ]);
+
+      if (error) {
+        console.error('Error inserting data:', error);
+      } else {
+        console.log('Data inserted successfully:', data);
+        await loadGames(); // Reload games after insertion
+      }
+    }
+
+    
+    async function deleteGame(gameId) {
+      const { data, error } = await supabase.from("games-test").delete().match({ id: gameId });
+    
+      if (error) {
+        console.error("Error deleting data:", error);
+      } else {
+        console.log("Data deleted successfully:", data);
+        
+        // Update games data after deletion
+        await loadGames();
+      }
     }
 
     let currentGame = ref("no game selected");
@@ -187,6 +225,7 @@ export const useStore = defineStore(
     async function loadBilanzen() {
       const res = await supabase.from("Aktiva").select("*");
       bilanzen.value = res.data;
+      console.log(bilanzen.value)
     }
 
     async function loadPassiva() {
@@ -212,6 +251,8 @@ export const useStore = defineStore(
       name,
       bilanzen,
       eigenKapital,
+      deleteGame,
+      insertGame,
       betriebsErfolg,
       Verschuldungsdauer,
       cashFlowQuote,

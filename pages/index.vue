@@ -12,60 +12,90 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlva2NhbnVwbGNhc254amZxbWJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg2MzM0ODYsImV4cCI6MjAwNDIwOTQ4Nn0.olguMW34EO9BFr-1-mbnaIpC86sbINYIAgJ9GRBLW-4"
 );
 
-let games = storeToRefs(store).games;
-let gamesValue = ref(games._rawValue);
-console.log(gamesValue.value);
+const games = ref(null);
+
+onMounted(async() => {
+  // Call loadGames when the component is mounted
+  await store.loadGames();
+
+  // Access the games data from the store
+  games.value = store.games;
+  console.log(games.value[0].id);
+});
+
+async function updateInfo(){
+  await store.loadGames();
+  games.value = store.games;
+}
+
+let inputText = ref("");
+let code = ref("");
+
+const insertGame = async () => {
+  await store.insertGame({ name: inputText.value, code: code.value });
+
+  // Clear input fields
+  inputText.value = "";
+  code.value = "";
+}
+
+const deleteGame = async (gameId) => {
+  // Call deleteGame from the store
+  await store.deleteGame(gameId);
+
+  // Access the updated games data from the store
+  games.value = store.games;
+};
+
 let currentGame = storeToRefs(store).currentGame;
-// let filteredGames = ref(games.value.filter((game) => game.id !== "0"));
+let filteredGames = games;
 
 // function updateFilter() {
 //   filteredGames.value = games.value.filter((game) => game.id !== "0");
 // }
 
-function addGame() {
-  if (inputText.value === "" || code.value === "") {
-    return;
-  }
-  games.value.push({
-    id: crypto.randomUUID(),
-    name: inputText.value,
-    key: code.value,
-    date: Date.now(),
-    day: 1,
-  });
-  inputText.value = "";
-  code.value = "";
-  updateFilter();
-}
-let inputText = ref("");
-let code = ref("");
+// function addGame() {
+//   if (inputText.value === "" || code.value === "") {
+//     return;
+//   }
+//   games.value.push({
+//     id: crypto.randomUUID(),
+//     name: inputText.value,
+//     key: code.value,
+//     date: Date.now(),
+//     day: 1,
+//   });
+//   inputText.value = "";
+//   code.value = "";
+//   updateFilter();
+// }
 
-async function insertGame() {
-  const { data, error } = await supabase.from("games-test").insert([
-    {
-      id: crypto.randomUUID(),
-      date: new Date().toISOString(), // This will give you a date string in ISO 8601 format
-      name: inputText.value,
-      key: code.value,
-      day: 1,
-    },
-  ]);
 
-  if (error) {
-    console.error("Error inserting data:", error);
-  } else {
-    console.log("Data inserted successfully:", data);
-  }
-}
+// async function deleteGame(gameId) {
+//   const { data, error } = await supabase
+//     .from("games-test")
+//     .delete()
+//     .match({ id: gameId });
+
+//   if (error) {
+//     console.error("Error deleting data:", error);
+//   } else {
+//     console.log("Data deleted successfully:", data);
+//     // After deleting, reload the games from the store
+//     await store.loadGames();
+//   }
+// }
+
 
 function setCurrentGame(id) {
   currentGame.value = id;
+  console.log(id);
 }
-function deleteGame(id) {
-  currentGame.value = 1;
-  games.value = games.value.filter((game) => game.id !== id);
-  updateFilter();
-}
+// function deleteGame(id) {
+//   currentGame.value = 1;
+//   games.value = games.value.filter((game) => game.id !== id);
+//   updateFilter();
+// }
 </script>
 
 <template>
@@ -75,11 +105,11 @@ function deleteGame(id) {
         <h2 class="card-title">Derzeitige Spiele</h2>
         <ul class="menu" v-for="game in filteredGames" :key="game.id">
           <li class="flex flex-row">
-            <a class="w-[25rem]" @click="setCurrentGame(game.id)" href="/gamescreen">
+            <a class="w-[25rem]" @click="setCurrentGame(game.id)" :href="'/games/' + game.id">
               <p>{{ game.name }}</p>
             </a>
             <button class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white"
-              @click="deleteGame(game.id)">
+            @click="() => deleteGame(game.id)">
               Löschen
             </button>
           </li>
@@ -98,7 +128,7 @@ function deleteGame(id) {
         </div>
 
         <div class="modal-action flex flex-row justify-between">
-          <button class="btn hover:bg-gray-700 font-bold bg-black text-white" @click="insertGame">
+          <button class="btn hover:bg-gray-700 font-bold bg-black text-white" @click="() => insertGame()">
             Spiel Erstellen
           </button>
           <form method="dialog">

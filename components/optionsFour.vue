@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+definePageMeta({
+  middleware: ["auth"],
+});
+</script>
 
 <template>
     <div class="card w-[40rem] shadow-xl bg-slate-200">

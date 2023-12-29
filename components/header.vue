@@ -1,4 +1,8 @@
 <script setup>
+
+definePageMeta({
+  middleware: ["auth"],
+});
 import logo from "~/assets/Logo.png";
 
 const navItems = [

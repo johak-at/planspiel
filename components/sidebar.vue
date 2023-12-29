@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from "vue";
+definePageMeta({
+  middleware: ["auth"],
+});
 
 const showSidebar = ref(false);
 

@@ -1,4 +1,7 @@
 <script setup>
+definePageMeta({
+  middleware: ["auth"],
+});
 import { useStore } from "~/store/store";
 import { storeToRefs } from "pinia";
 
