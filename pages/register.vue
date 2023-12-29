@@ -1,6 +1,6 @@
 <script setup>
-import { useStore } from "~/store/store";
-import { storeToRefs } from "pinia";
+import { Icon } from "@iconify/vue";
+
 const supabase = useSupabaseClient();
 const client = useSupabaseAuthClient();
 const user = ref(null);
@@ -63,14 +63,14 @@ let showPassword = ref(false);
 </script>
 
 <template>
-  <div class="h-[80vh] flex relative items-center justify-center">
-    <div class="absolute w-[60rem] z-0 top-[45%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-      <h1 class="text-black font-bold text-center text-4xl custom-font">Simulator zum Unternehmer!</h1>
-      <img src="../assets/businessmen.svg" alt="Background" />
-    </div>
-    <div class="flex-1 flex items-center justify-center z-10">
+  <div class="h-[80vh] flex relative">
+    <div class="flex-1 flex items-center justify-center">
+      <div class="absolute w-[60rem] z-0">
+        <h1 class="text-black font-bold text-center text-4xl custom-font">Simulator zum Unternehmer!</h1>
+        <img src="../assets/businessmen.svg" alt="Background" />
+      </div>
       <form @submit.prevent="signUp"
-        class="flex flex-col px-16 py-4 rounded-md shadow-lg max-w-screen-sm w-full bg-white">
+        class="flex flex-col px-16 py-4 rounded-md shadow-lg max-w-screen-sm w-full bg-white z-10 mt-12">
         <div class="flex items-center justify-center">
           <img class="w-20 rounded-lg" src="../assets/Logo.png" alt="Logo" />
         </div>
@@ -95,9 +95,9 @@ let showPassword = ref(false);
           <input v-model="password" :type="showPassword ? 'text' : 'password'" id="password" name="password"
             placeholder="Passwort" class="mt-1 p-2 w-full border rounded-md bg-white text-black pr-10" />
           <button type="button" @click="showPassword = !showPassword"
-            class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
-            <i v-if="showPassword" class="fas fa-eye-slash"></i>
-            <i v-else class="fas fa-eye"></i>
+            class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 transform scale-150">
+            <Icon v-if="showPassword" icon="akar-icons:eye-slashed" />
+            <Icon v-else icon="akar-icons:eye" />
           </button>
         </div>
 

@@ -77,11 +77,11 @@ definePageMeta({
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Geburtsdatum:</h3>
-            <p></p>
+            <p>26.03.2005</p>
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">E-Mail:</h3>
-            <p></p>
+            <p>gergoebert032@6gmail.com</p>
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Zuständigkeit:</h3>
