@@ -21,14 +21,14 @@ onMounted(async () => {
     const foundGame = games.value.find(game => game.id === currentGame.value);
 
     if (foundGame) {
-        // Assign the found game directly
-        currentGameInfo.value = foundGame;
+      // Assign the found game directly
+      currentGameInfo.value = foundGame;
     } else {
-        console.error('Current game not found in games array.');
+      console.error('Current game not found in games array.');
     }
-} else {
+  } else {
     console.error('Games array is null or empty.');
-}
+  }
 
   console.log(games.value);
 
@@ -74,8 +74,9 @@ async function changeDay() {
   } catch (error) {
     console.error("Error updating day in the database:", error);
   }
-  
-  store.updateGameDay(currentGameInfo.value.id, newDay);}
+
+  store.updateGameDay(currentGameInfo.value.id, newDay);
+}
 </script>
 
 
@@ -92,7 +93,7 @@ async function changeDay() {
         <optionsFour v-if="day === 4"></optionsFour>
       </div>
 
-      <div v-if="showResults" class="card w-[40rem] shadow-xl bg-slate-200">
+      <div v-if="showResults" class="card w-[40rem] shadow-xl bg-white">
         <div class="card-body space-y-3">
           <h2 class="card-title text-black">Ergebnis aus Runde {{ day }}</h2>
           <div class="flex flex-col space-y-1">
@@ -101,16 +102,14 @@ async function changeDay() {
         </div>
       </div>
 
-      <button v-if="showResults == false"
-        class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white"
+      <button v-if="showResults == false" class="btn hover:bg-gray-700 font-bold bg-black text-white"
         @click="showResults = true">Weiter</button>
-      <button v-if="showResults && day <= 3"
-        class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white"
+      <button v-if="showResults && day <= 3" class="btn hover:bg-gray-700 font-bold bg-black text-white"
         @click="changeDay(), showResults = false">Nächste Fragen</button>
     </div>
 
 
-    <div v-if="showEndResults" class="card w-[40rem] shadow-xl bg-slate-200">
+    <div v-if="showEndResults" class="card w-[40rem] shadow-xl bg-white">
       <div class="card-body space-y-3">
         <h2 class="card-title text-black">Dein Endresultat</h2>
         <div class="flex flex-col space-y-1">
@@ -119,10 +118,9 @@ async function changeDay() {
       </div>
     </div>
 
-    <button v-if="showResults && day == 4"
-      class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white"
+    <button v-if="showResults && day == 4" class="btn hover:bg-gray-700 font-bold bg-black text-white"
       @click="showEndResults = true, showResults = false">Endresultat</button>
-    <button v-if="showEndResults" class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white"
+    <button v-if="showEndResults" class="btn hover:bg-gray-700 font-bold bg-black text-white"
       @click="showEndResults = false, changeDay(), day = 1">Neues Spiel</button>
   </div>
 </template>

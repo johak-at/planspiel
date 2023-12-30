@@ -14,7 +14,7 @@ const supabase = createClient(
 
 const games = computed(() => store.games);
 
-onMounted(async() => {
+onMounted(async () => {
   // Call loadGames when the component is mounted
   await store.loadGames();
 
@@ -23,7 +23,7 @@ onMounted(async() => {
   console.log(games.value[0].id);
 });
 
-async function updateInfo(){
+async function updateInfo() {
   await store.loadGames();
   games.value = store.games;
 }
@@ -108,8 +108,7 @@ function setCurrentGame(id) {
             <a class="w-[25rem]" @click="setCurrentGame(game.id)" :href="'/games/' + game.id">
               <p>{{ game.name }}</p>
             </a>
-            <button class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white"
-            @click="() => deleteGame(game.id)">
+            <button class="btn hover:bg-gray-700 font-bold bg-black text-white" @click="() => deleteGame(game.id)">
               Löschen
             </button>
           </li>
