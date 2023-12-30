@@ -9,13 +9,16 @@ const store = useStore();
 let NoteText = storeToRefs(store).NoteBerechnen;
 let currentGame = storeToRefs(store).currentGame;
 let games = ref(null);
-let currentGameInfo = ref(null);
+const currentGameInfo = computed(() => {
+  return store.games.find(game => game.id === currentGame.value);
+});
+
 
 onMounted(async () => {
   await store.loadGames();
   games.value = store.games;
-  console.log(currentGame.value);
-  console.log(games.value);
+  // console.log(currentGame.value);
+  // console.log(games.value);
 
   // Check if games is not null before finding the current game
   if (games.value !== null && games.value.length > 0) {
@@ -23,18 +26,18 @@ onMounted(async () => {
 
     if (foundGame) {
       currentGameInfo.value = ref(foundGame);
-      console.log(currentGameInfo.value ? currentGameInfo.value._rawValue : null);
+      // console.log(currentGameInfo.value ? currentGameInfo.value._rawValue : null);
     } else {
       console.error('Current game not found in games array.');
     }
   } else {
     console.error('Games array is null or empty.');
   }
+  
 });
 
-let currentGamesName = computed(() => currentGameInfo.value ? currentGameInfo.value._rawValue.name : null);
-
-let currentGamesDay = computed(() => currentGameInfo.value ? currentGameInfo.value._rawValue.day : null);
+let currentGamesName = computed(() => currentGameInfo.value ? currentGameInfo.value.name : null);
+let currentGamesDay = computed(() => currentGameInfo.value ? currentGameInfo.value.day : null);
 
 
 

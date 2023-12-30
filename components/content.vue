@@ -2,48 +2,80 @@
 import { useStore } from "~/store/store";
 import { storeToRefs } from "pinia";
 import { computed } from 'vue';
+import { createClient } from "@supabase/supabase-js";
 
+const supabase = createClient(
+  "https://iokcanuplcasnxjfqmbj.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlva2NhbnVwbGNhc254amZxbWJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg2MzM0ODYsImV4cCI6MjAwNDIwOTQ4Nn0.olguMW34EO9BFr-1-mbnaIpC86sbINYIAgJ9GRBLW-4"
+);
 const store = useStore();
 
 let currentGame = storeToRefs(store).currentGame;
+let games = storeToRefs(store).games;
 
-let games = ref(null);
 let currentGameInfo = ref(null);
 
 onMounted(async () => {
   await store.loadGames();
-  games.value = store.games;
-  console.log(currentGame.value);
-  console.log(games.value);
-
-  // Check if games is not null before finding the current game
   if (games.value !== null && games.value.length > 0) {
     const foundGame = games.value.find(game => game.id === currentGame.value);
 
     if (foundGame) {
-      currentGameInfo.value = ref(foundGame);
-      console.log(currentGameInfo.value ? currentGameInfo.value._rawValue.day : null);
+        // Assign the found game directly
+        currentGameInfo.value = foundGame;
     } else {
-      console.error('Current game not found in games array.');
+        console.error('Current game not found in games array.');
     }
-  } else {
+} else {
     console.error('Games array is null or empty.');
-  }
+}
+
+  console.log(games.value);
+
 });
 
-let day = computed(() => currentGameInfo.value ? currentGameInfo.value._rawValue.day : null);
-
-function changeDay() {
-  if (day.value === 4) {
-    // Assuming you want to update the computed property `day`
-    day.value = 1;
-    return;
-  }
-  // Do something with `day.value`, e.g., return it or use it
-}
+const day = computed(() => {
+  const foundGame = store.games.find(game => game.id === currentGame.value);
+  return foundGame ? foundGame.day : null;
+});
+// function changeDay() {
+//   if (currentGameInfo.value && currentGameInfo.value._rawValue.day === 4) {
+//     currentGameInfo.value._rawValue.day = 1;
+//   } else if (currentGameInfo.value) {
+//     currentGameInfo.value._rawValue.day += 1;
+//   }
+//   console.log(day.value);
+// }
 
 let showResults = ref(false);
 let showEndResults = ref(false);
+
+async function changeDay() {
+  if (!currentGameInfo.value || !currentGameInfo.value.id) {
+    console.error('Current game information is not available');
+    return;
+  }
+
+  let newDay = currentGameInfo.value.day === 4 ? 1 : currentGameInfo.value.day + 1;
+
+  try {
+    const { data, error } = await supabase.from('games-test').update({
+      day: newDay
+    }).match({ id: currentGameInfo.value.id });
+
+    if (error) {
+      console.error('Error updating day in the database:', error);
+      return;
+    }
+
+    // Update local state
+    currentGameInfo.value.day = newDay;
+    console.log('Day updated successfully:', data);
+  } catch (error) {
+    console.error("Error updating day in the database:", error);
+  }
+  
+  store.updateGameDay(currentGameInfo.value.id, newDay);}
 </script>
 
 
@@ -91,6 +123,6 @@ let showEndResults = ref(false);
       class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white"
       @click="showEndResults = true, showResults = false">Endresultat</button>
     <button v-if="showEndResults" class="btn hover:text-slate-600 hover:bg-slate-300 font-bold bg-slate-500 text-white"
-      @click="showEndResults = false, day = 1">Neues Spiel</button>
+      @click="showEndResults = false, changeDay(), day = 1">Neues Spiel</button>
   </div>
 </template>

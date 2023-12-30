@@ -41,6 +41,13 @@ export const useStore = defineStore(
       }
     }
 
+    function updateGameDay(gameId, newDay) {
+      const gameIndex = this.games.findIndex(game => game.id === gameId);
+      if (gameIndex !== -1) {
+        this.games[gameIndex].day = newDay; // This should be a reactive update
+      }
+    }
+
     async function insertGame({ name, code }) {
       const { data, error } = await supabase.from('games-test').insert([
         {
@@ -51,7 +58,7 @@ export const useStore = defineStore(
           day: 1,
         },
       ]);
-
+    
       if (error) {
         console.error('Error inserting data:', error);
       } else {
@@ -223,13 +230,13 @@ export const useStore = defineStore(
     });
 
     async function loadBilanzen() {
-      const res = await supabase.from("Aktiva").select("*");
+      const res = await supabase.from("aktiva_view").select("*");
       bilanzen.value = res.data;
       console.log(bilanzen.value)
     }
 
     async function loadPassiva() {
-      const res = await supabase.from("Passiva").select("*");
+      const res = await supabase.from("passiva_view").select("*");
       passiva.value = res.data;
     }
 
@@ -239,12 +246,12 @@ export const useStore = defineStore(
     }
 
     async function loadGuVs() {
-      const res = await supabase.from("GuVs").select("*");
+      const res = await supabase.from("guv_view").select("*");
       GuVs.value = res.data;
     }
 
     async function loadLeistungsbudget() {
-      const res = await supabase.from("Leistungsbudget2").select("*");
+      const res = await supabase.from("leistungsbudget_view").select("*");
       Leistungsbudget.value = res.data;
     }
     return {
@@ -253,6 +260,7 @@ export const useStore = defineStore(
       eigenKapital,
       deleteGame,
       insertGame,
+      updateGameDay,
       betriebsErfolg,
       Verschuldungsdauer,
       cashFlowQuote,

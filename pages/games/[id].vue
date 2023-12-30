@@ -56,7 +56,7 @@ const validateGameId = async () => {
     console.error("Error or no data:", error);
     router.push("/"); // Redirect to the main page
   } else {
-    console.log("Data found:", data);
+    // console.log("Data found:", data);
     validId.value = true;
   }
 };
@@ -78,7 +78,7 @@ onMounted(() => {
   // Call loadBilanzen when the component is mounted
   store.loadBilanzen();
 });
-console.log(bilanzen.value);
+// console.log(bilanzen.value);
 
 onMounted(async () => {
   await store.loadBilanzen();

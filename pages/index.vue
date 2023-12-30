@@ -12,7 +12,7 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlva2NhbnVwbGNhc254amZxbWJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg2MzM0ODYsImV4cCI6MjAwNDIwOTQ4Nn0.olguMW34EO9BFr-1-mbnaIpC86sbINYIAgJ9GRBLW-4"
 );
 
-const games = ref(null);
+const games = computed(() => store.games);
 
 onMounted(async() => {
   // Call loadGames when the component is mounted
@@ -128,7 +128,7 @@ function setCurrentGame(id) {
         </div>
 
         <div class="modal-action flex flex-row justify-between">
-          <button class="btn hover:bg-gray-700 font-bold bg-black text-white" @click="() => insertGame()">
+          <button class="btn hover:bg-gray-700 font-bold bg-black text-white" @click="insertGame">
             Spiel Erstellen
           </button>
           <form method="dialog">
