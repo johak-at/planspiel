@@ -84,7 +84,7 @@ async function changeDay() {
 
 
 <template>
-  <div class="flex flex-col items-center h-screen justify-center space-y-3">
+  <div class="flex flex-col items-center h-[100vh] justify-center space-y-3">
     <div v-if="showEndResults == false" class="flex flex-col items-center justify-center space-y-3">
       <div v-if="showResults == false">
         <optionsOne v-if="day === 1"></optionsOne>

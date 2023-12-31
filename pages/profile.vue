@@ -19,13 +19,13 @@ async function logout() {
 </script>
 
 <template>
-    <main class="h-[80vh] text-black flex items-center justify-center">
+    <main class="h-[100vh] text-black flex items-center justify-center">
         <div class="card flex flex-col w-[40rem] shadow-xl bg-white">
             <div class="card-body">
                 <h1 class="card-title">E-Mail:</h1>
                 <h2>{{ user.email }}</h2>
                 <button @click="logout" type="button"
-                    class="self-start btn hover:bg-gray-700 font-bold bg-black text-white mt-6">
+                    class="self-start btn hover:bg-gray-700 font-semibold bg-black text-white mt-6">
                     Abmelden</button>
             </div>
         </div>

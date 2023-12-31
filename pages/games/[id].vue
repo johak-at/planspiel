@@ -1,9 +1,11 @@
 <template>
-  <div v-if="validId">
-    <span>Game ID: {{ gameId }}</span>
-    <!-- Your game details here -->
-  </div>
-  <div v-else>
+  <!--
+    <div v-if="validId">
+      <span>Game ID: {{ gameId }}</span>
+    </div>
+  -->
+
+  <div v-if="!validId">
     <span>Redirecting to main page...</span>
   </div>
 

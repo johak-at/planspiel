@@ -1,7 +1,7 @@
 <script setup>
 
 definePageMeta({
-  middleware: ["auth"],
+    middleware: ["auth"],
 });
 import logo from "~/assets/Logo.png";
 
@@ -16,7 +16,7 @@ const navItems = [
 </script>
 
 <template>
-    <div class="header flex flex-wrap justify-between bg-white py-2 px-2 shadow-md">
+    <div class="flex flex-wrap justify-between bg-white py-2 px-2 shadow-md space-y-2">
         <!-- Logo section -->
         <div class="flex items-center gap-3 w-full md:w-auto">
             <img id="logoPicture" :src="logo" alt="Logo" class="rounded-lg w-12 sm:w-16 md:w-20 bg-white" />

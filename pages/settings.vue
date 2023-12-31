@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[80vh]"></div>
+  <div class="h-[100vh]"></div>
 </template>
 <script>
 definePageMeta({

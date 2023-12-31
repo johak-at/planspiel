@@ -1,37 +1,76 @@
 <script setup>
+import { Icon } from "@iconify/vue";
+
+
 definePageMeta({
   middleware: ["auth"],
 });
+
+import logo from "~/assets/Logo-mit-Text.png";
 </script>
 
 
 <template>
-  <div class="footer py-6 bg-slate-500 text-white text-sm">
-    <div class="container mx-auto px-4 max-w-screen-xl">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="flex flex-col">
-          <h3 class="text-lg font-semibold">Contact Us</h3>
-          <p>Email: contact@example.com</p>
-          <p>Phone: +1 123-456-7890</p>
+  <div class="flex flex-col bg-white items-center">
+
+    <div class="flex flex-row w-full p-2">
+      <img :src="logo" alt="Logo" class="w-[400px]">
+      <div class="flex flex-row w-full ml-10 space-x-3">
+        <Icon icon="mdi:facebook-box" class="text-6xl hover:text-blue-600" />
+        <Icon icon="mdi:instagram" class="text-6xl hover:text-pink-500" />
+        <Icon icon="ic:baseline-tiktok" class="text-6xl hover:text-black" />
+        <Icon icon="mdi:youtube" class="text-6xl hover:text-red-600" />
+      </div>
+    </div>
+
+
+
+    <div class="container p-6">
+      <div class="grid grid-cols-4 text-center text-black text-lg">
+        <div class="mb-6">
+          <h5 class="uppercase font-bold mb-2.5">Informationen</h5>
+          <ul class="list-none mb-0">
+            <li>
+              <a href="#!">Datenschutzerklärung</a>
+            </li>
+          </ul>
         </div>
-        <div>
-          <h3 class="text-lg font-semibold">Payment Info</h3>
-          <p>IBAN: XXXX XXXX XXXX XXXX</p>
-          <p>PayPal: paypal@example.com</p>
+        <div class="mb-6">
+          <h5 class="uppercase font-bold mb-2.5">Kontakt</h5>
+          <ul class="list-none mb-0">
+            <li>
+              <a href="mailto:terstena.manuel@johak.at">terstena.manuel@johak.at</a>
+            </li>
+            <h5 class="uppercase font-bold mb-2.5 mt-5">Adresse</h5>
+            <li>Bundeshandelsakademie</li>
+            <li>Alte Bundesstraße 11</li>
+            <li>5600 St. Johann im Pongau</li>
+          </ul>
         </div>
-        <div class="flex flex-col">
-          <h3 class="text-lg font-semibold">Social</h3>
-          <p><a href="#" class="hover:underline transition-colors duration-300 ease-in-out hover:text-yellow-400">OnlyFans
-              ❤️</a></p>
-          <p><a href="#"
-              class="hover:underline transition-colors duration-300 ease-in-out hover:text-yellow-400">Instagram</a></p>
-          <p><a href="#"
-              class="hover:underline transition-colors duration-300 ease-in-out hover:text-yellow-400">Twitter</a></p>
+        <div class="mb-6">
+          <h5 class="uppercase font-bold mb-2.5">Über uns</h5>
+          <ul class="list-none mb-0">
+            <li>
+              <a href="#!">Unsere Geschichte</a>
+            </li>
+          </ul>
+        </div>
+        <div class="mb-6">
+          <h5 class="uppercase font-bold mb-2.5">My Account</h5>
+          <ul class="list-none mb-0">
+            <li>
+              <a href="#!">Anmelden/Registrieren</a>
+            </li>
+            <li>
+              <a href="#!">Meine Spiele</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="mt-6 text-center">
-        <p>&copy; 2023 Your Company. All rights reserved.</p>
-      </div>
+    </div>
+
+    <div class="text-center p-4 bg-gray-200 w-full">
+      © 2023 Unternehmensplanspiel - Deine Wirtschaftssimulation!
     </div>
   </div>
 </template>

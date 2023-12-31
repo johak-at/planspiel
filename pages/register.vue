@@ -63,7 +63,7 @@ let showPassword = ref(false);
 </script>
 
 <template>
-  <div class="h-[80vh] flex relative">
+  <div class="h-[100vh] flex relative">
     <div class="flex-1 flex items-center justify-center">
       <div class="absolute w-[60rem] z-0">
         <h1 class="text-black font-bold text-center text-4xl custom-font">Simulator zum Unternehmer!</h1>

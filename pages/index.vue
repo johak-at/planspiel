@@ -99,7 +99,7 @@ function setCurrentGame(id) {
 </script>
 
 <template>
-  <div class="content h-[80vh] text-black flex items-center justify-center">
+  <div class="content h-[100vh] text-black flex items-center justify-center">
     <div class="card w-[40rem] shadow-xl bg-white">
       <div class="card-body space-y-3">
         <h2 class="card-title">Derzeitige Spiele</h2>
