@@ -50,6 +50,8 @@ const deleteGame = async (gameId) => {
 let currentGame = storeToRefs(store).currentGame;
 let filteredGames = games;
 
+let NoteText = storeToRefs(store).NoteBerechnen;
+
 // function updateFilter() {
 //   filteredGames.value = games.value.filter((game) => game.id !== "0");
 // }
@@ -117,8 +119,8 @@ function setCurrentGame(id) {
             </div>
 
             <div class="flex flex-col">
-              <h1 class="text-center">Aufgaben erledigt: 3/12</h1>
-              <progress class="progress w-full" value="3" max="12"></progress>
+              <h1 class="text-center">Aufgaben erledigt: {{game.round}}/12</h1>
+              <progress class="progress w-full" :value="game.round" max="12"></progress>
             </div>
 
             <div class="flex flex-col space-y-2">
@@ -128,7 +130,7 @@ function setCurrentGame(id) {
               </a>
               <div class="flex flex-row space-x-2">
                 <h1>Spielstand:</h1>
-                <p>gut!</p>
+                <p>{{NoteText}}</p>
               </div>
               <div class="flex flex-row space-x-2">
                 <h1>Spieldauer:</h1>

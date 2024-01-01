@@ -17,6 +17,7 @@ let currentGameInfo = ref(null);
 
 onMounted(async () => {
   await store.loadGames();
+
   if (games.value !== null && games.value.length > 0) {
     const foundGame = games.value.find(game => game.id === currentGame.value);
 
@@ -31,21 +32,14 @@ onMounted(async () => {
   }
 
   console.log(games.value);
-
+  console.log(totalRoundCount.value);
 });
 
 const day = computed(() => {
-  const foundGame = store.games.find(game => game.id === currentGame.value);
+  const foundGame = games.value.find(game => game.id === currentGame.value);
   return foundGame ? foundGame.day : null;
 });
-// function changeDay() {
-//   if (currentGameInfo.value && currentGameInfo.value._rawValue.day === 4) {
-//     currentGameInfo.value._rawValue.day = 1;
-//   } else if (currentGameInfo.value) {
-//     currentGameInfo.value._rawValue.day += 1;
-//   }
-//   console.log(day.value);
-// }
+
 
 let showResults = ref(false);
 let showEndResults = ref(false);
@@ -68,7 +62,6 @@ async function changeDay() {
       return;
     }
 
-    // Update local state
     currentGameInfo.value.day = newDay;
     console.log('Day updated successfully:', data);
   } catch (error) {
@@ -76,6 +69,19 @@ async function changeDay() {
   }
 
   store.updateGameDay(currentGameInfo.value.id, newDay);
+}
+
+let totalRoundCount = storeToRefs(store).totalRounds;
+
+function test () {
+  console.log(totalRoundCount.value);
+}
+
+// Pass gameid to nextRoundUpload function
+function nextRound() {
+  console.log(totalRoundCount.value);
+  console.log(currentGameInfo.value.id);
+  store.nextRoundUpload(totalRoundCount.value, currentGameInfo.value.id);
 }
 </script>
 
@@ -104,8 +110,10 @@ async function changeDay() {
 
       <button v-if="showResults == false" class="btn hover:bg-gray-700 font-bold bg-black text-white"
         @click="showResults = true">Weiter</button>
-      <button v-if="showResults && day <= 3" class="btn hover:bg-gray-700 font-bold bg-black text-white"
-        @click="changeDay(), showResults = false">Nächste Fragen</button>
+        <button v-if="showResults && day <= 3" class="btn hover:bg-gray-700 font-bold bg-black text-white"
+  @click="changeDay(); showResults = false; test(), nextRound()">
+  Nächste Fragen
+</button>
     </div>
 
 
@@ -121,6 +129,6 @@ async function changeDay() {
     <button v-if="showResults && day == 4" class="btn hover:bg-gray-700 font-bold bg-black text-white"
       @click="showEndResults = true, showResults = false">Endresultat</button>
     <button v-if="showEndResults" class="btn hover:bg-gray-700 font-bold bg-black text-white"
-      @click="showEndResults = false, changeDay(), day = 1">Neues Spiel</button>
+      @click="showEndResults = false, changeDay(), day = 1, store.totalRounds=0, nextRound()">Neues Spiel</button>
   </div>
 </template>

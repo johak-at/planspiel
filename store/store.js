@@ -30,6 +30,8 @@ export const useStore = defineStore(
     let currentYear = ref(0);
     let Erfolg = ref(0);
     let games = ref(null);
+    let roundAt = ref(1);
+    let totalRounds = ref(0);
 
     async function loadGames() {
       try {
@@ -39,6 +41,36 @@ export const useStore = defineStore(
       } catch (error) {
         console.error("Error loading games:", error);
       }
+    }
+
+    async function nextRoundUpload(amount, id) {
+      try {
+        // Update the Supabase database with the new roundAt value
+        const { data, error } = await supabase
+          .from('games-test') // Replace 'your_table_name' with your actual table name
+          .update({ 'round': amount })
+          .eq('id', id); // Assuming your data has an 'id' column
+    
+        if (error) {
+          throw error;
+        }
+    
+        // Update the local state after a successful update
+        roundAt.value = amount;
+        console.log('Updated roundAt:', amount);
+      } catch (error) {
+        console.error('Error updating roundAt:', error.message);
+      }
+    }
+
+    function totalRoundsPlus(){
+      totalRounds.value++;
+      console.log("total: " + totalRounds.value);
+    }
+
+    function nextRound(amount){
+      roundAt.value = amount;
+      console.log(roundAt.value);
     }
 
     function updateGameDay(gameId, newDay) {
@@ -56,6 +88,7 @@ export const useStore = defineStore(
           name: name,
           key: code,
           day: 1,
+          round: 0,
         },
       ]);
     
@@ -258,8 +291,13 @@ export const useStore = defineStore(
       name,
       bilanzen,
       eigenKapital,
+      nextRoundUpload,
+      roundAt,
       deleteGame,
+      totalRounds,
       insertGame,
+      totalRoundsPlus,
+      nextRound,
       updateGameDay,
       betriebsErfolg,
       Verschuldungsdauer,
