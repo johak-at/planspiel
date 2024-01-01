@@ -99,19 +99,50 @@ function setCurrentGame(id) {
 </script>
 
 <template>
-  <div class="content h-[100vh] text-black flex items-center justify-center">
-    <div class="card w-[40rem] shadow-xl bg-white">
-      <div class="card-body space-y-3">
-        <h2 class="card-title">Derzeitige Spiele</h2>
-        <ul class="menu" v-for="game in filteredGames" :key="game.id">
-          <li class="flex flex-row">
-            <a class="w-[25rem]" @click="setCurrentGame(game.id)" :href="'/games/' + game.id">
+  <!-- 
+  <a class="" @click="setCurrentGame(game.id)" :href="'/games/' + game.id">
               <p>{{ game.name }}</p>
             </a>
-            <button class="btn hover:bg-gray-700 font-bold bg-black text-white" @click="() => deleteGame(game.id)">
-              Löschen
-            </button>
-          </li>
+ -->
+
+  <div class="content min-h-[100vh] text-black flex items-center justify-center">
+    <div class="card w-[40rem] shadow-xl bg-white mb-20">
+      <div class="card-body space-y-2">
+        <h2 class="card-title">Überblick</h2>
+        <ul class="menu" v-for="(game, index) in filteredGames" :key="game.id">
+          <div class="flex flex-col space-y-2 border border-black p-2 rounded-lg">
+            <div class="flex flex-row space-x-2">
+              <p class="w-6 border border-black rounded-full text-center">{{ index + 1 }}</p>
+              <h1 class="w-full">{{ game.name }}</h1>
+            </div>
+
+            <div class="flex flex-col">
+              <h1 class="text-center">Aufgaben erledigt: 3/12</h1>
+              <progress class="progress w-full" value="3" max="12"></progress>
+            </div>
+
+            <div class="flex flex-col space-y-2">
+              <a class="rounded-lg py-[2px] w-[150px] text-center hover:bg-gray-700 font-bold bg-black text-white"
+                @click="setCurrentGame(game.id)" :href="'/games/' + game.id">
+                <p>Aufgaben ansehen</p>
+              </a>
+              <div class="flex flex-row space-x-2">
+                <h1>Spielstand:</h1>
+                <p>gut!</p>
+              </div>
+              <div class="flex flex-row space-x-2">
+                <h1>Spieldauer:</h1>
+                <p>01:21:53</p>
+              </div>
+            </div>
+
+            <div class="flex justify-end">
+              <button class="rounded-lg h-6 w-20 hover:bg-gray-700 font-bold bg-black text-white"
+                @click="() => deleteGame(game.id)">
+                Löschen
+              </button>
+            </div>
+          </div>
         </ul>
         <button class="btn w-[190px] hover:bg-gray-700 font-bold bg-black text-white" onclick="my_modal_1.showModal()">
           Erstelle neues Spiel
@@ -131,7 +162,6 @@ function setCurrentGame(id) {
             Spiel Erstellen
           </button>
           <form method="dialog">
-            <!-- if there is a button in form, it will close the modal -->
             <button class="btn  hover:bg-gray-700 font-bold bg-black text-white">
               Schließen
             </button>
