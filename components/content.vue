@@ -10,11 +10,20 @@ const supabase = createClient(
 );
 const store = useStore();
 
+
+
 let currentGame = storeToRefs(store).currentGame;
 let games = storeToRefs(store).games;
 
-let currentGameInfo = ref(null);
+let roundHere=games.value;
 
+let currentGameInfo = ref(null);
+const totalRoundCount = computed(() => {
+  if (currentGameInfo && currentGameInfo.value) {
+    return currentGameInfo.value.round;
+  }
+  return 0; // Default value if currentGameInfo.value is not set
+});
 onMounted(async () => {
   await store.loadGames();
 
@@ -31,14 +40,18 @@ onMounted(async () => {
     console.error('Games array is null or empty.');
   }
 
+  
+
   console.log(games.value);
-  console.log(totalRoundCount.value);
+  console.log(roundHere);
 });
 
 const day = computed(() => {
   const foundGame = games.value.find(game => game.id === currentGame.value);
   return foundGame ? foundGame.day : null;
 });
+
+
 
 
 let showResults = ref(false);
@@ -71,16 +84,14 @@ async function changeDay() {
   store.updateGameDay(currentGameInfo.value.id, newDay);
 }
 
-let totalRoundCount = storeToRefs(store).totalRounds;
-
 function test () {
   console.log(totalRoundCount.value);
 }
 
 // Pass gameid to nextRoundUpload function
 function nextRound() {
-  console.log(totalRoundCount.value);
-  console.log(currentGameInfo.value.id);
+  console.log("round: " + totalRoundCount.value);
+  console.log("id: " + currentGameInfo.value.id);
   store.nextRoundUpload(totalRoundCount.value, currentGameInfo.value.id);
 }
 </script>
@@ -108,10 +119,13 @@ function nextRound() {
         </div>
       </div>
 
-      <button v-if="showResults == false" class="btn hover:bg-gray-700 font-bold bg-black text-white"
-        @click="showResults = true">Weiter</button>
+      <button v-if="showResults == false && roundTest===3 " class="btn hover:bg-gray-700 font-bold bg-black text-white"
+        @click="showResults = true">Weiter1</button>
+        <p>{{ roundHere }}</p>
+        
+        
         <button v-if="showResults && day <= 3" class="btn hover:bg-gray-700 font-bold bg-black text-white"
-  @click="changeDay(); showResults = false; test(), nextRound()">
+  @click="changeDay(); showResults = false">
   Nächste Fragen
 </button>
     </div>
@@ -128,7 +142,7 @@ function nextRound() {
 
     <button v-if="showResults && day == 4" class="btn hover:bg-gray-700 font-bold bg-black text-white"
       @click="showEndResults = true, showResults = false">Endresultat</button>
-    <button v-if="showEndResults" class="btn hover:bg-gray-700 font-bold bg-black text-white"
-      @click="showEndResults = false, changeDay(), day = 1, store.totalRounds=0, nextRound()">Neues Spiel</button>
+    <!-- <button v-if="showEndResults" class="btn hover:bg-gray-700 font-bold bg-black text-white"
+      @click="showEndResults = false, changeDay(), day = 1">Neues Spiel</button> -->
   </div>
 </template>
