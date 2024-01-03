@@ -44,6 +44,13 @@ function nextRound() {
   console.log("id: " + currentGameInfo.value.id);
   store.nextRoundUpload(totalRoundCount.value, currentGameInfo.value.id);
 }
+
+const emit = defineEmits(['callParentFunction']);
+
+function triggerParentFunction() {
+  // Emit a custom event
+  emit('callParentFunction');
+}
 </script>
 
 <template>
@@ -51,9 +58,9 @@ function nextRound() {
         <div class="card-body space-y-3">
             <h2 class="card-title text-black">Frage 1: Für welchen Baum entscheidest du dich?</h2>
             <div class="flex flex-col space-y-1">
-                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Günstig</button>
-                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Mittig</button>
-                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Teuer</button>
+                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound(), triggerParentFunction()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Günstig</button>
+                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound(), triggerParentFunction()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Mittig</button>
+                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound(), triggerParentFunction()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Teuer</button>
             </div>
         </div>
     </div>
@@ -61,9 +68,9 @@ function nextRound() {
         <div class="card-body space-y-3">
             <h2 class="card-title text-black">Frage 2: Für welchen Haus entscheidest du dich?</h2>
             <div class="flex flex-col space-y-1">
-                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Günstig</button>
-                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Mittig</button>
-                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Teuer</button>
+                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound(), triggerParentFunction()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Günstig</button>
+                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound(), triggerParentFunction()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Mittig</button>
+                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound(), triggerParentFunction()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Teuer</button>
             </div>
         </div>
     </div>
@@ -71,9 +78,9 @@ function nextRound() {
         <div class="card-body space-y-3">
             <h2 class="card-title text-black">Frage 3: Für welchen Juan entscheidest du dich?</h2>
             <div class="flex flex-col space-y-1">
-                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Günstig</button>
-                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Mittig</button>
-                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Teuer</button>
+                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound(), triggerParentFunction()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Günstig</button>
+                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound(), triggerParentFunction()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Mittig</button>
+                <button @click="roundHere++, store.nextRound(roundHere), totalRoundCount++, nextRound(), triggerParentFunction()" class="btn w-[100px] hover:bg-gray-700 font-bold bg-black text-white">Teuer</button>
             </div>
         </div>
     </div>

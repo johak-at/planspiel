@@ -15,9 +15,10 @@ const store = useStore();
 let currentGame = storeToRefs(store).currentGame;
 let games = storeToRefs(store).games;
 
-let roundHere=games.value;
-
 let currentGameInfo = ref(null);
+
+let roundHere = ref(1);
+
 const totalRoundCount = computed(() => {
   if (currentGameInfo && currentGameInfo.value) {
     return currentGameInfo.value.round;
@@ -40,7 +41,7 @@ onMounted(async () => {
     console.error('Games array is null or empty.');
   }
 
-  
+  roundHere.value = currentGameInfo.value.round
 
   console.log(games.value);
   console.log(roundHere);
@@ -94,6 +95,26 @@ function nextRound() {
   console.log("id: " + currentGameInfo.value.id);
   store.nextRoundUpload(totalRoundCount.value, currentGameInfo.value.id);
 }
+
+async function test2() {
+  await store.loadGames();
+
+  if (games.value !== null && games.value.length > 0) {
+    const foundGame = games.value.find(game => game.id === currentGame.value);
+
+    if (foundGame) {
+      // Assign the found game directly
+      currentGameInfo.value = foundGame;
+    } else {
+      console.error('Current game not found in games array.');
+    }
+  } else {
+    console.error('Games array is null or empty.');
+  }
+  roundHere.value = currentGameInfo.value.round;
+  console.log("round: " + currentGameInfo.value.round);
+}
+
 </script>
 
 
@@ -104,10 +125,10 @@ function nextRound() {
   <div class="flex flex-col items-center h-[100vh] justify-center space-y-3">
     <div v-if="showEndResults == false" class="flex flex-col items-center justify-center space-y-3">
       <div v-if="showResults == false">
-        <optionsOne v-if="day === 1"></optionsOne>
-        <optionsTwo v-if="day === 2"></optionsTwo>
-        <optionsThree v-if="day === 3"></optionsThree>
-        <optionsFour v-if="day === 4"></optionsFour>
+        <optionsOne @callParentFunction="test2" v-if="day === 1"></optionsOne>
+        <optionsTwo @callParentFunction="test2" v-if="day === 2"></optionsTwo>
+        <optionsThree @callParentFunction="test2" v-if="day === 3"></optionsThree>
+        <optionsFour @callParentFunction="test2" v-if="day === 4"></optionsFour>
       </div>
 
       <div v-if="showResults" class="card w-[40rem] shadow-xl bg-white">
@@ -119,7 +140,7 @@ function nextRound() {
         </div>
       </div>
 
-      <button v-if="showResults == false && roundTest===3 " class="btn hover:bg-gray-700 font-bold bg-black text-white"
+      <button v-if="showResults == false && roundHere===3" class="btn hover:bg-gray-700 font-bold bg-black text-white"
         @click="showResults = true">Weiter1</button>
         <p>{{ roundHere }}</p>
         
