@@ -8,6 +8,8 @@ const email = ref("");
 const password = ref(null);
 const errorMsg = ref(null);
 const successMsg = ref(null);
+const username = ref("");
+const klasse = ref("");
 
 async function signUp() {
   try {
@@ -89,6 +91,16 @@ let showPassword = ref(false);
         <div class="mb-4">
           <input v-model="email" type="email" id="email" name="email" placeholder="Email"
             class="mt-1 p-2 w-full border rounded-md bg-white text-black" />
+        </div>
+
+        <div class="mb-4">
+          <input v-model="username" type="text" id="username" name="username" placeholder="Benutzername"
+            class="mt-1 p-2 w-full border rounded-md bg-white text-black" /> <!-- add username to database -->
+        </div>
+
+        <div class="mb-4">
+          <input v-model="klasse" type="text" id="klasse" name="klasse" placeholder="Klasse"
+            class="mt-1 p-2 w-full border rounded-md bg-white text-black" /> <!-- add klasse to database -->
         </div>
 
         <div class="relative mb-4">

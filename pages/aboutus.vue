@@ -11,7 +11,7 @@ definePageMeta({
       <h2 class="text-3xl font-bold">Einleitung:</h2>
       <p class="text-lg">
         Wir sind vier engagierte Schüler der HAK-St. Johann, die sich einer besonderen Herausforderung stellen: die
-        Entwicklung eines Unternehmensplanspiels für unseren Lehrer Herrn Wallhaimer. Dieses Projekt ist unsere
+        Entwicklung eines Unternehmensplanspiels. Dieses Projekt ist unsere
         Diplomarbeit, die wir im September 2023 begonnen haben und voraussichtlich im März des nächsten Jahres abschließen
         werden.
       </p>
@@ -180,7 +180,7 @@ definePageMeta({
       </p>
 
       <h2 class="text-3xl font-bold">Schlusswort:</h2>
-      <p class="text-lg">
+      <p class="text-lg h-[300px]">
         Wir danken allen, die uns auf dieser spannenden Reise unterstützt haben. Bleiben Sie dran, um zu sehen, wie unser
         Unternehmensplanspiel Form annimmt!
       </p>
