@@ -18,7 +18,7 @@ export const useStore = defineStore(
     const noten3 = ref(0);
     const noten4 = ref(0);
     const NoteText = ref("");
-    
+
     let cashFlow = ref(0);
     let workingCapital = ref(0);
     let jahresueberschuss = ref(0);
@@ -50,11 +50,11 @@ export const useStore = defineStore(
           .from('games-test') // Replace 'your_table_name' with your actual table name
           .update({ 'round': amount })
           .eq('id', id); // Assuming your data has an 'id' column
-    
+
         if (error) {
           throw error;
         }
-    
+
         // Update the local state after a successful update
         roundAt.value = amount;
         console.log('Updated roundAt:', amount);
@@ -63,12 +63,12 @@ export const useStore = defineStore(
       }
     }
 
-    function totalRoundsPlus(){
+    function totalRoundsPlus() {
       totalRounds.value++;
       console.log("total: " + totalRounds.value);
     }
 
-    function nextRound(amount){
+    function nextRound(amount) {
       roundAt.value = amount;
       console.log(roundAt.value);
     }
@@ -91,7 +91,7 @@ export const useStore = defineStore(
           round: 0,
         },
       ]);
-    
+
       if (error) {
         console.error('Error inserting data:', error);
       } else {
@@ -100,15 +100,15 @@ export const useStore = defineStore(
       }
     }
 
-    
+
     async function deleteGame(gameId) {
       const { data, error } = await supabase.from("games-test").delete().match({ id: gameId });
-    
+
       if (error) {
         console.error("Error deleting data:", error);
       } else {
         console.log("Data deleted successfully:", data);
-        
+
         // Update games data after deletion
         await loadGames();
       }
@@ -120,8 +120,8 @@ export const useStore = defineStore(
     const eigenKapital = computed(() => {
       let EK = ref(
         (passiva._rawValue[currentYear.value]["A._Eigenkapital"] * 100) /
-          (bilanzen._rawValue[currentYear.value]["A._Anlagevermögen"] +
-            bilanzen._rawValue[currentYear.value]["B._Umlaufvermögen"])
+        (bilanzen._rawValue[currentYear.value]["A._Anlagevermögen"] +
+          bilanzen._rawValue[currentYear.value]["B._Umlaufvermögen"])
       );
 
       if (EK.value > 40) {
@@ -145,11 +145,11 @@ export const useStore = defineStore(
         GuVs._rawValue[currentYear.value]["5._Aufwendungen_für_Material"] +
         GuVs._rawValue[currentYear.value]["6._Personalaufwand"] +
         GuVs._rawValue[currentYear.value][
-          "8._sonstige_betriebliche_Aufwendungen"
+        "8._sonstige_betriebliche_Aufwendungen"
         ];
       let BE = ref(
         (Erfolg.value * 100) /
-          GuVs._rawValue[currentYear.value]["1._Umsatzerlöse"]
+        GuVs._rawValue[currentYear.value]["1._Umsatzerlöse"]
       );
 
       if (BE.value > 8) {
@@ -172,13 +172,13 @@ export const useStore = defineStore(
         passiva._rawValue[currentYear.value]["D._Verbindlichkeiten"];
       liquideMittel.value =
         bilanzen._rawValue[currentYear.value][
-          "IV._Kassabestand,_Guthaben_bei_Kreditinstituten"
+        "IV._Kassabestand,_Guthaben_bei_Kreditinstituten"
         ];
       jahresueberschuss.value =
         GuVs._rawValue[currentYear.value]["18._Jahresüberschuss"];
       abschreibungen.value =
         GuVs._rawValue[currentYear.value][
-          "7._Abschreibungen_auf_immaterielle_Gegenstände"
+        "7._Abschreibungen_auf_immaterielle_Gegenstände"
         ];
       umlaufvermoegen.value =
         bilanzen._rawValue[currentYear.value]["B._Umlaufvermögen"];
@@ -210,7 +210,7 @@ export const useStore = defineStore(
         GuVs._rawValue[currentYear.value]["18._Jahresüberschuss"];
       abschreibungen.value =
         GuVs._rawValue[currentYear.value][
-          "7._Abschreibungen_auf_immaterielle_Gegenstände"
+        "7._Abschreibungen_auf_immaterielle_Gegenstände"
         ];
       umlaufvermoegen.value =
         bilanzen._rawValue[currentYear.value]["B._Umlaufvermögen"];
@@ -222,7 +222,7 @@ export const useStore = defineStore(
         jahresueberschuss.value + abschreibungen.value + workingCapital;
       let CF = ref(
         (cashFlow.value * 100) /
-          GuVs._rawValue[currentYear.value]["1._Umsatzerlöse"]
+        GuVs._rawValue[currentYear.value]["1._Umsatzerlöse"]
       );
 
       if (CF.value > 10) {

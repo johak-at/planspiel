@@ -162,7 +162,7 @@ let open = ref("Spiele");
 
 <template>
     <main class="min-h-[80rem] h-screen text-black flex justify-center">
-        <div class="flex flex-row w-[100rem] h-[60rem] shadow-xl bg-white rounded-lg mt-10">
+        <div class="flex flex-row w-[100rem] h-[60rem] shadow-xl bg-white rounded-lg">
             <div class="flex flex-col w-[15rem] h-full space-y-4 p-4 bg-gray-300 rounded-l-lg">
                 <div class="flex flex-row space-x-2">
                     <img src="../assets/Manuel.jpg"
@@ -172,15 +172,17 @@ let open = ref("Spiele");
                         <p class="text-gray-600">Benutzer</p>
                     </div>
                 </div>
-                <button
-                    :class="{ 'flex w-[200px] border border-black bg-white hover:bg-gray-200 space-x-4': true, 'bg-slate-300 hover:bg-slate-300': open === 'Spiele' }"
-                    @click="open = 'Spiele'">
+                <button :class="{
+                    'flex w-[200px] border border-black hover:bg-gray-500 font-semibold bg-gray-600 text-white space-x-4': true,
+                    'bg-gray-900 hover:bg-gray-900': open === 'Spiele'
+                }" @click="open = 'Spiele'">
                     <Icon icon="streamline:controller-1-solid" class="text-2xl ml-2" />
                     <p class="w-full text-left">Meine Spiele</p>
                 </button>
-                <button
-                    :class="{ 'flex w-[200px] border border-black bg-white hover:bg-gray-200 space-x-4': true, 'bg-slate-300 hover:bg-slate-300': open === 'Einstellungen' }"
-                    @click="open = 'Einstellungen'">
+                <button :class="{
+                    'flex w-[200px] border border-black hover:bg-gray-500 font-semibold bg-gray-600 text-white space-x-4': true,
+                    'bg-gray-900 hover:bg-gray-900': open === 'Einstellungen'
+                }" @click="open = 'Einstellungen'">
                     <Icon icon="mdi:gear" class="text-2xl ml-2" />
                     <p class="w-full text-left">Einstellungen</p>
                 </button>
