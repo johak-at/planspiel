@@ -107,45 +107,48 @@ function setCurrentGame(id) {
             </a>
  -->
 
-  <div class="content min-h-[100vh] text-black flex items-center justify-center">
-    <div class="card w-[40rem] shadow-xl bg-white mb-20">
+  <div class="content h-[100vh] text-black flex justify-center">
+    <div class="card w-[40rem] h-fit shadow-xl bg-white mt-14">
       <div class="card-body space-y-2">
         <h2 class="card-title">Überblick</h2>
-        <ul class="menu" v-for="(game, index) in filteredGames" :key="game.id">
-          <div class="flex flex-col space-y-2 border border-black p-2 rounded-lg">
-            <div class="flex flex-row space-x-2">
-              <p class="w-6 border border-black rounded-full text-center">{{ index + 1 }}</p>
-              <h1 class="w-full">{{ game.name }}</h1>
-            </div>
-
-            <div class="flex flex-col">
-              <h1 class="text-center">Aufgaben erledigt: {{game.round}}/12</h1>
-              <progress class="progress w-full" :value="game.round" max="12"></progress>
-            </div>
-
-            <div class="flex flex-col space-y-2">
-              <a class="rounded-lg py-[2px] w-[150px] text-center hover:bg-gray-700 font-bold bg-black text-white"
-                @click="setCurrentGame(game.id)" :href="'/games/' + game.id">
-                <p>Aufgaben ansehen</p>
-              </a>
+        <div class="h-[41rem] flex flex-col space-y-2 overflow-auto">
+          <ul class="menu" v-for="(game, index) in filteredGames" :key="game.id">
+            <div class="flex flex-col space-y-2 border border-black p-2 rounded-lg">
               <div class="flex flex-row space-x-2">
-                <h1>Spielstand:</h1>
-                <p>{{NoteText}}</p>
+                <p class="w-6 border border-black rounded-full text-center">{{ index + 1 }}</p>
+                <h1 class="w-full">{{ game.name }}</h1>
               </div>
-              <div class="flex flex-row space-x-2">
-                <h1>Spieldauer:</h1>
-                <p>01:21:53</p>
-              </div>
-            </div>
 
-            <div class="flex justify-end">
-              <button class="rounded-lg h-6 w-20 hover:bg-gray-700 font-bold bg-black text-white"
-                @click="() => deleteGame(game.id)">
-                Löschen
-              </button>
+              <div class="flex flex-col">
+                <h1 class="text-center">Aufgaben erledigt: {{ game.round }}/12</h1>
+                <progress class="progress w-full" :value="game.round" max="12"></progress>
+              </div>
+
+              <div class="flex flex-col space-y-2">
+                <a class="rounded-lg py-[2px] w-[150px] text-center hover:bg-gray-700 font-bold bg-black text-white"
+                  @click="setCurrentGame(game.id)" :href="'/games/' + game.id">
+                  <p>Aufgaben ansehen</p>
+                </a>
+                <div class="flex flex-row space-x-2">
+                  <h1>Spielstand:</h1>
+                  <p>{{ NoteText }}</p>
+                </div>
+                <div class="flex flex-row space-x-2">
+                  <h1>Spieldauer:</h1>
+                  <p>01:21:53</p>
+                </div>
+              </div>
+
+              <div class="flex justify-end">
+                <button class="rounded-lg h-6 w-20 hover:bg-gray-700 font-bold bg-black text-white"
+                  @click="() => deleteGame(game.id)">
+                  Löschen
+                </button>
+              </div>
             </div>
-          </div>
-        </ul>
+          </ul>
+        </div>
+
         <button class="btn w-[190px] hover:bg-gray-700 font-bold bg-black text-white" onclick="my_modal_1.showModal()">
           Erstelle neues Spiel
         </button>

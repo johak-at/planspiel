@@ -7,7 +7,6 @@ import logo from "~/assets/Logo.png";
 
 const navItems = [
     { name: "Spiele", link: "/" },
-    { name: "Einstellungen", link: "/settings" },
     { name: "Hilfe", link: "/help" },
     { name: "Über Uns", link: "/aboutus" },
     { name: "Profil", link: "/profile" },
@@ -19,7 +18,7 @@ const navItems = [
     <div class="flex flex-wrap justify-between bg-white py-2 px-2 shadow-md space-y-2">
         <!-- Logo section -->
         <div class="flex items-center gap-3 w-full md:w-auto">
-            <img id="logoPicture" :src="logo" alt="Logo" class="rounded-lg w-12 sm:w-16 md:w-20 bg-white" />
+            <a href="/"><img id="logoPicture" :src="logo" alt="Logo" class="rounded-lg w-12 sm:w-16 md:w-20 bg-white" /></a>
             <div class="flex flex-col bg-white">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl text-black">Unternehmensplanspiel</h1>
                 <p class="text-sm sm:text-base md:text-lg text-black">Deine Wirtschaftssimulation!</p>
