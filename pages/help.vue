@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[100vh]"></div>
+  <div class="h-[85vh] min-h-[55rem]"></div>
 </template>
 
 <script>

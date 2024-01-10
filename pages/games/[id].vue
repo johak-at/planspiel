@@ -13,7 +13,8 @@
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-row">
       <div class="w-[10%]">
-        <label for="my-drawer" class="btn drawer-button hover:bg-gray-700 font-bold bg-black text-white">Slide
+        <label for="my-drawer"
+          class="drawer-button hover:bg-gray-700 font-bold bg-black text-white p-3 rounded-3xl ml-2">Slide
           öffnen</label>
       </div>
       <Content class="w-[80%]" />
@@ -22,7 +23,7 @@
     <div class="drawer-side z-50">
       <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
       <ul class="menu p-4 w-[50rem] min-h-full bg-slate-100">
-        <sidebarContent class="text-black" />
+        <sidebar class="text-black" />
       </ul>
     </div>
   </div>

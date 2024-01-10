@@ -161,9 +161,9 @@ let open = ref("Spiele");
 </script>
 
 <template>
-    <main class="min-h-[80rem] h-screen text-black flex justify-center">
-        <div class="flex flex-row w-[100rem] h-[60rem] shadow-xl bg-white rounded-lg">
-            <div class="flex flex-col w-[15rem] h-full space-y-4 p-4 bg-gray-300 rounded-l-lg">
+    <main class="h-[85vh] min-h-[65rem] text-black flex justify-center items-center">
+        <div class="flex flex-row w-[90rem] h-[60rem] shadow-xl bg-white rounded-3xl">
+            <div class="flex flex-col w-[15rem] h-full space-y-4 p-4 bg-gray-300 rounded-l-3xl">
                 <div class="flex flex-row space-x-2">
                     <img src="../assets/Manuel.jpg"
                         class="w-[50px] h-[50px] object-cover object-center rounded-full border-2 border-black" />
@@ -173,15 +173,15 @@ let open = ref("Spiele");
                     </div>
                 </div>
                 <button :class="{
-                    'flex w-[200px] border border-black hover:bg-gray-500 font-semibold bg-gray-600 text-white space-x-4': true,
-                    'bg-gray-900 hover:bg-gray-900': open === 'Spiele'
+                    'flex w-[200px] border border-black hover:bg-gray-200 font-semibold bg-white space-x-4': true,
+                    'bg-zinc-300 hover:bg-zinc-300': open === 'Spiele'
                 }" @click="open = 'Spiele'">
                     <Icon icon="streamline:controller-1-solid" class="text-2xl ml-2" />
                     <p class="w-full text-left">Meine Spiele</p>
                 </button>
                 <button :class="{
-                    'flex w-[200px] border border-black hover:bg-gray-500 font-semibold bg-gray-600 text-white space-x-4': true,
-                    'bg-gray-900 hover:bg-gray-900': open === 'Einstellungen'
+                    'flex w-[200px] border border-black hover:bg-gray-200 font-semibold bg-white space-x-4': true,
+                    'bg-zinc-300 hover:bg-zinc-300': open === 'Einstellungen'
                 }" @click="open = 'Einstellungen'">
                     <Icon icon="mdi:gear" class="text-2xl ml-2" />
                     <p class="w-full text-left">Einstellungen</p>

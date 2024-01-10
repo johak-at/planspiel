@@ -19,7 +19,7 @@ async function logout() {
 </script>
 
 <template>
-    <main class="h-[100vh] text-black flex items-center justify-center">
+    <main class="h-[85vh] min-h-[55rem] text-black flex items-center justify-center">
         <div class="card flex flex-col w-[40rem] shadow-xl bg-white">
             <div class="card-body">
                 <h1 class="card-title">E-Mail:</h1>

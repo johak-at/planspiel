@@ -36,7 +36,7 @@ onMounted(async () => {
     <div class="drawer-side z-50">
       <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
       <ul class="menu p-4 w-[50rem] min-h-full bg-slate-100">
-        <sidebarContent class="text-black" />
+        <sidebar class="text-black" />
       </ul>
     </div>
   </div>

@@ -11,7 +11,7 @@ import logo from "~/assets/Logo-mit-Text.png";
 
 
 <template>
-  <div class="flex flex-col bg-white items-center">
+  <div class="flex flex-col bg-white items-center mt-[200px]">
 
     <div class="flex flex-row w-full p-2">
       <img :src="logo" alt="Logo" class="w-[400px]">

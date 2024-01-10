@@ -85,7 +85,7 @@ async function changeDay() {
   store.updateGameDay(currentGameInfo.value.id, newDay);
 }
 
-function test () {
+function test() {
   console.log(totalRoundCount.value);
 }
 
@@ -122,7 +122,7 @@ async function test2() {
 
 
 <template>
-  <div class="flex flex-col items-center h-[100vh] justify-center space-y-3">
+  <div class="flex flex-col items-center h-[85vh] min-h-[55rem] justify-center space-y-3">
     <div v-if="showEndResults == false" class="flex flex-col items-center justify-center space-y-3">
       <div v-if="showResults == false">
         <optionsOne @callParentFunction="test2" v-if="day === 1"></optionsOne>
@@ -140,15 +140,15 @@ async function test2() {
         </div>
       </div>
 
-      <button v-if="showResults == false && roundHere===3" class="btn hover:bg-gray-700 font-bold bg-black text-white"
+      <button v-if="showResults == false && roundHere === 3" class="btn hover:bg-gray-700 font-bold bg-black text-white"
         @click="showResults = true">Weiter1</button>
-        <p>{{ roundHere }}</p>
-        
-        
-        <button v-if="showResults && day <= 3" class="btn hover:bg-gray-700 font-bold bg-black text-white"
-  @click="changeDay(); showResults = false">
-  Nächste Fragen
-</button>
+      <p>{{ roundHere }}</p>
+
+
+      <button v-if="showResults && day <= 3" class="btn hover:bg-gray-700 font-bold bg-black text-white"
+        @click="changeDay(); showResults = false">
+        Nächste Fragen
+      </button>
     </div>
 
 

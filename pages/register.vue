@@ -65,7 +65,7 @@ let showPassword = ref(false);
 </script>
 
 <template>
-  <div class="h-[100vh] flex relative">
+  <div class="h-[85vh] min-h-[55rem] flex relative">
     <div class="flex-1 flex items-center justify-center">
       <div class="absolute w-[60rem] z-0">
         <h1 class="text-black font-bold text-center text-4xl custom-font">Simulator zum Unternehmer!</h1>
@@ -113,7 +113,7 @@ let showPassword = ref(false);
           </button>
         </div>
 
-        <button type="submit" class="text-white font-semibold py-2 rounded-md bg-black hover:bg-gray-700 w-[6rem]">
+        <button type="submit" class="text-white font-semibold p-1 rounded-full bg-black hover:bg-gray-700 w-[7rem]">
           Registrieren
         </button>
         <!-- make a text in the middle saying Already have an account? Login -->
