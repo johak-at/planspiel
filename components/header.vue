@@ -15,34 +15,23 @@ const navItems = [
 </script>
 
 <template>
-    <div class="flex flex-wrap justify-between bg-white py-2 px-2 shadow-md space-y-2 mb-5">
+    <div class="flex flex-col md:flex-row min-h-[100px] space-y-2 md:space-y-0 bg-white shadow-md mb-5 p-2 justify-between">
         <!-- Logo section -->
-        <div class="flex items-center gap-3 w-full md:w-auto">
-            <a href="/"><img id="logoPicture" :src="logo" alt="Logo" class="rounded-lg w-12 sm:w-16 md:w-20 bg-white" /></a>
-            <div class="flex flex-col bg-white">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl text-black">Unternehmensplanspiel</h1>
-                <p class="text-sm sm:text-base md:text-lg text-black">Deine Wirtschaftssimulation!</p>
+        <div class="flex w-fit h-full border border-red-500">
+            <div class="flex items-center space-x-3">
+                <a href="/"><img id="logoPicture" :src="logo" alt="Logo" class="rounded-lg w-[80px] bg-white" /></a>
+                <div class="flex flex-col bg-white">
+                    <h1 class="text-5xl text-black">Unternehmensplanspiel</h1>
+                    <p class="text-lg text-black">Deine Wirtschaftssimulation!</p>
+                </div>
             </div>
         </div>
-        <!-- Dropdown menu -->
-        <div class="md:hidden dropdown dropdown-bottom">
-            <div tabindex="0" role="button" class="m-1"><svg viewBox="0 0 20 20" fill="currentColor" class="menu w-10 h-10">
-                    <path fill-rule="evenodd"
-                        d="M2 4.5A1.5 1.5 0 013.5 3h13a1.5 1.5 0 010 3h-13A1.5 1.5 0 012 4.5zm0 6A1.5 1.5 0 013.5 9h13a1.5 1.5 0 010 3h-13A1.5 1.5 0 012 10.5zm1.5 6a1.5 1.5 0 000 3h13a1.5 1.5 0 000-3h-13z"
-                        clip-rule="evenodd" />
-                </svg></div>
-            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow-md bg-white rounded-box w-52">
-                <a v-for="item in navItems" :key="item.name" :href="item.link"
-                    class="hover:bg-gray-200 transition-all duration-300 ease-in-out font-bold py-2 px-9 text-black text-center rounded">
-                    {{ item.name }}
-                </a>
-            </ul>
-        </div>
+
         <!-- Navigation -->
-        <div :class="{ 'hidden': !isNavOpen, 'md:flex': true }" class="w-full md:w-auto">
-            <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 bg-white">
+        <div class="flex w-fit h-full items-center justify-end border border-red-500 mr-0 md:mr-5">
+            <div class="flex h-fit space-x-1 md:space-x-6 bg-white">
                 <a v-for="item in navItems" :key="item.name" :href="item.link"
-                    class="hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out font-bold bg-black py-2 px-9 text-white text-center rounded shadow">
+                    class="hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out font-bold bg-black p-2 w-[100px] md:w-[200px] text-white text-center rounded-xl shadow">
                     {{ item.name }}
                 </a>
             </div>

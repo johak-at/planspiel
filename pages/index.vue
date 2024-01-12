@@ -158,11 +158,11 @@ function setCurrentGame(id) {
         </div>
 
         <div class="modal-action flex flex-row justify-between">
-          <button class="btn hover:bg-gray-700 font-bold bg-black text-white" @click="insertGame">
+          <button class="w-[150px] hover:bg-gray-700 font-bold bg-black text-white p-1 rounded-full" @click="insertGame">
             Spiel Erstellen
           </button>
           <form method="dialog">
-            <button class="btn  hover:bg-gray-700 font-bold bg-black text-white">
+            <button class="w-[100px] hover:bg-gray-700 font-bold bg-black text-white p-1 rounded-full">
               Schließen
             </button>
           </form>

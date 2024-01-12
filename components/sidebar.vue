@@ -74,13 +74,13 @@ let activeTable = ref("bilanz");
     -->
     <div class="flex flex-row space-x-3">
       <button :class="{
-        'btn w-[150px] hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white': true,
+        'w-[150px] hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white rounded-full p-3': true,
         'bg-gray-900 hover:bg-gray-900': activeTable === 'bilanz',
       }" @click="activeTable = 'bilanz'">
         Bilanz
       </button>
       <button :class="{
-        'btn w-[150px] hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white': true,
+        'w-[150px] hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white rounded-full p-3': true,
         'bg-gray-900 hover:bg-gray-900': activeTable === 'guv',
       }" @click="activeTable = 'guv'">
         GuV
@@ -96,19 +96,19 @@ let activeTable = ref("bilanz");
     </div>
     <div class="flex flex-row space-x-3">
       <button @click="changeYear(2)" :class="{
-        'btn hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white': true,
+        'hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white rounded-full p-3': true,
         'bg-gray-900 hover:bg-gray-900': currentYear === 2,
       }">
         2019
       </button>
       <button @click="changeYear(1)" :class="{
-        'btn hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white': true,
+        'hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white rounded-full p-3': true,
         'bg-gray-900 hover:bg-gray-900': currentYear === 1,
       }">
         2020
       </button>
       <button @click="changeYear(0)" :class="{
-        'btn hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white': true,
+        'hover:bg-gray-500 font-bold bg-gray-600 px-9 text-white rounded-full p-3': true,
         'bg-gray-900 hover:bg-gray-900': currentYear === 0,
       }">
         2021

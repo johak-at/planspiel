@@ -12,9 +12,9 @@
   <div class="drawer">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-row">
-      <div class="w-[10%]">
+      <div class="w-[10%] min-w-[150px]">
         <label for="my-drawer"
-          class="drawer-button hover:bg-gray-700 font-bold bg-black text-white p-3 rounded-3xl ml-2">Slide
+          class="drawer-button w-[200px] hover:bg-gray-700 font-bold bg-black text-white p-3 rounded-3xl ml-2">Slide
           öffnen</label>
       </div>
       <Content class="w-[80%]" />

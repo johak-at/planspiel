@@ -33,7 +33,7 @@ onMounted(async () => {
   } else {
     console.error('Games array is null or empty.');
   }
-  
+
 });
 
 let currentGamesName = computed(() => currentGameInfo.value ? currentGameInfo.value.name : null);
@@ -44,26 +44,25 @@ let currentGamesDay = computed(() => currentGameInfo.value ? currentGameInfo.val
 </script>
 
 <template>
-    <div>
-        <div class="text-black">
-            <h1 class="text-xl font-bold">Derzeitiges Spiel:</h1>
-            <p>{{ currentGamesName }}</p>
-            <h1 class="text-xl font-bold">Derzeitige Runde:</h1>
-            <p>{{ currentGamesDay }}</p>
-            <h1 class="text-xl font-bold">Note:</h1>
-            <p>{{ NoteText }}</p>
-        </div>
-
-        <div class="mt-4 p-4 bg-gray-300 rounded-lg shadow-lg w-28 flex flex-col items-center">
-            <div
-                :class="{ 'w-20 h-20 mb-2 rounded-full bg-green-600': true, 'bg-green-950': NoteText !== 'Gut!' && NoteText !== 'Sehr Gut!' }">
-            </div>
-            <div
-                :class="{ 'w-20 h-20 mb-2 rounded-full bg-yellow-500': true, 'bg-yellow-950': NoteText !== 'Befriedigend!' }">
-            </div>
-            <div
-                :class="{ 'w-20 h-20 rounded-full bg-red-600': true, 'bg-red-950': NoteText !== 'Genügend!' && NoteText !== 'Nicht Genügend!' }">
-            </div>
-        </div>
+  <div>
+    <div class="text-black">
+      <h1 class="text-xl font-bold">Derzeitiges Spiel:</h1>
+      <p>{{ currentGamesName }}</p>
+      <h1 class="text-xl font-bold">Derzeitige Runde:</h1>
+      <p>{{ currentGamesDay }}</p>
+      <h1 class="text-xl font-bold">Note:</h1>
+      <p>{{ NoteText }}</p>
     </div>
+
+    <div class="mt-4 p-4 bg-black rounded-lg shadow-lg w-28 flex flex-col items-center">
+      <div
+        :class="{ 'w-20 h-20 mb-2 rounded-full bg-green-600': true, 'bg-neutral-600': NoteText !== 'Gut!' && NoteText !== 'Sehr Gut!' }">
+      </div>
+      <div :class="{ 'w-20 h-20 mb-2 rounded-full bg-yellow-500': true, 'bg-neutral-600': NoteText !== 'Befriedigend!' }">
+      </div>
+      <div
+        :class="{ 'w-20 h-20 rounded-full bg-red-600': true, 'bg-neutral-600': NoteText !== 'Genügend!' && NoteText !== 'Nicht Genügend!' }">
+      </div>
+    </div>
+  </div>
 </template>
