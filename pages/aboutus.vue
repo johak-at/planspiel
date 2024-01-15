@@ -5,15 +5,14 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="text-black flex justify-center p-8">
-    <div class="w-[60%] flex flex-col space-y-8 text-lg">
+  <div class="text-black flex justify-center py-8 px-16">
+    <div class="w-full max-w-[80rem] flex flex-col space-y-8 text-lg">
       <h1 class="text-4xl font-bold text-center mb-8">Über Uns - Das Team hinter dem Unternehmensplanspiel</h1>
       <h2 class="text-3xl font-bold">Einleitung:</h2>
       <p class="text-lg">
-        Wir sind vier engagierte Schüler der HAK-St. Johann, die sich einer besonderen Herausforderung stellen: die
-        Entwicklung eines Unternehmensplanspiels. Dieses Projekt ist unsere
-        Diplomarbeit, die wir im September 2023 begonnen haben und voraussichtlich im März des nächsten Jahres abschließen
-        werden.
+        Wir, vier engagierte Schüler der HAK-St. Johann, haben uns einer besonderen Herausforderung gestellt: die
+        Entwicklung eines innovativen Unternehmensplanspiels für unseren Auftraggeber Herrn Wallhaimer. Dieses Projekt,
+        unsere Diplomarbeit, begann im September 2023 und fand seinen Abschluss im März 2024.
       </p>
 
       <h2 class="text-3xl font-bold">Unser Team:</h2>
@@ -41,13 +40,13 @@ definePageMeta({
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Zuständigkeit:</h3>
-            <p>Designentwurf/Tutorialvideos</p>
+            <p>Designentwurf/Tutorialvideos, GTI foan und am Kindergoatn chün</p>
           </div>
         </div>
       </div>
 
       <div class="flex flex-row space-x-8">
-        <img src="../assets/Manuel.jpg" class="w-[250px] h-[300px] object-cover object-center" />
+        <img src="../assets/Daniel.jpg" class="w-[250px] h-[300px] object-cover object-center" />
         <div class="flex flex-col space-y-6">
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Name:</h3>
@@ -63,13 +62,13 @@ definePageMeta({
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Zuständigkeit:</h3>
-            <p>Designerstellung und unnötige Stunden aufschreiben</p>
+            <p>Designerstellung und nicht unnötige Stunden aufschreiben</p>
           </div>
         </div>
       </div>
 
       <div class="flex flex-row space-x-8">
-        <img src="../assets/Manuel.jpg" class="w-[250px] h-[300px] object-cover object-center" />
+        <img src="../assets/Gergö.jpg" class="w-[250px] h-[300px] object-cover object-center" />
         <div class="flex flex-col space-y-6">
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Name:</h3>
@@ -91,7 +90,7 @@ definePageMeta({
       </div>
 
       <div class="flex flex-row space-x-8">
-        <img src="../assets/Manuel.jpg" class="w-[250px] h-[300px] object-cover object-center" />
+        <img src="../assets/Josef.jpg" class="w-[250px] h-[300px] object-cover object-center" />
         <div class="flex flex-col space-y-6">
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Name:</h3>
@@ -99,15 +98,15 @@ definePageMeta({
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Geburtsdatum:</h3>
-            <p></p>
+            <p>26.12.2004</p>
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">E-Mail:</h3>
-            <p></p>
+            <p>saller.josef@johak.at</p>
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Zuständigkeit:</h3>
-            <p>GTI foahn und am Kindergoatn chühn</p>
+            <p>Datenbank</p>
           </div>
         </div>
       </div>
@@ -159,6 +158,79 @@ definePageMeta({
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">E-Mail:</h3>
             <p>ellmer.monika@johak.at</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="text-3xl font-bold">Unterstüzung durch Mitschüler:</h2>
+      <p class="text-lg">
+        Darüber hinaus waren wir Teil eines größeren Teams, zu dem auch Dorarta, Julia und Michaela aus unserer
+        Parallelklasse gehörten. Sie waren maßgeblich an der Materialbeschaffung, der Berechnung von Ausgangsdaten und der
+        Entwicklung der Spielzüge beteiligt.
+      </p>
+
+      <div class="flex flex-row space-x-8">
+        <img src="../assets/Manuel.jpg" class="w-[250px] h-[300px] object-cover object-center" />
+        <div class="flex flex-col space-y-6">
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">Name:</h3>
+            <p>Dorata Salami</p>
+          </div>
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">Geburtsdatum:</h3>
+            <p></p>
+          </div>
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">E-Mail:</h3>
+            <p>islami.dorata@johak.at</p>
+          </div>
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">Zuständigkeit:</h3>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row space-x-8">
+        <img src="../assets/Manuel.jpg" class="w-[250px] h-[300px] object-cover object-center" />
+        <div class="flex flex-col space-y-6">
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">Name:</h3>
+            <p>Julia Lechner</p>
+          </div>
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">Geburtsdatum:</h3>
+            <p></p>
+          </div>
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">E-Mail:</h3>
+            <p>lechner.julia@johak.at</p>
+          </div>
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">Zuständigkeit:</h3>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row space-x-8">
+        <img src="../assets/Manuel.jpg" class="w-[250px] h-[300px] object-cover object-center" />
+        <div class="flex flex-col space-y-6">
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">Name:</h3>
+            <p>Michaela Frommer</p>
+          </div>
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">Geburtsdatum:</h3>
+            <p></p>
+          </div>
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">E-Mail:</h3>
+            <p>frommer.michaela@johak.at</p>
+          </div>
+          <div class="flex flex-row space-x-2">
+            <h3 class="font-bold">Zuständigkeit:</h3>
+            <p></p>
           </div>
         </div>
       </div>

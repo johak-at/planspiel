@@ -15,9 +15,9 @@ const navItems = [
 </script>
 
 <template>
-    <div class="flex flex-col md:flex-row min-h-[100px] space-y-2 md:space-y-0 bg-white shadow-md mb-5 p-2 justify-between">
+    <div class="flex flex-wrap flex-row min-h-[100px] gap-2 bg-white shadow-md mb-5 p-2 justify-between">
         <!-- Logo section -->
-        <div class="flex w-fit h-full border border-red-500">
+        <div class="flex w-fit h-full">
             <div class="flex items-center space-x-3">
                 <a href="/"><img id="logoPicture" :src="logo" alt="Logo" class="rounded-lg w-[80px] bg-white" /></a>
                 <div class="flex flex-col bg-white">
@@ -28,10 +28,10 @@ const navItems = [
         </div>
 
         <!-- Navigation -->
-        <div class="flex w-fit h-full items-center justify-end border border-red-500 mr-0 md:mr-5">
-            <div class="flex h-fit space-x-1 md:space-x-6 bg-white">
+        <div class="flex w-fit h-full items-center justify-end">
+            <div class="flex h-fit space-x-6 bg-white">
                 <a v-for="item in navItems" :key="item.name" :href="item.link"
-                    class="hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out font-bold bg-black p-2 w-[100px] md:w-[200px] text-white text-center rounded-xl shadow">
+                    class="hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out font-bold bg-black p-2 w-[130px] text-white text-center rounded-xl shadow">
                     {{ item.name }}
                 </a>
             </div>
