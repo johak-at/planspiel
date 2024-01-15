@@ -149,7 +149,7 @@ async function test2() {
         @click="changeDay(); showResults = false">
         Nächste Fragen
       </button>
-    </div>
+    </div> 
 
 
     <div v-if="showEndResults" class="card w-[40rem] shadow-xl bg-white">
