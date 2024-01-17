@@ -18,6 +18,7 @@ export const useStore = defineStore(
     const noten3 = ref(0);
     const noten4 = ref(0);
     const NoteText = ref("");
+    const profiles = ref(null);
 
     let cashFlow = ref(0);
     let workingCapital = ref(0);
@@ -287,9 +288,11 @@ export const useStore = defineStore(
       const res = await supabase.from("leistungsbudget_view").select("*");
       Leistungsbudget.value = res.data;
     }
+
     return {
       name,
       bilanzen,
+      profiles,
       eigenKapital,
       nextRoundUpload,
       roundAt,

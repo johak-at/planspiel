@@ -26,5 +26,5 @@ onMounted(onMountedHandler);
 
 </script>
 <template>
-    <SidebarContent></SidebarContent>
+  <SidebarContent></SidebarContent>
 </template>

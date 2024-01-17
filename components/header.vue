@@ -15,7 +15,7 @@ const navItems = [
 </script>
 
 <template>
-    <div class="flex flex-wrap flex-row min-h-[100px] gap-2 bg-white shadow-md mb-5 p-2 justify-between">
+    <div class="flex flex-wrap flex-row min-h-[100px] gap-2 bg-white shadow-md mb-5 p-2 justify-between pr-5">
         <!-- Logo section -->
         <div class="flex w-fit h-full">
             <div class="flex items-center space-x-3">
