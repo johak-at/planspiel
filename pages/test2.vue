@@ -17,14 +17,34 @@ async function loadProfiles() {
 }
 loadProfiles();
 
+let klasseAuswahl = ref(null);
 
-
-klasse.value = profiles.value[0].klasse;
+async function selectKlasse() {
+    for (let i = 0; i < profiles.value.length; i++) {
+        if (profiles.value[i].id == user.value.id) {
+            klasse.value = profiles.value[i].klasse;
+        }
+    }
+}
+selectKlasse();
 console.log(klasse.value);
+
+async function updateKlasse() {
+    const { data, error } = await supabase
+        .from("profiles")
+        .update({ klasse: klasseAuswahl.value })
+        .eq("id", user.value.id);
+    console.log(data);
+    console.log(error);
+}
 </script>
 
 <template>
-    <div class="h-[85vh] min-h-[65rem] text-black flex justify-center items-center">
-        {{ klasse }}
+    <div class="h-[85vh] min-h-[65rem] text-black flex flex-col justify-center items-center gap-5">
+        <div>
+            <h1 class="text-4xl font-bold">Willkommen in der Klasse {{ klasse }}</h1>
+        </div>
+        <input type="text" v-model="klasseAuswahl" class="bg-transparent border border-black" />
+        <button @click="updateKlasse" class="bg-black text-white p-2 rounded-md">Klasse ändern</button>
     </div>
 </template>

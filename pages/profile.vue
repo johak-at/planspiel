@@ -1,33 +1,17 @@
 <script setup>
 import { Icon } from "@iconify/vue"
+import { useStore } from "~/store/store";
+import { storeToRefs } from "pinia";
+
 definePageMeta({
     middleware: ['auth'],
 });
+
 const user = useSupabaseUser();
 const client = useSupabaseAuthClient();
 const router = useRouter();
-
-console.log(user.value);
-async function logout() {
-    try {
-        const { error } = await client.auth.signOut();
-        if (error) throw error;
-        router.push('/login');
-    } catch (error) {
-        console.log(error.message);
-    }
-}
-
-
-
-
-
-//sochn vom Daniel ab hier
-const username = ref("t.manuel06");
-const klasse = ref("5 BHK");
-const email = ref("terstena.manuel@johak.at");
-const password = ref("123456789");
-const passwordHidden = ref(password.value.replace(/./g, "*"));
+const store = useStore();
+const supabase = useSupabaseClient();
 
 let SpieleTest = ref([
     {
@@ -57,116 +41,9 @@ let SpieleTest = ref([
             },
         ],
     },
-    {
-        id: 2,
-        name: "Spiel 2",
-        status: "vollendet",
-        Schüler: [
-            {
-                id: 1,
-                name: "Manuel",
-
-            },
-            {
-                id: 2,
-                name: "Manuel",
-
-            },
-            {
-                id: 3,
-                name: "Manuel",
-
-            },
-            {
-                id: 4,
-                name: "Manuel",
-
-            },
-        ],
-    },
-    {
-        id: 3,
-        name: "Spiel 3",
-        status: "vollendet",
-        Schüler: [
-            {
-                id: 1,
-                name: "Manuel",
-
-            },
-            {
-                id: 2,
-                name: "Manuel",
-
-            },
-            {
-                id: 3,
-                name: "Manuel",
-
-            },
-            {
-                id: 4,
-                name: "Manuel",
-
-            },
-        ],
-    },
-    {
-        id: 4,
-        name: "Spiel 4",
-        status: "nicht vollendet",
-        Schüler: [
-            {
-                id: 1,
-                name: "Manuel",
-
-            },
-            {
-                id: 2,
-                name: "Manuel",
-
-            },
-            {
-                id: 3,
-                name: "Manuel",
-
-            },
-            {
-                id: 4,
-                name: "Manuel",
-
-            },
-        ],
-    },
-    {
-        id: 5,
-        name: "Spiel 5",
-        status: "vollendet",
-        Schüler: [
-            {
-                id: 1,
-                name: "Manuel",
-
-            },
-            {
-                id: 2,
-                name: "Manuel",
-
-            },
-            {
-                id: 3,
-                name: "Manuel",
-
-            },
-            {
-                id: 4,
-                name: "Manuel",
-
-            },
-        ],
-    },
 
 ])
+
 let vollendeteSpiele = ref(SpieleTest.value.filter((spiel) => spiel.status === "vollendet"));
 let nichtVollendeteSpiele = ref(SpieleTest.value.filter((spiel) => spiel.status === "nicht vollendet"));
 let vollendetCounter = ref(vollendeteSpiele.value.length);
@@ -176,19 +53,81 @@ let changeEmail = ref(false);
 let changeKlasse = ref(false);
 let changePassword = ref(false);
 
-let open = ref("Spiele");
-//sochn vom Daniel bis hier
+let open = ref("Einstellungen");
+
+let newUsername = ref(null);
+let newEmail = ref(null);
+let newKlasse = ref(null);
+let newPassword = ref(null);
+
+console.log(user.value);
+async function logout() {
+    try {
+        const { error } = await client.auth.signOut();
+        if (error) throw error;
+        router.push('/login');
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+const profiles = storeToRefs(store).profiles;
+let profileInfo = ref(null);
+async function loadProfiles() {
+    const res = await supabase.from("profiles_view").select("*");
+    profiles.value = res.data;
+}
+loadProfiles();
+
+async function selectProfileInfo() {
+    for (let i = 0; i < profiles.value.length; i++) {
+        if (profiles.value[i].id == user.value.id) {
+            profileInfo.value = profiles.value[i];
+        }
+    }
+}
+selectProfileInfo();
+
+async function updateUsername() {
+    const { data, error } = await supabase
+        .from("profiles")
+        .update({ username: newUsername.value })
+        .eq("id", user.value.id);
+    console.log(data);
+    console.log(error);
+    changeUsername.value = false;
+    selectProfileInfo();
+}
+
+async function updateKlasse() {
+    const { data, error } = await supabase
+        .from("profiles")
+        .update({ klasse: newKlasse.value })
+        .eq("id", user.value.id);
+    console.log(data);
+    console.log(error);
+    changeKlasse.value = false;
+    selectProfileInfo();
+}
+
+async function updateEmail() {
+    changeEmail.value = false;
+}
+
+async function updatePassword() {
+    changePassword.value = false;
+}
 </script>
 
 <template>
     <main class="h-[85vh] min-h-[65rem] text-black flex justify-center items-center">
-        <div class="flex flex-row w-[90rem] h-[60rem] shadow-xl bg-white rounded-3xl">
+        <div class="flex flex-row w-[98%] max-w-[90rem] h-[60rem] shadow-xl bg-white rounded-3xl">
             <div class="flex flex-col w-[15rem] h-full space-y-4 p-4 bg-gray-300 rounded-l-3xl">
                 <div class="flex flex-row space-x-2">
-                    <img src="../assets/Manuel.jpg"
+                    <img :src="profileInfo.avatar_url"
                         class="w-[50px] h-[50px] object-cover object-center rounded-full border-2 border-black" />
                     <div class="flex flex-col text-center">
-                        <h1 class="font-semibold">{{ username }}</h1>
+                        <h1 class="font-semibold">{{ profileInfo.username }}</h1>
                         <p class="text-gray-600">Benutzer</p>
                     </div>
                 </div>
@@ -215,7 +154,7 @@ let open = ref("Spiele");
                 <div class="flex flex-row h-[25%] space-x-6">
                     <div
                         class="flex flex-col w-[25%] h-full border border-black rounded-3xl items-center justify-center space-y-14">
-                        <h1 class="text-xl">Vollendete Spiele</h1>
+                        <h1 class="text-xl text-center">Vollendete Spiele</h1>
                         <h1 class="text-3xl text-blue-500 font-semibold">{{ vollendetCounter }}</h1>
                     </div>
                     <div class="flex w-full h-full border border-black rounded-3xl p-5">
@@ -241,7 +180,7 @@ let open = ref("Spiele");
                 <div class="flex flex-row h-[25%] space-x-6">
                     <div
                         class="flex flex-col w-[25%] h-full border border-black rounded-3xl items-center justify-center space-y-14">
-                        <h1 class="text-xl">Nicht vollendete Spiele</h1>
+                        <h1 class="text-xl text-center">Nicht vollendete Spiele</h1>
                         <h1 class="text-3xl text-blue-500 font-semibold">{{ nichtVollendetCounter }}</h1>
                     </div>
                     <div class="flex w-full h-full border border-black rounded-3xl p-5">
@@ -268,7 +207,7 @@ let open = ref("Spiele");
             </div>
             <div v-if="open === 'Einstellungen'" class="flex flex-col w-[85rem] rounded-r-lg p-8 space-y-6">
                 <div class="flex w-fit space-x-10 items-center mb-20">
-                    <img src="../assets/Manuel.jpg"
+                    <img :src="profileInfo.avatar_url"
                         class="w-[150px] h-[150px] object-cover object-center rounded-full border-2 border-black" />
                     <button
                         class="font-semibold text-xl h-8 w-[220px] bg-gray-200 rounded-full hover:bg-gray-300">Profilbild
@@ -278,9 +217,9 @@ let open = ref("Spiele");
                 <div class="flex border border-black justify-between rounded-lg p-2">
                     <div class="flex items-center">
                         <h1 class="font-semibold text-xl w-[200px]">Benutzername:</h1>
-                        <input v-if="changeUsername" type="text" id="username" name="username"
+                        <input v-if="changeUsername" v-model="newUsername" type="text" id="username" name="username"
                             placeholder="Neuer Benutzername" class="text-xl bg-white text-black" />
-                        <p v-else class="text-xl">{{ username }}</p>
+                        <p v-else class="text-xl">{{ profileInfo.username }}</p>
                     </div>
                     <div class="flex space-x-4">
                         <button v-if="!changeUsername"
@@ -288,15 +227,15 @@ let open = ref("Spiele");
                             @click="changeUsername = true">Ändern</button>
                         <button v-else
                             class="font-semibold text-xl h-8 w-[120px] bg-gray-200 rounded-full hover:bg-gray-300"
-                            @click="changeUsername = false">Speichern</button>
+                            @click="updateUsername">Speichern</button>
                     </div>
                 </div>
 
                 <div class="flex border border-black justify-between rounded-lg p-2">
                     <div class="flex items-center">
                         <h1 class="font-semibold text-xl w-[200px]">E-Mail:</h1>
-                        <input v-if="changeEmail" type="email" id="email" name="email" placeholder="Neue E-Mail"
-                            class="text-xl bg-white text-black" />
+                        <input v-if="changeEmail" v-model="newEmail" type="email" id="email" name="email"
+                            placeholder="Neue E-Mail" class="text-xl bg-white text-black" />
                         <p v-else class="text-xl">{{ user.email }}</p>
                     </div>
                     <div class="flex space-x-4">
@@ -305,16 +244,16 @@ let open = ref("Spiele");
                             @click="changeEmail = true">Ändern</button>
                         <button v-else
                             class="font-semibold text-xl h-8 w-[120px] bg-gray-200 rounded-full hover:bg-gray-300"
-                            @click="changeEmail = false">Speichern</button>
+                            @click="updateEmail">Speichern</button>
                     </div>
                 </div>
 
                 <div class="flex border border-black justify-between rounded-lg p-2">
                     <div class="flex items-center">
                         <h1 class="font-semibold text-xl w-[200px]">Klasse:</h1>
-                        <input v-if="changeKlasse" type="text" id="klasse" name="klasse" placeholder="Neue Klasse"
-                            class="text-xl bg-white text-black" />
-                        <p v-else class="text-xl">{{ klasse }}</p>
+                        <input v-if="changeKlasse" v-model="newKlasse" type="text" id="klasse" name="klasse"
+                            placeholder="Neue Klasse" class="text-xl bg-white text-black" />
+                        <p v-else class="text-xl">{{ profileInfo.klasse }}</p>
                     </div>
                     <div class="flex space-x-4">
                         <button v-if="!changeKlasse"
@@ -322,16 +261,16 @@ let open = ref("Spiele");
                             @click="changeKlasse = true">Ändern</button>
                         <button v-else
                             class="font-semibold text-xl h-8 w-[120px] bg-gray-200 rounded-full hover:bg-gray-300"
-                            @click="changeKlasse = false">Speichern</button>
+                            @click="updateKlasse">Speichern</button>
                     </div>
                 </div>
 
                 <div class="flex border border-black justify-between rounded-lg p-2">
                     <div class="flex items-center">
                         <h1 class="font-semibold text-xl w-[200px]">Passwort:</h1>
-                        <input v-if="changePassword" type="password" id="password" name="password"
+                        <input v-if="changePassword" v-model="newPassword" type="password" id="password" name="password"
                             placeholder="Neues Passwort" class="text-xl bg-white text-black" />
-                        <p v-else class="text-xl">{{ passwordHidden }}</p>
+                        <p v-else class="text-xl"></p>
                     </div>
                     <div class="flex space-x-4">
                         <button v-if="!changePassword"
@@ -339,7 +278,7 @@ let open = ref("Spiele");
                             @click="changePassword = true">Ändern</button>
                         <button v-else
                             class="font-semibold text-xl h-8 w-[120px] bg-gray-200 rounded-full hover:bg-gray-300"
-                            @click="changePassword = false">Speichern</button>
+                            @click="updatePassword">Speichern</button>
                     </div>
                 </div>
             </div>
