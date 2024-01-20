@@ -95,8 +95,9 @@ async function updateUsername() {
         .eq("id", user.value.id);
     console.log(data);
     console.log(error);
+    profileInfo.value.username = newUsername.value;
     changeUsername.value = false;
-    selectProfileInfo();
+    newUsername.value = null;
 }
 
 async function updateKlasse() {
@@ -106,16 +107,19 @@ async function updateKlasse() {
         .eq("id", user.value.id);
     console.log(data);
     console.log(error);
+    profileInfo.value.klasse = newKlasse.value;
     changeKlasse.value = false;
-    selectProfileInfo();
+    newKlasse.value = null;
 }
 
 async function updateEmail() {
     changeEmail.value = false;
+    newEmail.value = null;
 }
 
 async function updatePassword() {
     changePassword.value = false;
+    newPassword.value = null;
 }
 </script>
 
