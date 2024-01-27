@@ -56,12 +56,12 @@ let currentGamesDay = computed(() => currentGameInfo.value ? currentGameInfo.val
 
     <div class="mt-4 p-4 bg-black rounded-lg shadow-lg w-28 flex flex-col items-center">
       <div
-        :class="{ 'w-20 h-20 mb-2 rounded-full bg-green-600': true, 'bg-neutral-600': NoteText !== 'Gut!' && NoteText !== 'Sehr Gut!' }">
+        :class="{ 'w-20 h-20 mb-2 rounded-full bg-green-600': true, 'bg-neutral-700': NoteText !== 'Gut!' && NoteText !== 'Sehr Gut!' }">
       </div>
-      <div :class="{ 'w-20 h-20 mb-2 rounded-full bg-yellow-500': true, 'bg-neutral-600': NoteText !== 'Befriedigend!' }">
+      <div :class="{ 'w-20 h-20 mb-2 rounded-full bg-yellow-500': true, 'bg-neutral-700': NoteText !== 'Befriedigend!' }">
       </div>
       <div
-        :class="{ 'w-20 h-20 rounded-full bg-red-600': true, 'bg-neutral-600': NoteText !== 'Genügend!' && NoteText !== 'Nicht Genügend!' }">
+        :class="{ 'w-20 h-20 rounded-full bg-red-600': true, 'bg-neutral-700': NoteText !== 'Genügend!' && NoteText !== 'Nicht Genügend!' }">
       </div>
     </div>
   </div>
