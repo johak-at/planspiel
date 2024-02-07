@@ -40,7 +40,7 @@ definePageMeta({
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Zuständigkeit:</h3>
-            <p>Designentwurf/Tutorialvideos, GTI foan und am Kindergoatn chün</p>
+            <p>Content Management-Erstellung des Designs</p>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@ definePageMeta({
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Zuständigkeit:</h3>
-            <p>Designerstellung und nicht unnötige Stunden aufschreiben</p>
+            <p>Web-Development-Umsetzung des Designs</p>
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@ definePageMeta({
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Zuständigkeit:</h3>
-            <p>Programmieren und Depressionen schlabn</p>
+            <p>Web-Development-Aufbau des Spieles</p>
           </div>
         </div>
       </div>
@@ -106,7 +106,7 @@ definePageMeta({
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Zuständigkeit:</h3>
-            <p>Datenbank</p>
+            <p>Datenmodellierung und Datenbankverwaltung</p>
           </div>
         </div>
       </div>
