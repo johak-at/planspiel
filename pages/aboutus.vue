@@ -11,7 +11,7 @@ definePageMeta({
       <h2 class="text-3xl font-bold">Einleitung:</h2>
       <p class="text-lg">
         Wir, vier engagierte Schüler der HAK-St. Johann, haben uns einer besonderen Herausforderung gestellt: die
-        Entwicklung eines innovativen Unternehmensplanspiels für unseren Auftraggeber Herrn Wallhaimer. Dieses Projekt,
+        Entwicklung eines innovativen Unternehmensplanspiels für unseren Auftraggeber Herrn Wohlschlager. Dieses Projekt,
         unsere Diplomarbeit, begann im September 2023 und fand seinen Abschluss im März 2024.
       </p>
 
