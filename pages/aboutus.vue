@@ -149,7 +149,7 @@ definePageMeta({
         <div class="flex flex-col space-y-6">
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Name:</h3>
-            <p>MMag. Monika Ellmer</p>
+            <p>MMag. Monika Najand-Ellmer</p>
           </div>
           <div class="flex flex-row space-x-2">
             <h3 class="font-bold">Geburtsdatum:</h3>
